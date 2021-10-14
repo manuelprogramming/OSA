@@ -65,7 +65,7 @@ class Plotter:
         plt.show()
 
 
-if __name__ == '__main__':
+def main():
     # Setting Search Term
     visa_search_term = 'GPIB0::1::INSTR'
     ando = ANDO_AQ6317B(visa_search_term)
@@ -74,5 +74,9 @@ if __name__ == '__main__':
 
     wavelength, power = ando.get_spectrum()
 
-# Plotting Data
+    # Plotting Data
     Plotter(wavelength, power)
+
+
+if __name__ == '__main__':
+    main

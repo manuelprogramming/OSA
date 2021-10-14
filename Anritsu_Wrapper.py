@@ -15,6 +15,18 @@ class Anritsu_MS9740B:
         rm = visa.ResourceManager()
         self.inst = rm.open_resource(visa_search_term)
 
+    def query(self, query_text: str) -> None:
+        """
+        Enter a query text for testing purpose
+        Args:
+            query_text:
+
+        Returns:
+
+        """
+        self.inst.query(query_text)
+
+
     def identify(self):
         """
         Returns:
@@ -43,26 +55,34 @@ class Anritsu_MS9740B:
     def get_start_stop_wavelength(self) -> (float, float):
         return self.inst.query("WSS?")
 
-    def start_single_sweep(self, mode: int = 1) -> None:
+    def start_single_sweep_1(self) -> None:
         """
         starts a single Sweep and saves it to csv
-        Args:
-            mode: indicates two queries for testing reasons
-
         Returns: None
 
         """
-        if mode == 1:
-            end = self.inst.query("*CLS ; SSI ; ESR2?")
-            while end == 0:
-                end = self.inst.query("ESR2?")
-            self.inst.query("SVCSV")
-        elif mode == 2:
-            self.inst.query("SSI ; *WAI ; SVCSV")
+        end = self.inst.query("*CLS ; SSI ; ESR2?")
+        while end == 0:
+            end = self.inst.query("ESR2?")
+
+        # self.inst.query("SVCSV")
+
+    def start_single_sweep_2(self):
+        self.inst.query("SSI ; *WAI ;")
 
 
-if __name__ == '__main__':
-    visa_search_term = 'GPIB0::1::INSTR' # Example Term
+def main():
+    """IP Adress: 130.75.93.77
+       Subnetz Maske: 255.255.255.0
+       Host Name: OSA-UPCJ9GGPCMD
+    """
+    visa_search_term = 'TCPIP0::130.75.93.77::inst0::INSTR' # Example Term
 
     anri = Anritsu_MS9740B(visa_search_term)
     print(anri.identify())
+
+    print(anri.get_start_stop_wavelength())
+    print(anri.start_single_sweep_1())
+
+if __name__ == '__main__':
+    main()
