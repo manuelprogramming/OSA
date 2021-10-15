@@ -2,8 +2,6 @@ import pyvisa as visa
 import numpy as np
 from time import sleep
 
-
-
 class Anritsu_MS9740B:
     """
     Hardware wrapper for Anritsu_MS9740B Optical Spectrum Analyzer
