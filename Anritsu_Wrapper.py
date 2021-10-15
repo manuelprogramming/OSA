@@ -2,6 +2,7 @@ import pyvisa as visa
 import numpy as np
 import matplotlib.pyplot as plt
 from time import sleep
+import json
 
 
 class Anritsu_MS9740B:
@@ -14,7 +15,6 @@ class Anritsu_MS9740B:
         visa_search_term (str): The address that is passed to
             ``visa.ResourceManager().open_resource()``
     """
-
     def __init__(self, visa_search_term):
         rm = visa.ResourceManager()
         self.inst = rm.open_resource(visa_search_term)
@@ -25,8 +25,7 @@ class Anritsu_MS9740B:
         """
         Enter a query text for testing purpose
         Args:
-            query_text:
-
+            query_text: anything according to Remote Operation Manuel
         Returns:
 
         """
@@ -36,14 +35,14 @@ class Anritsu_MS9740B:
         """
         For writing command
         Args:
-            command_text:
+            command_text: anything according to Remote Operation Manuel
         """
         self.inst.write(command_text)
 
     def identify(self):
         """
         Returns:
-            str: The response from an ``*IDN?`` GPIB query.
+            str: The response from an `*IDN?`query.
         """
         return self.query('*IDN?')
 
@@ -126,10 +125,13 @@ class Anritsu_MS9740B:
 
 
 def main():
-    sampling_points = 501  # 51|101|251|501|1001|2001|5001|10001|20001|50001
-    start_wavelength = 1350
-    stop_wavelength = 1450
-    visa_search_term = 'TCPIP0::130.75.93.77::inst0::INSTR'
+    with open('Settings.json') as json_file:
+        data = json.load(json_file)
+
+    sampling_points = data["sampling_points"]
+    start_wavelength = data["start_wavelength"]
+    stop_wavelength = data["stop_wavelength"]
+    visa_search_term = data["visa_search_term"]
 
     anri = Anritsu_MS9740B(visa_search_term)
     anri.set_start_stop_wavelength(start_wavelength, stop_wavelength)
@@ -141,7 +143,7 @@ def main():
 
     plt.plot(wavelength, trace)
     plt.ylabel("Intensity [dBm]")
-    plt.xlabel("Wavelenght [nm]")
+    plt.xlabel("Wavelength [nm]")
     plt.show()
 
 
