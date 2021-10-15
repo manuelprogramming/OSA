@@ -1,0 +1,31 @@
+{
+  "plugins": ["plugins.single_sweap", "plugins.start_stop_wavelength"],
+  "tools": [
+        {
+      "type": "connecter",
+      "anri": "",
+          "name"   : "BLA"
+    },
+    {
+      "type": "query",
+      "anri": "",
+      "name": "ESR2?"
+    },
+
+    {
+      "type": "command",
+      "anri": "",
+      "name": "STA"
+    },
+    {
+      "type": "single_sweap",
+      "anri": "",
+      "name": "SSI"
+    },
+    {
+      "type": "start_stop_wavelength",
+      "anri": "",
+      "name": "blub"
+    }
+  ]
+}
