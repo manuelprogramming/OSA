@@ -1,5 +1,10 @@
 {
-  "plugins": ["plugins.single_sweap", "plugins.start_stop_wavelength", "plugins.get_data", "plugins.plot"],
+  "plugins": ["plugins.single_sweap",
+    "plugins.start_stop_wavelength",
+    "plugins.get_data",
+    "plugins.plot",
+    "plugins.save_data",
+    "plugins.set_sampling_points"],
   "tools": [
         {
       "type": "identify",
@@ -36,6 +41,16 @@
       "type": "plot",
       "anri": "",
       "command": "PLT"
+    },
+    {
+      "type": "save_data",
+      "anri": "",
+      "command": "SVD"
+    },
+    {
+      "type": "set_sampling_points",
+      "anri": "",
+      "command": "MPT"
     }
   ]
 }

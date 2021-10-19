@@ -1,7 +1,6 @@
-"""A Plugin extension extenxion that adds a bla character"""
-
 from dataclasses import dataclass
 from osa import factory
+from osa.anritsu_wrapper import BaseAnritsu
 
 
 @dataclass
@@ -12,12 +11,12 @@ class StartStopWavelength:
         start: Starting Wavelength in Nanometer 600nm minimum
         stop: Stopping Wavelength in Nanometer 1800 nmm maximum
     """
-    anri: str
+    anri: BaseAnritsu
     command: str
 
     def do_work(self, settings, *args) -> str:
-        start = settings.pop("start_wavelength")
-        stop = settings.pop("stop_wavelength")
+        start = settings["start_wavelength"]
+        stop = settings["stop_wavelength"]
         self._set_start_stop_wavelength(start, stop)
         return f"Start Stop Wavelength set to {start} {stop} nm"
 

@@ -16,13 +16,16 @@ class Plot:
     command: str
 
     def do_work(self, settings, *args) -> Any:
-        if not args[0]:
+        arg = args[0]
+        if not isinstance(arg, tuple):
             return "retrieve Data before plotting"
+
         wavelength, intensity = args[0]
         self._plot(wavelength, intensity)
         return None
 
-    def _plot(self, wavelength: np.array, intensity: np.array) -> None:
+    @staticmethod
+    def _plot(wavelength: np.array, intensity: np.array) -> None:
         plt.plot(wavelength, intensity)
         plt.ylabel("Intensity [dBm]")
         plt.xlabel("Wavelength [nm]")

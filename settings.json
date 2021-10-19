@@ -1,6 +1,9 @@
 {
-  "sampling_points": 501,
+  "visa_search_term": "TCPIP0::130.75.93.77::inst0::INSTR",
+  "sampling_points": 1001,
   "start_wavelength": 1350,
   "stop_wavelength":1450,
-  "visa_search_term": "TCPIP0::130.75.93.77::inst0::INSTR",
-  "memory_slot":  "DMB"}
+  "memory_slot":  "DMB",
+  "saving_path": "C:\\Users\\Emanuel Pegler\\PycharmProjects\\OSA\\saved_data",
+  "file_name": "test.csv"
+}

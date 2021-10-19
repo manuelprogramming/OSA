@@ -22,6 +22,7 @@ def create_anritsu():
 def main() -> None:
 
     res = None
+    running = True
 
     # register a couple of BasicTool types
     factory.register("identify", Identify)
@@ -39,6 +40,7 @@ def main() -> None:
     # read out Settings
 
     settings_path = path.dirname(__file__)
+    print(settings_path)
     settings_path = path.join(settings_path, "settings.json")
 
     with open(settings_path) as file:
@@ -61,12 +63,12 @@ def main() -> None:
         tool.anri = anri
         print(tool, end="\t\n")
 
-    while True:
+    while running:
         print("#### Send Command:")
         command_str = input()
         if command_str == "exit":
-            break
-        if command_str not in tool_names:
+            running = False
+        elif command_str not in tool_names:
             print("wrong command")
         else:
             res = toolbox[command_str].do_work(settings, res)

@@ -15,7 +15,7 @@ class GetData:
     command: str
 
     def do_work(self, settings, *args) -> Tuple[np.array, np.array]:
-        memory_slot = settings.pop("memory_slot") + "?"
+        memory_slot = settings["memory_slot"] + "?"
         return self._get_data(memory_slot)
 
     def _get_data(self, memory_slot: str = "DMB?") -> Tuple[np.array, np.array]:
