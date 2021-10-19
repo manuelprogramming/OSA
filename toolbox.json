@@ -1,0 +1,36 @@
+{
+  "plugins": ["plugins.single_sweap", "plugins.start_stop_wavelength", "plugins.get_data"],
+  "tools": [
+        {
+      "type": "identify",
+      "anri": "",
+          "command": "IDN"
+    },
+    {
+      "type": "standard_event_status_register",
+      "anri": "",
+      "command": "ESR"
+    },
+
+    {
+      "type": "clear_registers",
+      "anri": "",
+      "command": "CLS"
+    },
+    {
+      "type": "single_sweap",
+      "anri": "",
+      "command": "SSI"
+    },
+    {
+      "type": "start_stop_wavelength",
+      "anri": "",
+      "command": "SSW"
+    },
+    {
+      "type": "get_data",
+      "anri": "",
+      "command": "GDA"
+    }
+  ]
+}

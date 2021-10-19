@@ -6,25 +6,22 @@ from osa import factory
 
 @dataclass
 class StartStopWavelength:
-
+    """
+    Sets the starting and stopping wavelength
+    Args:
+        start: Starting Wavelength in Nanometer 600nm minimum
+        stop: Stopping Wavelength in Nanometer 1800 nmm maximum
+    """
     anri: str
-    name: str
+    command: str
 
-    def do_work(self, *args) -> None:
-        start, stop = args
-        # self._set_start_stop_wavelength(start, stop)
-        print("Start Stop Wavelength set")
+    def do_work(self, settings) -> str:
+        start = settings.pop("start_wavelength")
+        stop = settings.pop("stop_wavelength")
+        self._set_start_stop_wavelength(start, stop)
+        return f"Start Stop Wavelength set to {start} {stop} nm"
 
     def _set_start_stop_wavelength(self, start: float = 600, stop: float = 1800) -> None:
-        """
-        Sets the starting and stopping wavelength
-        Args:
-            start: Starting Wavelength in Nanometer 600nm minimum
-            stop: Stopping Wavelength in Nanometer 1800 nmm maximum
-
-        Returns: None
-
-        """
         self.anri.write(f"WSS {start},{stop}")
 
 

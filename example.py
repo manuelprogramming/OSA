@@ -9,11 +9,11 @@ from os import path
 from osa.anritsu_wrapper import Anritsu
 
 from osa import factory, loader
-from osa.basictools import Connector, Command, Query
+from osa.basictools import Identify, ClearRegisters, StandartEventStatusRegister
 
 
 def create_anritsu():
-    with open('osa/Settings.json') as json_file:
+    with open('settings.json') as json_file:
         data = json.load(json_file)
     visa_search_term = data["visa_search_term"]
     return Anritsu(visa_search_term)
@@ -23,41 +23,55 @@ def main() -> None:
     """Creates game characters from a file containg a level definition."""
 
     # register a couple of BasicTool types
-    factory.register("connecter", Connector)
-    factory.register("command", Command)
-    factory.register("query", Query)
+    factory.register("identify", Identify)
+    factory.register("clear_registers", ClearRegisters)
+    factory.register("standard_event_status_register", StandartEventStatusRegister)
 
     # read data from a JSON file
 
-    file_path = path.dirname(__file__)
-    file_path = path.join(file_path, "level.json")
+    toolbox_path = path.dirname(__file__)
+    toolbox_path = path.join(toolbox_path, "toolbox.json")
 
-    with open(file_path) as file:
+    with open(toolbox_path) as file:
         data = json.load(file)
+
+    # read out Settings
+
+    settings_path = path.dirname(__file__)
+    settings_path = path.join(settings_path, "settings.json")
+
+    with open(settings_path) as file:
+        settings = json.load(file)
+
+
+
+    # load plugins
 
     loader.load_plugins(data["plugins"])
 
     # create the tools and toolbox
 
     tools = [factory.create(item) for item in data["tools"]]
-    tool_names = [tool.name for tool in tools]
+    tool_names = [tool.command for tool in tools]
     toolbox = dict(zip(tool_names, tools))
 
-    # anri = create_anritsu()
+    anri = create_anritsu()
 
     # do something with the characters
     for tool in tools:
-        tool.anri = "Enter Anri"
-        print(tool, end="\t")
-        tool.do_work(1350, 4000)
+        tool.anri = anri
+        print(tool, end="\t\n")
 
     while True:
         print("#### Send Command:")
-        comand_str = input()
-        if comand_str not in tool_names:
+        command_str = input()
+        if command_str == "exit":
+            break
+        if command_str not in tool_names:
             print("wrong command")
         else:
-            toolbox[comand_str].do_work(135, 1450)
+            res = toolbox[command_str].do_work(settings)
+            print(res)
 
 
 if __name__ == "__main__":

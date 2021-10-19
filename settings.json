@@ -1,0 +1,6 @@
+{
+  "sampling_points": 501,
+  "start_wavelength": 1350,
+  "stop_wavelength":1450,
+  "visa_search_term": "TCPIP0::130.75.93.77::inst0::INSTR",
+  "memory_slot":  "DMB"}

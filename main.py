@@ -2,8 +2,9 @@ import matplotlib.pyplot as plt
 import json
 from Anritsu_Wrapper import Anritsu_MS9740B
 
+
 def main():
-    with open('Settings.json') as json_file:
+    with open('settings.json') as json_file:
         data = json.load(json_file)
 
     sampling_points = data["sampling_points"]
@@ -15,7 +16,7 @@ def main():
     anri.set_start_stop_wavelength(start_wavelength, stop_wavelength)
     anri.set_sampling_points(sampling_points)
 
-    anri.do_single_sweap()
+    anri.do_single_sweep()
 
     wavelength, trace = anri.get_data()
 

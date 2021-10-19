@@ -80,26 +80,26 @@ class Anritsu_MS9740B:
         when sweapo_completed != 0 then it breaks the while loop and more commands can be send
         Returns: None
         """
-        sweap_completed = 0
+        sweep_completed = 0
         self.write("*CLS")
-        while sweap_completed == 0:
-            sweap_completed = int(self.query(":STAT:EVEN:COND?"))
-            print(f"Sweaping... {sweap_completed}")
+        while sweep_completed == 0:
+            sweep_completed = int(self.query(":STAT:EVEN:COND?"))
+            print(f"Sweaping... {sweep_completed}")
             sleep(1)
 
-    def do_single_sweap(self) -> None:
+    def do_single_sweep(self) -> None:
         """
-        perfomsn a single sweap and prints message on completion
+        performs a single sweep and prints message on completion
         Returns: None
         """
         self.write(":INIT")
         self.check_status()
-        print(f"Completed Sweap")
+        print(f"Completed Sweep")
 
     def get_data(self, memory_slot: str = "DMB?") -> (np.array, np.array):
         """
-        gets the trace data and wavewlnegth of current measurement
-        Returns: wavelength and trace data from givcen Memory
+        gets the trace data and wavelength of current measurement
+        Returns: wavelength and trace data from given Memory
         """
         trace = self.query(memory_slot)  # getting trace Data
         trace = [float(x) for x in trace.split()]

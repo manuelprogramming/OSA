@@ -2,6 +2,7 @@
 
 from dataclasses import dataclass
 from osa import factory
+from osa.anritsu_wrapper import BaseAnritsu
 
 from time import sleep
 
@@ -9,12 +10,12 @@ from time import sleep
 @dataclass
 class SingleSweap:
     """performs a single sweap and prints message on completion"""
-    anri: object
-    name: str
+    anri: BaseAnritsu
+    command: str
 
-    def do_work(self, *args) -> None:
-        # self._do_single_sweap()
-        print("Sweaped finfished")
+    def do_work(self, *args) -> str:
+        self._do_single_sweap()
+        return "Sweaped finfished"
 
     def _check_status(self) -> None:
         """
