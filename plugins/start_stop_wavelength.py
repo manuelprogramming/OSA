@@ -15,7 +15,7 @@ class StartStopWavelength:
     anri: str
     command: str
 
-    def do_work(self, settings) -> str:
+    def do_work(self, settings, *args) -> str:
         start = settings.pop("start_wavelength")
         stop = settings.pop("stop_wavelength")
         self._set_start_stop_wavelength(start, stop)

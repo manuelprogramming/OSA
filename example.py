@@ -20,7 +20,8 @@ def create_anritsu():
 
 
 def main() -> None:
-    """Creates game characters from a file containg a level definition."""
+
+    res = None
 
     # register a couple of BasicTool types
     factory.register("identify", Identify)
@@ -42,8 +43,6 @@ def main() -> None:
 
     with open(settings_path) as file:
         settings = json.load(file)
-
-
 
     # load plugins
 
@@ -70,7 +69,7 @@ def main() -> None:
         if command_str not in tool_names:
             print("wrong command")
         else:
-            res = toolbox[command_str].do_work(settings)
+            res = toolbox[command_str].do_work(settings, res)
             print(res)
 
 

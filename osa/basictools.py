@@ -12,7 +12,7 @@ class ClearRegisters:
     anri: BaseAnritsu
     command: str
 
-    def do_work(self, settings) -> str:
+    def do_work(self, settings, *args) -> str:
         self._clear_registers()
         return "registers Cleared"
 
@@ -30,7 +30,7 @@ class StandartEventStatusRegister:
     anri: BaseAnritsu
     command: str
 
-    def do_work(self, settings) -> Tuple[str, str]:
+    def do_work(self, settings, *args) -> Tuple[str, str]:
         esr = self._get_standard_event_status_register()
         res = "Standart Event Status Register: ", esr
         return res
@@ -44,7 +44,7 @@ class Identify:
     anri: BaseAnritsu
     command: str
 
-    def do_work(self, settings) -> str:
+    def do_work(self, settings, *args) -> str:
         msg = self._identify()
         return f"Connected to {msg}"
 

@@ -1,5 +1,5 @@
 {
-  "plugins": ["plugins.single_sweap", "plugins.start_stop_wavelength", "plugins.get_data"],
+  "plugins": ["plugins.single_sweap", "plugins.start_stop_wavelength", "plugins.get_data", "plugins.plot"],
   "tools": [
         {
       "type": "identify",
@@ -31,6 +31,11 @@
       "type": "get_data",
       "anri": "",
       "command": "GDA"
+    },
+    {
+      "type": "plot",
+      "anri": "",
+      "command": "PLT"
     }
   ]
 }

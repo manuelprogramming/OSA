@@ -6,7 +6,6 @@ from osa.anritsu_wrapper import BaseAnritsu
 from osa import factory
 
 
-
 @dataclass
 class GetData:
     """
@@ -15,7 +14,7 @@ class GetData:
     anri: BaseAnritsu
     command: str
 
-    def do_work(self, settings) -> Tuple[np.array, np.array]:
+    def do_work(self, settings, *args) -> Tuple[np.array, np.array]:
         memory_slot = settings.pop("memory_slot") + "?"
         return self._get_data(memory_slot)
 

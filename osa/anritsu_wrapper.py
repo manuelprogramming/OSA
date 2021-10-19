@@ -27,6 +27,7 @@ class BaseAnritsu(Protocol):
             str: The response from an `*IDN?`query.
         """
 
+
 class Anritsu:
     def __init__(self, visa_search_term):
         rm = visa.ResourceManager()
