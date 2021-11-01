@@ -5,17 +5,17 @@ tool_creation_funcs: Dict[str, Callable[..., BasicTool]] = {}
 
 
 def register(tool_type: str, creation_func: Callable[..., BasicTool]):
-    """Regsiter a new game Tool type"""
+    """Register a new tool type"""
     tool_creation_funcs[tool_type] = creation_func
 
 
 def unregister(tool_type: str):
-    """Unregister a game character type."""
+    """Unregister a tool type."""
     tool_creation_funcs.pop(tool_type, None)
 
 
 def create(arguments: Dict[str, Any]) -> BasicTool:
-    """Create a game character of a specific type, given a dictionary"""
+    """Create a tool with a specific command, given a dictionary"""
     args_copy = arguments.copy()
     tool_type = args_copy.pop("type")
     try:

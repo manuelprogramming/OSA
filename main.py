@@ -32,7 +32,7 @@ def main() -> None:
     # read data from a JSON file
 
     toolbox_path = path.dirname(__file__)
-    toolbox_path = path.join(toolbox_path, "toolbox.json")
+    toolbox_path = path.join(toolbox_path, "osa/toolbox.json")
 
     with open(toolbox_path) as file:
         data = json.load(file)
