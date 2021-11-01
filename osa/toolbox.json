@@ -4,7 +4,8 @@
     "plugins.get_data",
     "plugins.plot",
     "plugins.save_data",
-    "plugins.set_sampling_points"],
+    "plugins.set_sampling_points",
+    "plugins.dummy_data"],
   "tools": [
         {
       "name": "identify",
@@ -49,6 +50,10 @@
       "name": "set_sampling_points",
       "anri": "",
       "command": "MPT"
+    },
+    {
+      "name": "dummy_data",
+      "command": "DDA"
     }
   ]
 }
