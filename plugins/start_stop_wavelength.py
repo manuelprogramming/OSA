@@ -2,13 +2,14 @@
 
 from dataclasses import dataclass
 from osa import factory
+from osa.anritsu_wrapper import BaseAnritsu
 
 
 @dataclass
 class StartStopWavelength:
     """Sets the starting and stopping wavelength"""
-    anri: str
     command: str
+    anri: BaseAnritsu
 
     def do_work(self, *args) -> str:
         start, stop = args

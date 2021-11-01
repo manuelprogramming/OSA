@@ -7,36 +7,36 @@
     "plugins.set_sampling_points",
     "plugins.dummy_data"],
   "tools": [
-        {
+    {
       "name": "identify",
-      "anri": "",
-          "command": "IDN"
+      "command": "IDN",
+      "anri": ""
     },
     {
       "name": "standard_event_status_register",
-      "anri": "",
-      "command": "ESR"
+      "command": "ESR",
+      "anri": ""
     },
 
     {
       "name": "clear_registers",
-      "anri": "",
-      "command": "CLS"
+      "command": "CLS",
+      "anri": ""
     },
     {
       "name": "single_sweep",
-      "anri": "",
-      "command": "SSI"
+      "command": "SSI",
+      "anri": ""
     },
     {
       "name": "start_stop_wavelength",
-      "anri": "",
-      "command": "SSW"
+      "command": "SSW",
+      "anri": ""
     },
     {
       "name": "get_data",
-      "anri": "",
-      "command": "GDA"
+      "command": "GDA",
+      "anri": ""
     },
     {
       "name": "plot",
@@ -48,8 +48,8 @@
     },
     {
       "name": "set_sampling_points",
-      "anri": "",
-      "command": "MPT"
+      "command": "MPT",
+      "anri": ""
     },
     {
       "name": "dummy_data",

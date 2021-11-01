@@ -9,8 +9,8 @@ class ClearRegisters:
     """
     Clears all the common registers
     """
-    anri: BaseAnritsu
     command: str
+    anri: BaseAnritsu
 
     def do_work(self, settings, *args) -> str:
         self._clear_registers()
@@ -27,8 +27,8 @@ class StandardEventStatusRegister:
     The standard event status register value is cleared after readout.
     This value is the logical product of the 8 bits set by *ESE.
     """
-    anri: BaseAnritsu
     command: str
+    anri: BaseAnritsu
 
     def do_work(self, settings, *args) -> Tuple[str, str]:
         esr = self._get_standard_event_status_register()
@@ -41,8 +41,8 @@ class StandardEventStatusRegister:
 
 @dataclass
 class Identify:
-    anri: BaseAnritsu
     command: str
+    anri: BaseAnritsu
 
     def do_work(self, settings, *args) -> str:
         msg = self._identify()

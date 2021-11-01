@@ -9,8 +9,8 @@ class SetSamplingPoints:
     """
     Sets the Sampling Points {51|101|251|501|1001|2001|5001|10001|20001|50001}
     """
-    anri: BaseAnritsu
     command: str
+    anri: BaseAnritsu
 
     def do_work(self, settings, *args) -> Tuple[str, int]:
         sampling_points = int(settings["sampling_points"])

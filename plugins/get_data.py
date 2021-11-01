@@ -11,8 +11,8 @@ class GetData:
     """
     Reads out the Measured Data in Given Channel
     """
-    anri: BaseAnritsu
     command: str
+    anri: BaseAnritsu
 
     def do_work(self, settings, *args) -> Tuple[np.array, np.array]:
         memory_slot = settings["memory_slot"] + "?"

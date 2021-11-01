@@ -10,8 +10,8 @@ from time import sleep
 @dataclass
 class SingleSweep:
     """performs a single sweap and prints message on completion"""
-    anri: BaseAnritsu
     command: str
+    anri: BaseAnritsu
 
     def do_work(self, *args) -> str:
         self._do_single_sweep()
