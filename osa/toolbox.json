@@ -39,12 +39,10 @@
     },
     {
       "name": "plot",
-      "anri": "",
       "command": "PLT"
     },
     {
       "name": "save_data",
-      "anri": "",
       "command": "SVD"
     },
     {

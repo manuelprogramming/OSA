@@ -9,7 +9,7 @@ from os import path
 from osa.anritsu_wrapper import Anritsu
 
 from osa import factory, loader
-from osa.basictools import Identify, ClearRegisters, StandartEventStatusRegister
+from osa.basictools import Identify, ClearRegisters, StandardEventStatusRegister
 
 
 def create_anritsu():
@@ -24,10 +24,10 @@ def main() -> None:
     res = None
     running = True
 
-    # register a couple of BasicTool types
+    # register a couple of BasicTools
     factory.register("identify", Identify)
     factory.register("clear_registers", ClearRegisters)
-    factory.register("standard_event_status_register", StandartEventStatusRegister)
+    factory.register("standard_event_status_register", StandardEventStatusRegister)
 
     # read data from a JSON file
 
@@ -56,11 +56,13 @@ def main() -> None:
     toolbox = dict(zip(tool_names, tools))
 
     # create the anritsu class
-    anri = create_anritsu()
+    # anri = create_anritsu()
+    anri = ""
 
     # apply the anritsu class to each tool
     for tool in tools:
-        tool.anri = anri
+        if hasattr(tool, "anri"):
+            tool.anri = anri
         print(tool, end="\t\n")
 
     while running:

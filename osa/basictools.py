@@ -21,7 +21,7 @@ class ClearRegisters:
 
 
 @dataclass
-class StandartEventStatusRegister:
+class StandardEventStatusRegister:
     """
     This command queries the standard event status register value.
     The standard event status register value is cleared after readout.
@@ -32,7 +32,7 @@ class StandartEventStatusRegister:
 
     def do_work(self, settings, *args) -> Tuple[str, str]:
         esr = self._get_standard_event_status_register()
-        res = "Standart Event Status Register: ", esr
+        res = "Standard Event Status Register: ", esr
         return res
 
     def _get_standard_event_status_register(self):

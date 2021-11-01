@@ -4,7 +4,7 @@ from unused.Anritsu_Wrapper import Anritsu_MS9740B
 
 
 def main():
-    with open('../Settings.json') as json_file:
+    with open('../settings.json') as json_file:
         data = json.load(json_file)
 
     sampling_points = data["sampling_points"]

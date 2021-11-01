@@ -10,10 +10,10 @@ class StartStopWavelength:
     anri: str
     command: str
 
-    def do_work(self, *args) -> None:
+    def do_work(self, *args) -> str:
         start, stop = args
         self._set_start_stop_wavelength(start, stop)
-        print("Start Stop Wavelength set")
+        return "Start Stop Wavelength set"
 
     def _set_start_stop_wavelength(self, start: float = 600, stop: float = 1800) -> None:
         self.anri.write(f"WSS {start},{stop}")

@@ -5,7 +5,6 @@ from typing import Protocol, Dict, Any
 
 class BasicTool(Protocol):
     """Basic representation of a Tool"""
-    anri: object
     command: str
 
     def do_work(self, settings: Dict[str, Any], *args) -> Any:

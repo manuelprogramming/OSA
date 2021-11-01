@@ -4,14 +4,14 @@ from typing import Callable, Dict, Any
 tool_creation_funcs: Dict[str, Callable[..., BasicTool]] = {}
 
 
-def register(tool_type: str, creation_func: Callable[..., BasicTool]):
-    """Register a new tool type"""
-    tool_creation_funcs[tool_type] = creation_func
+def register(tool_name: str, creation_func: Callable[..., BasicTool]):
+    """Register a new tool"""
+    tool_creation_funcs[tool_name] = creation_func
 
 
-def unregister(tool_type: str):
+def unregister(tool_name: str):
     """Unregister a tool type."""
-    tool_creation_funcs.pop(tool_type, None)
+    tool_creation_funcs.pop(tool_name, None)
 
 
 def create(arguments: Dict[str, Any]) -> BasicTool:

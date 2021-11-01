@@ -1,10 +1,8 @@
-import numpy as np
 from dataclasses import dataclass
 from typing import Any
 import pandas as pd
 from os import path
 
-from osa.anritsu_wrapper import BaseAnritsu
 from osa import factory
 
 
@@ -13,7 +11,6 @@ class SaveData:
     """
     Plots the Data from the Cache perform "get_data" before executing
     """
-    anri: BaseAnritsu
     command: str
 
     def do_work(self, settings, *args) -> Any:
@@ -25,13 +22,14 @@ class SaveData:
         self._save_data(file_path, args)
         return "data saved"
 
-    def _save_data(self, file_path , args) -> None:
+    @staticmethod
+    def _save_data(file_path, args) -> None:
         wave_length, intensity = args[0]
         df = pd.DataFrame(data=intensity, index=wave_length)
-
         df.to_csv(file_path)
 
-    def _get_saving_path(self, settings):
+    @staticmethod
+    def _get_saving_path(settings):
         saving_path = settings["saving_path"]
         file_name = settings["file_name"]
         return path.join(saving_path, file_name)
