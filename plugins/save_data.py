@@ -1,7 +1,10 @@
+import time
 from dataclasses import dataclass
 from typing import Any
 import pandas as pd
+from pathlib import Path
 from os import path
+from datetime import datetime
 
 from osa import factory
 
@@ -28,12 +31,25 @@ class SaveData:
         df = pd.DataFrame(data=intensity, index=wave_length)
         df.to_csv(file_path)
 
-    @staticmethod
-    def _get_saving_path(settings):
-        saving_path = settings["saving_path"]
-        file_name = settings["file_name"]
-        return path.join(saving_path, file_name)
+
 
 
 def initialize() -> None:
     factory.register("save_data", SaveData)
+
+
+if __name__ == '__main__':
+    dateTimeObj = datetime.now()
+    timestampStr = dateTimeObj.strftime("%Y-%b-%d,-,%H;%M;%S")
+    print('Current Timestamp : ', timestampStr)
+
+    time.sleep(1)
+    dateTimeObj2 = datetime.now()
+    print(dateTimeObj2 < dateTimeObj)
+
+
+
+    # for back and forth converting
+    # format = "%Y-%b-%d,-,%H;%M;%S"
+    # dt_utc = datetime.strptime(timestampStr, format)
+    # print(dt_utc)

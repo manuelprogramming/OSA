@@ -5,7 +5,8 @@
     "plugins.plot",
     "plugins.save_data",
     "plugins.set_sampling_points",
-    "plugins.dummy_data"],
+    "plugins.dummy_data",
+    "plugins.create_new_file"],
   "tools": [
     {
       "name": "identify",
@@ -54,6 +55,10 @@
     {
       "name": "dummy_data",
       "command": "DDA"
+    },
+    {
+      "name": "create_new_file",
+      "command": "CNF"
     }
   ]
 }

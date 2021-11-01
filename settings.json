@@ -4,6 +4,5 @@
   "start_wavelength": 1350,
   "stop_wavelength":1450,
   "memory_slot":  "DMB",
-  "saving_path": "C:\\Users\\Emanuel Pegler\\PycharmProjects\\OSA\\saved_data",
-  "file_name": "test.csv"
+  "saving_folder": "saved_data"
 }
