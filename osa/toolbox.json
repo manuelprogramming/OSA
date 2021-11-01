@@ -7,48 +7,48 @@
     "plugins.set_sampling_points"],
   "tools": [
         {
-      "type": "identify",
+      "name": "identify",
       "anri": "",
           "command": "IDN"
     },
     {
-      "type": "standard_event_status_register",
+      "name": "standard_event_status_register",
       "anri": "",
       "command": "ESR"
     },
 
     {
-      "type": "clear_registers",
+      "name": "clear_registers",
       "anri": "",
       "command": "CLS"
     },
     {
-      "type": "single_sweep",
+      "name": "single_sweep",
       "anri": "",
       "command": "SSI"
     },
     {
-      "type": "start_stop_wavelength",
+      "name": "start_stop_wavelength",
       "anri": "",
       "command": "SSW"
     },
     {
-      "type": "get_data",
+      "name": "get_data",
       "anri": "",
       "command": "GDA"
     },
     {
-      "type": "plot",
+      "name": "plot",
       "anri": "",
       "command": "PLT"
     },
     {
-      "type": "save_data",
+      "name": "save_data",
       "anri": "",
       "command": "SVD"
     },
     {
-      "type": "set_sampling_points",
+      "name": "set_sampling_points",
       "anri": "",
       "command": "MPT"
     }

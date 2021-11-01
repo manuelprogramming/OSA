@@ -17,10 +17,10 @@ def unregister(tool_type: str):
 def create(arguments: Dict[str, Any]) -> BasicTool:
     """Create a tool with a specific command, given a dictionary"""
     args_copy = arguments.copy()
-    tool_type = args_copy.pop("type")
+    tool_name = args_copy.pop("name")
     try:
-        creation_func = tool_creation_funcs[tool_type]
+        creation_func = tool_creation_funcs[tool_name]
         return creation_func(**args_copy)
     except KeyError:
-        raise ValueError(f"Unknown tool type {tool_type!r}") from None
+        raise ValueError(f"Unknown tool name {tool_name!r}") from None
 

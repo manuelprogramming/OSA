@@ -3,7 +3,7 @@ from typing import Protocol
 
 
 class BaseAnritsu(Protocol):
-    """Basic Represantation of Anritsu Class"""
+    """Basic Representation of Anritsu Class"""
 
     def query(self, query_text: str):
         """

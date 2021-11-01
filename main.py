@@ -55,9 +55,10 @@ def main() -> None:
     tool_names = [tool.command for tool in tools]
     toolbox = dict(zip(tool_names, tools))
 
+    # create the anritsu class
     anri = create_anritsu()
 
-    # do something with the characters
+    # apply the anritsu class to each tool
     for tool in tools:
         tool.anri = anri
         print(tool, end="\t\n")
