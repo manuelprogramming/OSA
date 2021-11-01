@@ -56,8 +56,8 @@ def main() -> None:
     toolbox = dict(zip(tool_names, tools))
 
     # create the anritsu class
-    # anri = create_anritsu()
-    anri = ""
+    anri = create_anritsu()
+    # anri = ""
 
     # apply the anritsu class to each tool
     for tool in tools:
