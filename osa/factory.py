@@ -20,6 +20,7 @@ def create(arguments: Dict[str, Any]) -> BasicTool:
     tool_type = args_copy.pop("type")
     try:
         creation_func = tool_creation_funcs[tool_type]
+        print(creation_func)
         return creation_func(**args_copy)
     except KeyError:
         raise ValueError(f"Unknown tool type {tool_type!r}") from None

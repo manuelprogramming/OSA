@@ -1,5 +1,5 @@
 {
-  "plugins": ["plugins.single_sweap",
+  "plugins": ["plugins.single_sweep",
     "plugins.start_stop_wavelength",
     "plugins.get_data",
     "plugins.plot",
@@ -23,7 +23,7 @@
       "command": "CLS"
     },
     {
-      "type": "single_sweap",
+      "type": "single_sweep",
       "anri": "",
       "command": "SSI"
     },

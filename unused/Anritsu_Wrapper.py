@@ -2,6 +2,7 @@ import pyvisa as visa
 import numpy as np
 from time import sleep
 
+
 class Anritsu_MS9740B:
     """
     Hardware wrapper for Anritsu_MS9740B Optical Spectrum Analyzer
@@ -61,19 +62,12 @@ class Anritsu_MS9740B:
         """
         self.write(f"WSS {start},{stop}")
 
-    def get_start_stop_wavelength(self) -> (float, float):
+    def get_start_stop_wavelength(self) -> (str, str):
         """
         Returns:start and stop wavelength of sweap
 
         """
         return self.query("WSS?")
-
-    def start_single_sweep_1(self) -> None:
-        """
-        starts a single Sweep and saves it to csv
-        Returns: None
-
-        """
 
     def check_status(self) -> None:
         """

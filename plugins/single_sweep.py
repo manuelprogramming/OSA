@@ -8,13 +8,13 @@ from time import sleep
 
 
 @dataclass
-class SingleSweap:
+class SingleSweep:
     """performs a single sweap and prints message on completion"""
     anri: BaseAnritsu
     command: str
 
     def do_work(self, *args) -> str:
-        self._do_single_sweap()
+        self._do_single_sweep()
         return "Sweaped finfished"
 
     def _check_status(self) -> None:
@@ -29,11 +29,11 @@ class SingleSweap:
             print(f"Sweaping... {sweap_completed}")
             sleep(1)
 
-    def _do_single_sweap(self) -> None:
+    def _do_single_sweep(self) -> None:
         self.anri.write(":INIT")
         self._check_status()
         print(f"Completed Sweap")
 
 
 def initialize() -> None:
-    factory.register("single_sweap", SingleSweap)
+    factory.register("single_sweep", SingleSweep)
