@@ -40,7 +40,6 @@ def main() -> None:
     # read out Settings
 
     settings_path = path.dirname(__file__)
-    # print(settings_path)
     settings_path = path.join(settings_path, "settings.json")
 
     with open(settings_path) as file:
