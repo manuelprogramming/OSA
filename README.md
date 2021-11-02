@@ -1,32 +1,31 @@
 ## Arnitsu-Remote-Control-System ARCS
-This is a system to control the Anritsu_MS9740B from a remote computer
+This is a system to control the Optical Spectrum Analyzer MS9740B by Anritsu from a remote computer
 
 ## Motivation
 This is a work related student Project at HOT – Hannoversches Zentrum für Optische Technologien. 
 
- 
-## Tech/framework used
-Ex. - 
 
-<b>Built with</b>
-- [Electron](https://electron.atom.io)
+## Tech/framework used
+Tech:<br>
+-python 3.9, <br> 
+-pip 21.1.2, <br>
+Frameworks: <br>
+-PyVisa 1.11.3, <br>
+-numpy 1.19.5, <br>
+-pandas 1.2.2, <br>
+-matplotlib 3.3.4 <br>
+
 
 ## Features
-What makes your project stand out?
-
-## Code Example
-Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
+Its a plugin based remote control system made as console application. For retrieving, saving data, plotting and analyzing optical data.
 
 ## Installation
-Provide step by step series of examples and explanations about how to get a development env running.
-
+...
 
 ## How to use?
-If people like your project they’ll want to learn how they can use it. To do so include step by step guide to use your project.
-
+For using it you have to change the IP Adress of the MS9740B in Settings.json then run the main.py file. If connected you can control the MS9740B with The commands written in the program. The commands for the different tools can be found in data.json
 
 
 ## License
-A short snippet describing the license (MIT, Apache etc)
 
-MIT © Emanuel Pegler()
+MIT © Emanuel Pegler
