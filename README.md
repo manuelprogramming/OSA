@@ -23,7 +23,7 @@ Its a plugin based remote control system made as console application. For retrie
 ...
 
 ## How to use?
-For using it you have to change the IP Adress of the MS9740B in Settings.json then run the main.py file. If connected you can control the MS9740B with The commands written in the program. The commands for the different tools can be found in data.json
+For using it you have to change the IP Adress of the MS9740B in settings.json then run the main.py file. If connected you can control the MS9740B with The commands written in the program. The commands for the different tools can be found in data.json. Also new saving folder need to be created.
 
 
 ## License
