@@ -33,10 +33,6 @@ def main() -> None:
 
     data = get_data_dict()
 
-    # read out Settings
-
-    settings = get_settings_dict()
-
     # load plugins
 
     loader.load_plugins(data["plugins"])
@@ -46,7 +42,6 @@ def main() -> None:
     tools = [factory.create(item) for item in data["tools"]]
     tool_names = [tool.command for tool in tools]
     toolbox = dict(zip(tool_names, tools))
-
 
     # create the anritsu class
     anri = create_anritsu()
