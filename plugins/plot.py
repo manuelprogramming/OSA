@@ -3,7 +3,6 @@ from dataclasses import dataclass
 from typing import Any
 import matplotlib.pyplot as plt
 
-from osa.anritsu_wrapper import BaseAnritsu
 from osa import factory
 
 

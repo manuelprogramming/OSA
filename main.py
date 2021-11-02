@@ -4,12 +4,12 @@ register/unregister methods.
 """
 
 import json
-from os import path
 
 from osa.anritsu_wrapper import Anritsu
 
 from osa import factory, loader
 from osa.basictools import Identify, ClearRegisters, StandardEventStatusRegister
+from file_handler import get_settings_dict, get_data_dict
 
 
 def create_anritsu():
@@ -31,19 +31,11 @@ def main() -> None:
 
     # read data from a JSON file
 
-    toolbox_path = path.dirname(__file__)
-    toolbox_path = path.join(toolbox_path, "osa/toolbox.json")
-
-    with open(toolbox_path) as file:
-        data = json.load(file)
+    data = get_data_dict()
 
     # read out Settings
 
-    settings_path = path.dirname(__file__)
-    settings_path = path.join(settings_path, "settings.json")
-
-    with open(settings_path) as file:
-        settings = json.load(file)
+    settings = get_settings_dict()
 
     # load plugins
 
