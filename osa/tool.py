@@ -1,4 +1,4 @@
-"""Represents a basic game character."""
+"""Represents a basic tool."""
 
 from typing import Protocol, Dict, Any
 

@@ -1,6 +1,5 @@
 """
-Basic example showing how to create objects from data using a dynamic factory with
-register/unregister methods.
+This is a system to control the Optical Spectrum Analyzer MS9740B by Anritsu from a remote computer
 """
 
 import json
@@ -54,6 +53,7 @@ def main() -> None:
             tool.anri = anri
         print(tool, end="\t\n\n")
 
+    # main programm loop
     while running:
         print("#### Send Command:")
         command_str = input()
