@@ -1,4 +1,4 @@
-"""function for Handling the files"""
+"""functions for Handling the files"""
 from os import path, listdir
 import json
 from typing import Dict, Any, List

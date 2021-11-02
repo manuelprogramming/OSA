@@ -55,7 +55,7 @@ def main() -> None:
 
     # main programm loop
     while running:
-        print("\n#### Send Command:\n\n")
+        print("\n\n#### Send Command:\n")
         command_str = input()
         if command_str == "exit":
             running = False
