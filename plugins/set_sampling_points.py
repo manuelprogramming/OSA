@@ -5,6 +5,7 @@ from osa.anritsu_wrapper import BaseAnritsu
 from typing import Tuple
 from file_handler import get_settings_dict
 
+
 @dataclass
 class SetSamplingPoints:
     """

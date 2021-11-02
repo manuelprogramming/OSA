@@ -9,7 +9,7 @@ from osa.anritsu_wrapper import Anritsu
 
 from osa import factory, loader
 from osa.basictools import Identify, ClearRegisters, StandardEventStatusRegister
-from file_handler import get_settings_dict, get_data_dict
+from file_handler import get_data_dict
 
 
 def create_anritsu():
@@ -25,6 +25,7 @@ def main() -> None:
     running = True
 
     # register a couple of BasicTools
+
     factory.register("identify", Identify)
     factory.register("clear_registers", ClearRegisters)
     factory.register("standard_event_status_register", StandardEventStatusRegister)
@@ -45,9 +46,9 @@ def main() -> None:
 
     # create the anritsu class
     anri = create_anritsu()
-    # anri = ""
+    # anri = ""                     # used for offline mode
 
-    # apply the anritsu class to each tool
+    # apply the anritsu class to the tools who need that
     for tool in tools:
         if hasattr(tool, "anri"):
             tool.anri = anri
