@@ -16,6 +16,8 @@ class PlotFromFile:
 
     def do_work(self, *args) -> str:
         file_path = get_latest_file_path()
+        if not file_path:
+            return "no files in directory"
         if path.getsize(file_path) == 0:
             return "file is empty no plotting possible"
         self._plot_from_file(file_path)

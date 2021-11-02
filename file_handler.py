@@ -35,13 +35,16 @@ def find_all_timestampStrs() -> List[str]:
 
 def find_latest_file() -> str:
     saving_path = get_saving_path()
-    return [f for f in listdir(saving_path) if f.endswith(".csv")][-1]
+
+    if listdir(saving_path):
+        return [f for f in listdir(saving_path) if f.endswith(".csv")][-1]
 
 
 def get_latest_file_path() -> str:
     saving_path = get_saving_path()
     latest_file = find_latest_file()
-    return path.join(saving_path, latest_file)
+    if latest_file:
+        return path.join(saving_path, latest_file)
 
 
 def get_file_name_format() -> str:
@@ -62,5 +65,5 @@ def _convert_str_to_datetime(timestampStr):
 
 
 if __name__ == '__main__':
-    print(get_latest_file_path())
+    print(find_latest_file())
 

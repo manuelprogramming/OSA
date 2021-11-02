@@ -44,8 +44,8 @@ def main() -> None:
     toolbox = dict(zip(tool_names, tools))
 
     # create the anritsu class
-    anri = create_anritsu()
-    # anri = ""                     # used for offline mode
+    # anri = create_anritsu()
+    anri = ""                     # used for offline mode
 
     # apply the anritsu class to the tools who need that
     for tool in tools:
@@ -55,7 +55,7 @@ def main() -> None:
 
     # main programm loop
     while running:
-        print("#### Send Command:")
+        print("\n#### Send Command:\n\n")
         command_str = input()
         if command_str == "exit":
             running = False
