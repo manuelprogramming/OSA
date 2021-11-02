@@ -6,7 +6,8 @@
     "plugins.save_data",
     "plugins.set_sampling_points",
     "plugins.dummy_data",
-    "plugins.create_new_file"],
+    "plugins.create_new_file",
+    "plugins.plot_from_file"],
   "tools": [
     {
       "name": "identify",
@@ -59,6 +60,10 @@
     {
       "name": "create_new_file",
       "command": "CNF"
+    },
+    {
+      "name": "plot_from_file",
+      "command": "PFF"
     }
   ]
 }
