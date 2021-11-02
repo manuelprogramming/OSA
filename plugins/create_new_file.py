@@ -1,12 +1,11 @@
-import time
 from dataclasses import dataclass
 from typing import Any
-import pandas as pd
 from pathlib import Path
 from os import path
 from datetime import datetime
 
 from osa import factory
+from file_handler import get_settings_dict
 
 
 @dataclass
@@ -16,7 +15,8 @@ class CreateNewFile:
     """
     command: str
 
-    def do_work(self, settings, *args) -> Any:
+    def do_work(self, *args) -> Any:
+        settings = get_settings_dict()
         saving_path = self._get_saving_path(settings)
         with open(saving_path, "w") as my_empty_csv:
             pass

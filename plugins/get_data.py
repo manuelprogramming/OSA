@@ -4,7 +4,7 @@ from typing import Tuple
 
 from osa.anritsu_wrapper import BaseAnritsu
 from osa import factory
-
+from file_handler import get_settings_dict
 
 @dataclass
 class GetData:
@@ -14,7 +14,8 @@ class GetData:
     command: str
     anri: BaseAnritsu
 
-    def do_work(self, settings, *args) -> Tuple[np.array, np.array]:
+    def do_work(self, *args) -> Tuple[np.array, np.array]:
+        settings = get_settings_dict()
         memory_slot = settings["memory_slot"] + "?"
         return self._get_data(memory_slot)
 

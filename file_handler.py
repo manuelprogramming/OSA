@@ -35,7 +35,7 @@ def find_all_timestampStrs() -> List[str]:
 
 def find_latest_file() -> str:
     saving_path = get_saving_path()
-    return [f for f in listdir(saving_path) if f.endswith(".csv")][0]
+    return [f for f in listdir(saving_path) if f.endswith(".csv")][-1]
 
 
 def get_latest_file_path() -> str:

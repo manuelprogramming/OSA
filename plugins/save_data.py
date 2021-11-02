@@ -14,7 +14,7 @@ class SaveData:
     """
     command: str
 
-    def do_work(self, settings, *args) -> Any:
+    def do_work(self, *args) -> Any:
         arg = args[0]
         if not isinstance(arg, tuple):
             return "retrieve Data before plotting"

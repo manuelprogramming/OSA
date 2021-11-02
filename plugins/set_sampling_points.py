@@ -1,8 +1,9 @@
 from dataclasses import dataclass
+
 from osa import factory
 from osa.anritsu_wrapper import BaseAnritsu
 from typing import Tuple
-
+from file_handler import get_settings_dict
 
 @dataclass
 class SetSamplingPoints:
@@ -12,7 +13,8 @@ class SetSamplingPoints:
     command: str
     anri: BaseAnritsu
 
-    def do_work(self, settings, *args) -> Tuple[str, int]:
+    def do_work(self, *args) -> Tuple[str, int]:
+        settings = get_settings_dict()
         sampling_points = int(settings["sampling_points"])
         self._set_sampling_points(sampling_points)
         return "number of sampling points set to", sampling_points

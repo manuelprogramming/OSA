@@ -12,7 +12,7 @@ class Plot:
     """
     command: str
 
-    def do_work(self, settings, *args) -> str:
+    def do_work(self, *args) -> str:
         arg = args[0]
         if not isinstance(arg, tuple):
             return "retrieve Data before plotting"

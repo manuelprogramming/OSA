@@ -1,7 +1,7 @@
-import numpy as np
 from dataclasses import dataclass
 import matplotlib.pyplot as plt
 import pandas as pd
+from os import path
 
 from osa import factory
 from file_handler import get_latest_file_path
@@ -14,9 +14,10 @@ class PlotFromFile:
     """
     command: str
 
-    def do_work(self, settings, *args) -> str:
-        arg = args[0]
+    def do_work(self, *args) -> str:
         file_path = get_latest_file_path()
+        if path.getsize(file_path) == 0:
+            return "file is empty no plotting possible"
         self._plot_from_file(file_path)
         return "data from file plotted"
 

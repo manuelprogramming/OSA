@@ -47,9 +47,10 @@ def main() -> None:
     tool_names = [tool.command for tool in tools]
     toolbox = dict(zip(tool_names, tools))
 
+
     # create the anritsu class
-    # anri = create_anritsu()
-    anri = ""
+    anri = create_anritsu()
+    # anri = ""
 
     # apply the anritsu class to each tool
     for tool in tools:
@@ -65,7 +66,7 @@ def main() -> None:
         elif command_str not in tool_names:
             print("wrong command")
         else:
-            res = toolbox[command_str].do_work(settings, res)
+            res = toolbox[command_str].do_work(res)
             print(res)
 
 
