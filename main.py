@@ -56,7 +56,7 @@ def main() -> None:
     for tool in tools:
         if hasattr(tool, "anri"):
             tool.anri = anri
-        print(tool, end="\t\n")
+        print(tool, end="\t\n\n")
 
     while running:
         print("#### Send Command:")
