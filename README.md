@@ -1,5 +1,5 @@
-## Arnitsu-Remote-Control-System ARCS
-This is a system to control the Optical Spectrum Analyzer MS9740B by Anritsu from a remote computer
+## OSA-Remote-Control-System ORCS
+This is a system to control the Optical Spectrum Analyzer MS9740B by Anritsu with a remote computer
 
 ## Motivation
 This is a work related student Project at HOT – Hannoversches Zentrum für Optische Technologien. 
