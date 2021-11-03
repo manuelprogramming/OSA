@@ -9,6 +9,13 @@ def get_base_path() -> str:
     return path.dirname(__file__)
 
 
+def get_visa_search_term() -> str:
+    base_path = get_base_path()
+    visa_path = path.join(base_path, "visa_search_term.json")
+    with open(visa_path) as visa_json:
+        return json.load(visa_json)["visa_search_term"]
+
+
 def get_settings_path() -> str:
     base_path = get_base_path()
     return path.join(base_path, "settings.json")
@@ -65,5 +72,5 @@ def _convert_str_to_datetime(timestampStr):
 
 
 if __name__ == '__main__':
-    print(find_latest_file())
+    print(get_visa_search_term())
 

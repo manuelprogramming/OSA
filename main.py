@@ -8,14 +8,7 @@ from osa.anritsu_wrapper import Anritsu
 
 from osa import factory, loader
 from osa.basictools import Identify, ClearRegisters, StandardEventStatusRegister
-from file_handler import get_data_dict
-
-
-def create_anritsu():
-    with open('settings.json') as json_file:
-        data = json.load(json_file)
-    visa_search_term = data["visa_search_term"]
-    return Anritsu(visa_search_term)
+from file_handler import get_data_dict, get_visa_search_term
 
 
 def main() -> None:
@@ -44,8 +37,10 @@ def main() -> None:
     toolbox = dict(zip(tool_names, tools))
 
     # create the anritsu class
-    # anri = create_anritsu()
-    anri = ""                     # used for offline mode
+
+    anri = Anritsu(get_visa_search_term())
+
+    # anri = ""                     # used for offline mode
 
     # apply the anritsu class to the tools who need that
     for tool in tools:

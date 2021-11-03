@@ -5,13 +5,7 @@ from time import sleep
 
 class Anritsu_MS9740B:
     """
-    Hardware wrapper for Anritsu_MS9740B Optical Spectrum Analyzer
-    IP Adress: 130.75.93.77
-       Subnetz Maske: 255.255.255.0
-       Host Name: OSA-UPCJ9GGPCMD
-    Parameters:
-        visa_search_term (str): The address that is passed to
-            ``visa.ResourceManager().open_resource()``
+    old Version of the Anritsu Wrapper not used anymore and not functional
     """
     def __init__(self, visa_search_term):
         rm = visa.ResourceManager()

@@ -1,8 +1,8 @@
 {
   "visa_search_term": "TCPIP0::130.75.93.77::inst0::INSTR",
   "sampling_points": 1001,
-  "start_wavelength": 1350,
-  "stop_wavelength":1450,
+  "start_wavelength": 1400,
+  "stop_wavelength":1520,
   "memory_slot":  "DMB",
   "saving_folder": "saved_data",
   "file_name_format": "%Y-%b-%d,-,%H;%M;%S"
