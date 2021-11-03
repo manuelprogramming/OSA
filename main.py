@@ -1,9 +1,6 @@
 """
 This is a system to control the Optical Spectrum Analyzer MS9740B by Anritsu from a remote computer
 """
-
-import json
-
 from osa.anritsu_wrapper import Anritsu
 
 from osa import factory, loader
