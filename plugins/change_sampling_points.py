@@ -10,7 +10,7 @@ from file_handler import get_settings_dict, get_settings_path, get_valid_samplin
 @dataclass
 class ChangeSamplingPoints:
     """
-    Change the Sampling Points in the setting.json file {51|101|251|501|1001|2001|5001|10001|20001|50001}
+    Change the Sampling Points in the settings.json file {51|101|251|501|1001|2001|5001|10001|20001|50001}
     """
     command: str
 
