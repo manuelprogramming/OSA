@@ -8,7 +8,8 @@
     "plugins.dummy_data",
     "plugins.create_new_file",
     "plugins.plot_from_file",
-    "plugins.change_sampling_points"],
+    "plugins.change_settings.sampling_points",
+    "plugins.change_settings.start_wavelength"],
   "tools": [
     {
       "name": "identify",
@@ -54,11 +55,6 @@
       "name": "save_data",
       "command": "SVD"
     },
-
-    {
-      "name": "change_sampling_points",
-      "command": "CPT"
-    },
     {
       "name": "dummy_data",
       "command": "DDA"
@@ -70,6 +66,14 @@
     {
       "name": "plot_from_file",
       "command": "PFF"
+    },
+    {
+      "name": "change_sampling_points",
+      "command": "CPT"
+    },
+    {
+      "name": "change_start_wavelength",
+      "command": "CSTAW"
     }
   ]
 }

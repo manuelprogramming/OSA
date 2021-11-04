@@ -1,5 +1,5 @@
 {
-    "sampling_points": 5001,
+    "sampling_points": 501,
     "valid_sampling_points": [
         51,
         101,
@@ -12,7 +12,7 @@
         20001,
         50001
     ],
-    "start_wavelength": 1400,
+    "start_wavelength": 1420.0,
     "stop_wavelength": 1520,
     "memory_slot": "DMB",
     "saving_folder": "saved_data",
