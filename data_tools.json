@@ -42,6 +42,11 @@
       "anri": ""
     },
     {
+      "name": "set_sampling_points",
+      "command": "MPT",
+      "anri": ""
+    },
+    {
       "name": "plot",
       "command": "PLT"
     },
@@ -49,11 +54,7 @@
       "name": "save_data",
       "command": "SVD"
     },
-    {
-      "name": "set_sampling_points",
-      "command": "MPT",
-      "anri": ""
-    },
+
     {
       "name": "change_sampling_points",
       "command": "CPT"
