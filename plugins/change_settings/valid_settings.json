@@ -1,0 +1,26 @@
+{
+  "valid_sampling_points": [
+        51,
+        101,
+        251,
+        501,
+        1001,
+        2001,
+        5001,
+        10001,
+        20001,
+        50001
+    ],
+  "valid_channels": [
+    "DMA",
+    "DMB",
+    "DMC",
+    "DMD",
+    "DME",
+    "DMF",
+    "DMG",
+    "DMH",
+    "DMI",
+    "DMJ"
+  ]
+}

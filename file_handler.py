@@ -8,9 +8,11 @@ from datetime import datetime
 def get_base_path() -> str:
     return path.dirname(__file__)
 
+
 def get_start_text() -> str:
     with open(path.join(get_base_path(), "start.txt"), "r") as t:
         return t.read()
+
 
 def get_visa_search_term() -> str:
     base_path = get_base_path()
@@ -60,7 +62,7 @@ def get_file_name_format() -> str:
     return get_settings_dict()["file_name_format"]
 
 
-def get_data_dict() -> json:
+def get_data_tools_dict() -> json:
     base_path = get_base_path()
     data_path = path.join(base_path, "data_tools.json")
     with open(data_path) as file:
@@ -68,16 +70,19 @@ def get_data_dict() -> json:
     return data
 
 
-def _convert_str_to_datetime(timestampStr):
+def _convert_str_to_datetime(timestampStr: str) -> datetime:
     dt_format = get_file_name_format()
     return datetime.strptime(timestampStr, dt_format)
 
 
+def get_valid_settings_dict() -> dict:
+    with open(path.join(get_base_path(), "plugins/change_settings/valid_settings.json"), "r") as f:
+        return json.load(f)
+
+
 def get_valid_sampling_points() -> List[int]:
-    return get_settings_dict()["valid_sampling_points"]
+    return get_valid_settings_dict()["valid_sampling_points"]
 
 
 if __name__ == '__main__':
-
-
-    pass
+    print(get_valid_sampling_points())

@@ -4,7 +4,7 @@ import json
 
 
 from osa import factory
-from file_handler import get_settings_dict, get_settings_path, get_valid_sampling_points
+from file_handler import get_settings_dict, get_settings_path
 
 
 @dataclass
@@ -31,7 +31,7 @@ class ChangeStartWavelength:
             return "number for start_wavelength  invalid", start_wavelength
 
     @staticmethod
-    def _wavelength_is_valid(start_wavelength, stop_wavelength):
+    def _wavelength_is_valid(start_wavelength: float, stop_wavelength:float) -> bool:
         return (600.0 <= start_wavelength <= 1750.0) and (start_wavelength < stop_wavelength)
 
     @staticmethod
@@ -39,7 +39,7 @@ class ChangeStartWavelength:
         print("#### Start wavelength (nm) 600.0 to 1750.0 Specify smaller value than Stop wavelength.")
         ans = input()
         try:
-            return float(ans)
+            return round(float(ans), 1)
         except ValueError:
             return ans
 

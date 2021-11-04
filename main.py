@@ -5,7 +5,7 @@ from osa.anritsu_wrapper import Anritsu
 
 from osa import factory, loader
 from osa.basictools import Identify, ClearRegisters, StandardEventStatusRegister
-from file_handler import get_data_dict, get_visa_search_term, get_start_text
+from file_handler import get_data_tools_dict, get_visa_search_term, get_start_text
 
 
 def main() -> None:
@@ -21,7 +21,7 @@ def main() -> None:
 
     # read data from a data_tools.json file
 
-    data = get_data_dict()
+    data = get_data_tools_dict()
 
     # load plugins
 
