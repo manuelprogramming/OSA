@@ -7,7 +7,8 @@
     "plugins.set_sampling_points",
     "plugins.dummy_data",
     "plugins.create_new_file",
-    "plugins.plot_from_file"],
+    "plugins.plot_from_file",
+    "plugins.change_sampling_points"],
   "tools": [
     {
       "name": "identify",
@@ -52,6 +53,10 @@
       "name": "set_sampling_points",
       "command": "MPT",
       "anri": ""
+    },
+    {
+      "name": "change_sampling_points",
+      "command": "CPT"
     },
     {
       "name": "dummy_data",

@@ -10,7 +10,7 @@ from file_handler import get_latest_file_path
 @dataclass
 class PlotFromFile:
     """
-    Plots the Data from the Cache Perform "get_data" before executing
+    Plots the Data from the last file created in the saved_data folder.
     """
     command: str
 

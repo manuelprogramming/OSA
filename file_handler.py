@@ -42,7 +42,6 @@ def find_all_timestampStrs() -> List[str]:
 
 def find_latest_file() -> str:
     saving_path = get_saving_path()
-
     if listdir(saving_path):
         return [f for f in listdir(saving_path) if f.endswith(".csv")][-1]
 
@@ -60,7 +59,7 @@ def get_file_name_format() -> str:
 
 def get_data_dict() -> json:
     base_path = get_base_path()
-    data_path = path.join(base_path, "data.json")
+    data_path = path.join(base_path, "data_tools.json")
     with open(data_path) as file:
         data = json.load(file)
     return data
@@ -71,6 +70,13 @@ def _convert_str_to_datetime(timestampStr):
     return datetime.strptime(timestampStr, dt_format)
 
 
+def get_valid_sampling_points() -> List[int]:
+    return get_settings_dict()["valid_sampling_points"]
+
+
 if __name__ == '__main__':
-    print(get_visa_search_term())
+    valid = [51, 101, 251, 501, 1001, 2001, 5001, 10001, 20001, 50001]
+    samp = int(input())
+    if samp in valid:
+        print(samp)
 

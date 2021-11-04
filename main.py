@@ -19,7 +19,7 @@ def main() -> None:
     factory.register("clear_registers", ClearRegisters)
     factory.register("standard_event_status_register", StandardEventStatusRegister)
 
-    # read data from a JSON file
+    # read data from a data_tools.json file
 
     data = get_data_dict()
 
@@ -35,9 +35,9 @@ def main() -> None:
 
     # create the anritsu class
 
-    anri = Anritsu(get_visa_search_term())
+    # anri = Anritsu(get_visa_search_term())
 
-    # anri = ""                     # used for offline mode
+    anri = None                    # used for offline mode
 
     # apply the anritsu class to the tools who need that
     for tool in tools:
