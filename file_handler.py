@@ -3,6 +3,7 @@ from os import path, listdir
 import json
 from typing import Dict, Any, List
 from datetime import datetime
+import numpy as np
 
 
 def get_base_path() -> str:
@@ -88,4 +89,7 @@ def get_valid_memory_slots() -> List[str]:
 
 
 if __name__ == '__main__':
-    print(get_valid_sampling_points())
+    my_data = [list(np.random.random(5)), list(np.random.random(5))]
+    print(my_data)
+    with open("cache.json", "w") as f:
+        json.dump(list(my_data), f, indent=4)

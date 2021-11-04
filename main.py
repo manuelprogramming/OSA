@@ -5,6 +5,7 @@ from osa.anritsu_wrapper import Anritsu
 from osa import factory, loader
 from osa.basictools import Identify, ClearRegisters, StandardEventStatusRegister
 from file_handler import get_data_tools_dict, get_visa_search_term, get_start_text
+from cache_handler import save_to_cache
 
 
 def main() -> None:
@@ -31,18 +32,22 @@ def main() -> None:
     tool_names = [tool.command for tool in tools]
     toolbox = dict(zip(tool_names, tools))
 
-    # create the anritsu class
-
-    # anri = Anritsu(get_visa_search_term())
-
-    anri = None  # used for offline mode
-
-    # apply the anritsu class to the plugins who need that
-
+    # starting text
     print(get_start_text())
+
+    # create the anritsu class
+    try:
+        anri = Anritsu(get_visa_search_term())
+    except Exception:
+        anri = None  # used for offline mode
+        print("!!!! Couldn't connect to OSA working in offline Mode!!!! \n\n")
+
+
+
+    # show the tools available
     for tool in tools:
         if hasattr(tool, "anri"):
-            tool.anri = anri
+            tool.anri = anri            # apply the anritsu class to the plugins who need that
         print("####", tool, end="\t\n\n")
 
     # main program loop
@@ -56,6 +61,7 @@ def main() -> None:
             print("wrong command")
         else:
             res = toolbox[command_str].do_work(res)
+            save_to_cache(res)
             print(res)
 
 
