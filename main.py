@@ -27,7 +27,7 @@ def main() -> None:
 
     loader.load_plugins(data["plugins"])
 
-    # create the tools and toolbox
+    # create the plugins and toolbox
 
     tools = [factory.create(item) for item in data["tools"]]
     tool_names = [tool.command for tool in tools]
@@ -39,7 +39,7 @@ def main() -> None:
 
     anri = None                    # used for offline mode
 
-    # apply the anritsu class to the tools who need that
+    # apply the anritsu class to the plugins who need that
     for tool in tools:
         if hasattr(tool, "anri"):
             tool.anri = anri
