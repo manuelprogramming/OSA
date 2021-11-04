@@ -3,7 +3,7 @@ from dataclasses import dataclass
 import matplotlib.pyplot as plt
 
 from osa import factory
-
+from typing import Tuple
 
 @dataclass
 class Plot:
@@ -13,13 +13,13 @@ class Plot:
     command: str
 
     def do_work(self, *args) -> str:
-        arg = args[0]
-        if not isinstance(arg, tuple):
-            return "retrieve Data before plotting"
-
-        wavelength, intensity = args[0]
-        self._plot(wavelength, intensity)
-        return "data plotted"
+        arg: Tuple[np.array, np.array] = args[0]
+        try:
+            wavelength, intensity = args[0]
+            self._plot(wavelength, intensity)
+            return "data plotted"
+        except ValueError:
+            return "retrieve data before plotting"
 
     @staticmethod
     def _plot(wavelength: np.array, intensity: np.array) -> None:

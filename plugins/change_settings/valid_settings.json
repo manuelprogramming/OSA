@@ -1,5 +1,5 @@
 {
-  "valid_sampling_points": [
+  "sampling_points": [
         51,
         101,
         251,
@@ -11,7 +11,7 @@
         20001,
         50001
     ],
-  "valid_channels": [
+  "memory_slots": [
     "DMA",
     "DMB",
     "DMC",

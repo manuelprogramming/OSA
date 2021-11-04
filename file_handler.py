@@ -80,8 +80,12 @@ def get_valid_settings_dict() -> dict:
 
 
 def get_valid_sampling_points() -> List[int]:
-    return get_valid_settings_dict()["valid_sampling_points"]
+    return get_valid_settings_dict()["sampling_points"]
+
+
+def get_valid_memory_slots() -> List[str]:
+    return get_valid_settings_dict()["memory_slots"]
 
 
 if __name__ == '__main__':
-    print(get_data_tools_dict())
+    print(get_valid_sampling_points())

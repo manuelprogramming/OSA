@@ -11,7 +11,8 @@
     "plugins.plot_from_file",
     "plugins.change_settings.sampling_points",
     "plugins.change_settings.start_wavelength",
-    "plugins.change_settings.stop_wavelength"],
+    "plugins.change_settings.stop_wavelength",
+    "plugins.change_settings.memory_slot"],
   "tools": [
     {
       "name": "identify",
@@ -84,6 +85,10 @@
     {
       "name": "change_stop_wavelength",
       "command": "CSTOW"
+    },
+    {
+      "name": "change_memory_slot",
+      "command": "CMS"
     }
   ]
 }
