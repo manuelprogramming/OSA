@@ -63,8 +63,7 @@ def get_file_name_format() -> str:
 
 
 def get_data_tools_dict() -> json:
-    base_path = get_base_path()
-    data_path = path.join(base_path, "data_tools.json")
+    data_path = path.join(get_base_path(), "data_tools.json")
     with open(data_path) as file:
         data = json.load(file)
     return data
@@ -85,4 +84,4 @@ def get_valid_sampling_points() -> List[int]:
 
 
 if __name__ == '__main__':
-    print(get_valid_sampling_points())
+    print(get_data_tools_dict())

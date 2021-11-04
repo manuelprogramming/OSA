@@ -3,6 +3,7 @@
     "plugins.osa_plugins.start_stop_wavelength",
     "plugins.osa_plugins.get_data",
     "plugins.osa_plugins.set_sampling_points",
+    "plugins.show_settings",
     "plugins.plot",
     "plugins.save_data",
     "plugins.dummy_data",
@@ -47,6 +48,10 @@
       "name": "set_sampling_points",
       "command": "MPT",
       "anri": ""
+    },
+    {
+      "name": "show_settings",
+      "command": "SET?"
     },
     {
       "name": "plot",
