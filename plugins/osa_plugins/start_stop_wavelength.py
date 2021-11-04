@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from osa import factory
 from osa.anritsu_wrapper import BaseAnritsu
 
+from file_handler import get_settings_dict
 
 @dataclass
 class StartStopWavelength:
@@ -12,7 +13,9 @@ class StartStopWavelength:
     anri: BaseAnritsu
 
     def do_work(self, *args) -> str:
-        start, stop = args
+        settings = get_settings_dict()
+        start = settings["start_wavelength"]
+        stop = settings["stop_wavelength"]
         self._set_start_stop_wavelength(start, stop)
         return "Start Stop Wavelength set"
 
