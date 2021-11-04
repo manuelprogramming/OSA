@@ -14,12 +14,16 @@ class Plot:
 
     def do_work(self, *args) -> str:
         arg: Tuple[np.array, np.array] = args[0]
-        try:
-            wavelength, intensity = args[0]
-            self._plot(wavelength, intensity)
-            return "data plotted"
-        except ValueError:
-            return "retrieve data before plotting"
+        my_arr = np.array([])
+        if not arg:
+            return "retrieve Data before plotting"
+        if not (isinstance(arg[0], type(my_arr)) or isinstance(arg[1], type(my_arr))):
+            return "retrieve Data before plotting"
+
+        wavelength, intensity = args[0]
+        self._plot(wavelength, intensity)
+        return "data plotted"
+
 
     @staticmethod
     def _plot(wavelength: np.array, intensity: np.array) -> None:

@@ -63,7 +63,7 @@ def get_file_name_format() -> str:
 
 
 def get_data_tools_dict() -> json:
-    data_path = path.join(get_base_path(), "data_tools.json")
+    data_path = path.join(get_base_path(), "tools_data.json")
     with open(data_path) as file:
         data = json.load(file)
     return data

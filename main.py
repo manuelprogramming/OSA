@@ -17,7 +17,7 @@ def main() -> None:
     factory.register("clear_registers", ClearRegisters)
     factory.register("standard_event_status_register", StandardEventStatusRegister)
 
-    # read data from a data_tools.json file
+    # read data from a tools_data.json file
 
     data = get_data_tools_dict()
 
