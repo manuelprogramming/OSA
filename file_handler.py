@@ -8,6 +8,9 @@ from datetime import datetime
 def get_base_path() -> str:
     return path.dirname(__file__)
 
+def get_start_text() -> str:
+    with open(path.join(get_base_path(), "start.txt"), "r") as t:
+        return t.read()
 
 def get_visa_search_term() -> str:
     base_path = get_base_path()
@@ -75,8 +78,6 @@ def get_valid_sampling_points() -> List[int]:
 
 
 if __name__ == '__main__':
-    valid = [51, 101, 251, 501, 1001, 2001, 5001, 10001, 20001, 50001]
-    samp = int(input())
-    if samp in valid:
-        print(samp)
 
+
+    pass

@@ -5,7 +5,7 @@ from osa.anritsu_wrapper import Anritsu
 
 from osa import factory, loader
 from osa.basictools import Identify, ClearRegisters, StandardEventStatusRegister
-from file_handler import get_data_dict, get_visa_search_term
+from file_handler import get_data_dict, get_visa_search_term, get_start_text
 
 
 def main() -> None:
@@ -40,12 +40,15 @@ def main() -> None:
     anri = None                    # used for offline mode
 
     # apply the anritsu class to the plugins who need that
+
+    print(get_start_text())
     for tool in tools:
         if hasattr(tool, "anri"):
             tool.anri = anri
-        print(tool, end="\t\n\n")
+        print("####",tool, end="\t\n\n")
 
-    # main programm loop
+
+    # main program loop
     while running:
         print("\n\n#### Send Command:\n")
         command_str = input()
