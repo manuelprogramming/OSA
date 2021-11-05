@@ -9,8 +9,6 @@ from cache_handler import save_to_cache
 
 
 def main() -> None:
-    res = None
-    running = True
 
     # register a couple of BasicTools
 
@@ -33,24 +31,27 @@ def main() -> None:
     toolbox = dict(zip(tool_names, tools))
 
     # starting text
+
     print(get_start_text())
 
     # create the anritsu class
+
     try:
         anri = Anritsu(get_visa_search_term())
     except Exception:
         anri = None  # used for offline mode
         print("!!!! Couldn't connect to OSA working in offline Mode!!!! \n\n")
 
-
-
     # show the tools available
+
     for tool in tools:
         if hasattr(tool, "anri"):
             tool.anri = anri            # apply the anritsu class to the plugins who need that
         print("####", tool, end="\t\n\n")
 
     # main program loop
+
+    running = True
 
     while running:
         print("\n\n#### Send Command:\n")
