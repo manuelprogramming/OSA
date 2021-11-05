@@ -14,7 +14,7 @@ class SetSamplingPoints:
     command: str
     anri: BaseAnritsu
 
-    def do_work(self, *args) -> Tuple[str, int]:
+    def do_work(self) -> Tuple[str, int]:
         settings = get_settings_dict()
         sampling_points = int(settings["sampling_points"])
         self._set_sampling_points(sampling_points)

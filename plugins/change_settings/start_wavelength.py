@@ -15,7 +15,7 @@ class ChangeStartWavelength:
     """
     command: str
 
-    def do_work(self, *args) -> Tuple[str, int]:
+    def do_work(self) -> Tuple[str, int]:
         settings = get_settings_dict()
         start_wavelength = self.ask_start_wavelength()
         return self._change_start_wavelength(start_wavelength, settings)

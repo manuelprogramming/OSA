@@ -9,5 +9,5 @@ class BasicOSATool(Protocol):
     command: str
     anri: BaseAnritsu
 
-    def do_work(self, *args) -> Any:
+    def do_work(self) -> Any:
         """Does Some work with a connection to the OSA"""

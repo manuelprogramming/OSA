@@ -14,7 +14,7 @@ class DummyData:
     """
     command: str
 
-    def do_work(self, *args) -> Tuple[np.array, np.array]:
+    def do_work(self) -> Tuple[np.array, np.array]:
         settings = get_settings_dict()
         sampling_points = settings["sampling_points"]
         start_wave = settings["start_wavelength"]

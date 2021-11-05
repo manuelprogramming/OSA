@@ -15,7 +15,7 @@ class CreateNewFile:
     """
     command: str
 
-    def do_work(self, *args) -> Any:
+    def do_work(self) -> Any:
         settings = get_settings_dict()
         saving_path = self._get_saving_path(settings)
         with open(saving_path, "w") as my_empty_csv:

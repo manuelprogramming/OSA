@@ -12,7 +12,7 @@ class ShowSettings:
     """
     command: str
 
-    def do_work(self, *args) -> Dict[int, Any]:
+    def do_work(self) -> Dict[str, Any]:
         return get_settings_dict()
 
 

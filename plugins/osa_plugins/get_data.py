@@ -15,7 +15,7 @@ class GetData:
     command: str
     anri: BaseAnritsu
 
-    def do_work(self, *args) -> Tuple[np.array, np.array]:
+    def do_work(self) -> Tuple[np.array, np.array]:
         settings = get_settings_dict()
         memory_slot = settings["memory_slot"] + "?"
         return self._get_data(memory_slot)

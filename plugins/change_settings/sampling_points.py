@@ -14,7 +14,7 @@ class ChangeSamplingPoints:
     """
     command: str
 
-    def do_work(self, *args) -> Tuple[str, int]:
+    def do_work(self) -> Tuple[str, int]:
         settings = get_settings_dict()
         sampling_points = self._ask_sampling_points()
         return self._change_sampling_points(sampling_points, settings)

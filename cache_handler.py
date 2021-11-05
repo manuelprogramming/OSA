@@ -41,11 +41,19 @@ def check_type(res: Any) -> ResultType:
 
 
 def load_from_cache() -> Any:
-    with open("cache.json", "r") as f:
-        cache = json.load(f)
+    cache = get_cache_dict()
     res_type = check_loaded_res_type(cache)
     res = cache[str(res_type)]
     return reformat_result(res, res_type)
+
+
+def get_result_from_cache(cache, res_type) -> Any:
+    return cache[str(res_type)]
+
+
+def get_cache_dict() -> dict:
+    with open("cache.json", "r") as f:
+        return json.load(f)
 
 
 def reformat_result(res, res_type):
@@ -60,6 +68,14 @@ def reformat_result(res, res_type):
 def check_loaded_res_type(cache) -> ResultType:
     res_type = list(cache.keys())[0]
     return result_dict[res_type]
+
+
+def load_only_array_results():
+    cache = get_cache_dict()
+    res_type = check_loaded_res_type(cache)
+    if res_type == ResultType.arrayResult:
+        res = get_result_from_cache(cache, res_type)
+        return reformat_result(res, res_type)
 
 
 if __name__ == '__main__':

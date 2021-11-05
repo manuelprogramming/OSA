@@ -60,7 +60,7 @@ def main() -> None:
         elif command_str not in tool_names:
             print("wrong command")
         else:
-            res = toolbox[command_str].do_work(res)
+            res = toolbox[command_str].do_work()
             save_to_cache(res)
             print(res)
 

@@ -13,7 +13,7 @@ class SingleSweep:
     command: str
     anri: BaseAnritsu
 
-    def do_work(self, *args) -> str:
+    def do_work(self) -> str:
         self._do_single_sweep()
         return "Sweaped finfished"
 

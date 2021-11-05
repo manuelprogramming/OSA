@@ -7,5 +7,5 @@ class BasicTool(Protocol):
     """Basic representation of a Tool"""
     command: str
 
-    def do_work(self, *args) -> Any:
+    def do_work(self) -> Any:
         """Does Some work"""

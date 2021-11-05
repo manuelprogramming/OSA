@@ -14,7 +14,7 @@ class ChangeMemorySlot:
     """
     command: str
 
-    def do_work(self, *args) -> Tuple[str, str]:
+    def do_work(self) -> Tuple[str, str]:
         settings = get_settings_dict()
         memory_slot = self.ask_memory_slot()
         return self._change_memory_slot(memory_slot, settings)

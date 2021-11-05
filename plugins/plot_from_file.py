@@ -14,7 +14,7 @@ class PlotFromFile:
     """
     command: str
 
-    def do_work(self, *args) -> str:
+    def do_work(self) -> str:
         file_path = get_latest_file_path()
         if not file_path:
             return "no files in directory"

@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 
 from osa import factory
 from typing import Tuple
+from cache_handler import load_only_array_results
+
 
 @dataclass
 class Plot:
@@ -12,18 +14,14 @@ class Plot:
     """
     command: str
 
-    def do_work(self, *args) -> str:
-        arg: Tuple[np.array, np.array] = args[0]
-        my_arr = np.array([])
+    def do_work(self) -> str:
+        arg: Tuple[np.array, np.array] = load_only_array_results()
         if not arg:
             return "retrieve Data before plotting"
-        if not (isinstance(arg[0], type(my_arr)) or isinstance(arg[1], type(my_arr))):
-            return "retrieve Data before plotting"
 
-        wavelength, intensity = args[0]
+        wavelength, intensity = arg
         self._plot(wavelength, intensity)
         return "data plotted"
-
 
     @staticmethod
     def _plot(wavelength: np.array, intensity: np.array) -> None:
