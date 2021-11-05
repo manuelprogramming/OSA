@@ -17,7 +17,7 @@ def get_start_text() -> str:
 
 def get_visa_search_term() -> str:
     base_path = get_base_path()
-    visa_path = path.join(base_path, "visa_search_term.json")
+    visa_path = path.join(base_path, "bin/visa_search_term.json")
     with open(visa_path) as visa_json:
         return json.load(visa_json)["visa_search_term"]
 
