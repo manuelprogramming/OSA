@@ -1,7 +1,6 @@
 from dataclasses import dataclass
 from typing import Any
 
-import numpy as np
 import pandas as pd
 from os import path
 
@@ -41,13 +40,13 @@ class SaveData:
         _, intensity = arg
         df = pd.read_csv(file_path, index_col=0)
         column_name = self._ask_column_name()
-        if len(df) == len(intensity):
+        if not len(df) == len(intensity):
+            return "for appending data to file the sample points must match\n" \
+                   f"data points in file: {len(df)}, data points appended data: {len(intensity)}"
+        else:
             df[column_name] = intensity
             df.to_csv(file_path)
             return "data_saved"
-        else:
-            return "for appending data to file the sample points must match\n" \
-                   f"data points in file: {len(df)}, data points appended data: {len(intensity)}"
 
     @staticmethod
     def _ask_column_name() -> str:

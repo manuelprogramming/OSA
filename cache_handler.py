@@ -16,9 +16,9 @@ result_dict = {str(res_type): res_type for res_type in ResultType}
 def save_to_cache(res: Any) -> None:
     res_type = check_type(res)
     formated_res = format_result(res, res_type)
-    mydict = {str(res_type): formated_res}
+    cache_dict = {str(res_type): formated_res}
     with open("cache.json", "w") as f:
-        json.dump(mydict, f, indent=4)
+        json.dump(cache_dict, f, indent=4)
 
 
 def format_result(res: Any, res_type: ResultType) -> Any:
@@ -47,7 +47,7 @@ def load_from_cache() -> Any:
     return reformat_result(res, res_type)
 
 
-def get_result_from_cache(cache, res_type) -> Any:
+def get_result_from_cache(cache: dict, res_type: ResultType) -> Any:
     return cache[str(res_type)]
 
 
@@ -56,7 +56,7 @@ def get_cache_dict() -> dict:
         return json.load(f)
 
 
-def reformat_result(res, res_type):
+def reformat_result(res: Any, res_type: ResultType):
     if res_type == ResultType.strResult:
         return res
     if res_type == ResultType.arrayResult:
@@ -65,7 +65,7 @@ def reformat_result(res, res_type):
         return res[0], res[1]
 
 
-def check_loaded_res_type(cache) -> ResultType:
+def check_loaded_res_type(cache: dict) -> ResultType:
     res_type = list(cache.keys())[0]
     return result_dict[res_type]
 
