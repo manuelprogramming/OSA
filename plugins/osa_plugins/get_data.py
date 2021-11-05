@@ -22,8 +22,8 @@ class GetData:
 
     def _get_data(self, memory_slot: str = "DMB?") -> Tuple[np.array, np.array]:
         """
-        gets the trace data and wavelength of current measurement
-        Returns: wavelength and trace data from given Memory
+        gets the trace bin and wavelength of current measurement
+        Returns: wavelength and trace bin from given Memory
         """
         trace = self.anri.query(memory_slot)  # getting trace Data
         trace = [float(x) for x in trace.split()]

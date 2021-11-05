@@ -41,8 +41,8 @@ class SaveData:
         df = pd.read_csv(file_path, index_col=0)
         column_name = self._ask_column_name()
         if not len(df) == len(intensity):
-            return "for appending data to file the sample points must match\n" \
-                   f"data points in file: {len(df)}, data points appended data: {len(intensity)}"
+            return "for appending bin to file the sample points must match\n" \
+                   f"bin points in file: {len(df)}, bin points appended bin: {len(intensity)}"
         else:
             df[column_name] = intensity
             df.to_csv(file_path)

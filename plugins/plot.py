@@ -21,7 +21,7 @@ class Plot:
 
         wavelength, intensity = arg
         self._plot(wavelength, intensity)
-        return "data plotted"
+        return "bin plotted"
 
     @staticmethod
     def _plot(wavelength: np.array, intensity: np.array) -> None:

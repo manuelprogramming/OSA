@@ -2,12 +2,14 @@ import json
 from typing import Any
 import numpy as np
 from enum import Enum, auto
+from typing import Tuple
 
 
 class ResultType(Enum):
     strResult = auto()
     arrayResult = auto()
     strValueResult = auto()
+    dictResult = auto()
 
 
 result_dict = {str(res_type): res_type for res_type in ResultType}
@@ -17,12 +19,14 @@ def save_to_cache(res: Any) -> None:
     res_type = check_type(res)
     formated_res = format_result(res, res_type)
     cache_dict = {str(res_type): formated_res}
-    with open("cache.json", "w") as f:
+    with open("bin/cache.json", "w") as f:
         json.dump(cache_dict, f, indent=4)
 
 
 def format_result(res: Any, res_type: ResultType) -> Any:
     if res_type == ResultType.strResult:
+        return res
+    if res_type == ResultType.dictResult:
         return res
     if res_type == ResultType.arrayResult:
         return list(res[0]), list(res[1])
@@ -34,6 +38,8 @@ def check_type(res: Any) -> ResultType:
     myarr = np.array([])
     if isinstance(res, str):
         return ResultType.strResult
+    if isinstance(res, dict):
+        return ResultType.dictResult
     if isinstance(res[0], type(myarr)) and isinstance(res[1], type(myarr)):
         return ResultType.arrayResult
     else:
@@ -52,12 +58,14 @@ def get_result_from_cache(cache: dict, res_type: ResultType) -> Any:
 
 
 def get_cache_dict() -> dict:
-    with open("cache.json", "r") as f:
+    with open("bin/cache.json", "r") as f:
         return json.load(f)
 
 
 def reformat_result(res: Any, res_type: ResultType):
     if res_type == ResultType.strResult:
+        return res
+    if res_type == ResultType.dictResult:
         return res
     if res_type == ResultType.arrayResult:
         return np.array(res[0]), np.array(res[1])
@@ -70,7 +78,7 @@ def check_loaded_res_type(cache: dict) -> ResultType:
     return result_dict[res_type]
 
 
-def load_only_array_results():
+def load_only_array_results() -> Tuple[np.array, np.array]:
     cache = get_cache_dict()
     res_type = check_loaded_res_type(cache)
     if res_type == ResultType.arrayResult:

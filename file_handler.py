@@ -11,7 +11,7 @@ def get_base_path() -> str:
 
 
 def get_start_text() -> str:
-    with open(path.join(get_base_path(), "start.txt"), "r") as t:
+    with open(path.join(get_base_path(), "bin/start.txt"), "r") as t:
         return t.read()
 
 
@@ -24,7 +24,7 @@ def get_visa_search_term() -> str:
 
 def get_settings_path() -> str:
     base_path = get_base_path()
-    return path.join(base_path, "settings.json")
+    return path.join(base_path, "bin/settings.json")
 
 
 def get_settings_dict() -> Dict[str, Any]:
@@ -64,7 +64,7 @@ def get_file_name_format() -> str:
 
 
 def get_data_tools_dict() -> json:
-    data_path = path.join(get_base_path(), "tools_data.json")
+    data_path = path.join(get_base_path(), "bin/tools_data.json")
     with open(data_path) as file:
         data = json.load(file)
     return data
@@ -91,5 +91,5 @@ def get_valid_memory_slots() -> List[str]:
 if __name__ == '__main__':
     my_data = [list(np.random.random(5)), list(np.random.random(5))]
     print(my_data)
-    with open("cache.json", "w") as f:
+    with open("bin/cache.json", "w") as f:
         json.dump(list(my_data), f, indent=4)

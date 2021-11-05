@@ -21,7 +21,7 @@ class PlotFromFile:
         if path.getsize(file_path) == 0:
             return "file is empty no plotting possible"
         self._plot_from_file(file_path)
-        return "data from file plotted"
+        return "bin from file plotted"
 
     @staticmethod
     def _plot_from_file(file_path) -> None:

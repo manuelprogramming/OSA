@@ -10,7 +10,7 @@ from file_handler import get_settings_dict
 @dataclass
 class DummyData:
     """
-    Creates some random dummy data for testing purpose
+    Creates some random dummy bin for testing purpose
     """
     command: str
 
