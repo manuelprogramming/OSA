@@ -28,6 +28,7 @@ Also a folder for saving the data needs to be created. The folder must be create
 
 
 ## How to use?
+Just run the main.py file.<br>
 If connected you can control the MS9740B with the commands and have some additional features unrelated to the MS9740B like saving, analyzing and plotting. The tools available for ORCS will be printed on starting the system. For more information what the commands exactly do you can read the docstrings within the different tools in the plugin folder.
 
 
