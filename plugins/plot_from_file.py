@@ -29,6 +29,7 @@ class PlotFromFile:
         df = pd.read_csv(file_path, index_col=0)
         df.plot()
         plt.ylabel("Intensity [dBm]")
+        plt.tight_layout()
         plt.show()
 
 

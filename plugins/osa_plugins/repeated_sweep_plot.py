@@ -63,7 +63,5 @@ class RepeatedSweepPlot:
         plt.tight_layout()
 
 
-
-
 def initialize() -> None:
     factory.register("repeated_sweep_plot", RepeatedSweepPlot)
