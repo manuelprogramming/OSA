@@ -12,7 +12,7 @@ class ClearRegisters:
     command: str
     anri: BaseAnritsu
 
-    def do_work(self, *args) -> str:
+    def do_work(self) -> str:
         self._clear_registers()
         return "registers Cleared"
 
@@ -30,7 +30,7 @@ class StandardEventStatusRegister:
     command: str
     anri: BaseAnritsu
 
-    def do_work(self, *args) -> Tuple[str, str]:
+    def do_work(self) -> Tuple[str, str]:
         esr = self._get_standard_event_status_register()
         res = "Standard Event Status Register: ", esr
         return res
@@ -41,16 +41,13 @@ class StandardEventStatusRegister:
 
 @dataclass
 class Identify:
+    """ Identifies the OSA and gives the response from an `*IDN?`query."""
     command: str
     anri: BaseAnritsu
 
-    def do_work(self, *args) -> str:
+    def do_work(self) -> str:
         msg = self._identify()
         return f"Connected to {msg}"
 
     def _identify(self):
-        """
-        Returns:
-            str: The response from an `*IDN?`query.
-        """
         return self.anri.query('*IDN?')

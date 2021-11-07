@@ -9,7 +9,10 @@ from file_handler import get_settings_dict
 
 @dataclass
 class StartStopWavelength:
-    """Sets the starting and stopping wavelength"""
+    """
+    Sets the starting and stopping wavelength read out from the settings.json file
+    the Settings can be changed with the change_settings tools
+    """
     command: str
     anri: BaseAnritsu
 

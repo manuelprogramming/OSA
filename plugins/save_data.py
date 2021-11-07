@@ -12,7 +12,7 @@ from cache_handler import load_only_array_results
 @dataclass
 class SaveData:
     """
-    Plots the Data from the Cache perform "get_data" before executing
+    Saves the Data from the Cache to the last file created in the saving_folder perform "get_data" before executing
     """
     command: str
 

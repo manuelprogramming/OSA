@@ -9,7 +9,8 @@ from file_handler import get_settings_dict
 @dataclass
 class SetSamplingPoints:
     """
-    Sets the Sampling Points {51|101|251|501|1001|2001|5001|10001|20001|50001}
+    Sets the Sampling Points given in the settings.json file.
+    Valid sampling_points: {51|101|251|501|1001|2001|5001|10001|20001|50001}
     """
     command: str
     anri: BaseAnritsu

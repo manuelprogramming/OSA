@@ -9,17 +9,17 @@ from time import sleep
 
 @dataclass
 class SingleSweep:
-    """performs a single sweap and prints message on completion"""
+    """performs a single sweep and prints message on completion"""
     command: str
     anri: BaseAnritsu
 
     def do_work(self) -> str:
         self._do_single_sweep()
-        return "Sweaped finfished"
+        return "Sweep finished"
 
     def _check_status(self) -> None:
         """
-        when sweapo_completed != 0 then it breaks the while loop and more commands can be send
+        when sweep_completed != 0 then it breaks the while loop and more commands can be send
         Returns: None
         """
         sweap_completed = 0
