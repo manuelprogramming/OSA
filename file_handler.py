@@ -76,7 +76,7 @@ def _convert_str_to_datetime(timestampStr: str) -> datetime:
 
 
 def get_valid_settings_dict() -> dict:
-    with open(path.join(get_base_path(), "plugins/change_settings/valid_settings.json"), "r") as f:
+    with open(path.join(get_base_path(), "bin/valid_settings.json"), "r") as f:
         return json.load(f)
 
 

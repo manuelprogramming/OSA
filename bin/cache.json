@@ -1,3 +1,6 @@
 {
-    "ResultType.strResult": "new file created"
+    "ResultType.strValueResult": [
+        "number for stop_wavelength changed to",
+        1600.0
+    ]
 }
