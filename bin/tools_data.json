@@ -13,7 +13,8 @@
     "plugins.change_settings.sampling_points",
     "plugins.change_settings.start_wavelength",
     "plugins.change_settings.stop_wavelength",
-    "plugins.change_settings.memory_slot"],
+    "plugins.change_settings.memory_slot",
+    "plugins.analyser.filter_moving_average"],
   "tools": [
     {
       "name": "identify",
@@ -95,6 +96,10 @@
     {
       "name": "change_memory_slot",
       "command": "CMS"
+    },
+    {
+      "name": "filter_moving_average",
+      "command": "FMA"
     }
   ]
 }
