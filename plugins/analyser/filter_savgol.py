@@ -26,7 +26,7 @@ class SavGol:
                        window_size: int = 101,
                        pol_order: int = 5) -> np.array:
         """
-        :param arg: the argument retriev from the cache data
+        :param arg: the argument retrieved from the cache data
         :param window_size: The length of the filter window. window_length must be a positive odd integer. If mode is
         :param pol_order: The order of the polynomial used to fit the samples. polyorder must be less than window_length
         :return filtered_reflection: as 1-dim numpy array
