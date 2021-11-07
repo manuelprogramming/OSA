@@ -25,6 +25,7 @@ class PlotFromFile:
 
     @staticmethod
     def _plot_from_file(file_path) -> None:
+        plt.style.use("seaborn-whitegrid")
         df = pd.read_csv(file_path, index_col=0)
         df.plot()
         plt.ylabel("Intensity [dBm]")

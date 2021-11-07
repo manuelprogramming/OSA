@@ -25,6 +25,7 @@ class Plot:
 
     @staticmethod
     def _plot(wavelength: np.array, intensity: np.array) -> None:
+        plt.style.use("seaborn-whitegrid")
         plt.plot(wavelength, intensity)
         plt.ylabel("Intensity [dBm]")
         plt.xlabel("Wavelength [nm]")

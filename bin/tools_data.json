@@ -3,6 +3,7 @@
     "plugins.osa_plugins.start_stop_wavelength",
     "plugins.osa_plugins.get_data",
     "plugins.osa_plugins.set_sampling_points",
+    "plugins.osa_plugins.repeated_sweep_plot",
     "plugins.show_settings",
     "plugins.plot",
     "plugins.save_data",
@@ -48,6 +49,11 @@
     {
       "name": "set_sampling_points",
       "command": "MPT",
+      "anri": ""
+    },
+    {
+      "name": "repeated_sweep_plot",
+      "command": "RSP",
       "anri": ""
     },
     {

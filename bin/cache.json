@@ -1,10 +1,3 @@
 {
-    "ResultType.dictResult": {
-        "sampling_points": 1001,
-        "start_wavelength": 1420.0,
-        "stop_wavelength": 1500.0,
-        "memory_slot": "DMB",
-        "saving_folder": "saved_data",
-        "file_name_format": "%Y-%b-%d,-,%H;%M;%S"
-    }
+    "ResultType.strResult": "bin plotted"
 }
