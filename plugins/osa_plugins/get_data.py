@@ -10,7 +10,7 @@ from file_handler import get_settings_dict
 @dataclass
 class GetData:
     """
-    Reads out the Measured Data in Given Channel
+    Reads out the Measured Data in given memory_slot
     """
     command: str
     anri: BaseAnritsu
