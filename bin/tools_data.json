@@ -14,7 +14,8 @@
     "plugins.change_settings.start_wavelength",
     "plugins.change_settings.stop_wavelength",
     "plugins.change_settings.memory_slot",
-    "plugins.analyser.filter_moving_average"],
+    "plugins.analyser.filter_moving_average",
+    "plugins.analyser.filter_savgol"],
   "tools": [
     {
       "name": "identify",
@@ -100,6 +101,10 @@
     {
       "name": "filter_moving_average",
       "command": "FMA"
+    },
+    {
+      "name": "filter_savgol",
+      "command": "FSG"
     }
   ]
 }

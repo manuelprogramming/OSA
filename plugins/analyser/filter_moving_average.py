@@ -1,11 +1,9 @@
 from dataclasses import dataclass
-from typing import Any, Tuple
+from typing import Tuple
 
 import numpy as np
-from os import path
 
 from osa import factory
-from file_handler import get_latest_file_path
 from cache_handler import load_only_array_results
 
 
@@ -16,7 +14,7 @@ class MovingAverage:
     """
     command: str
 
-    def do_work(self) -> Any:
+    def do_work(self) -> Tuple[np.array, np.array] or str:
         arg = load_only_array_results()
         if not arg:
             return "retrieve Data before calculating moving average"
