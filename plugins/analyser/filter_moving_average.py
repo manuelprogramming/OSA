@@ -42,8 +42,6 @@ class MovingAverage:
 
         return self._cut_data(raw_wavelength), self._cut_data(trace_average)
 
-
-
     def _success_result(self, filtered_wavelength: np.array, filtered_trace: np.array) -> None:
         self.result.value = (filtered_wavelength, filtered_trace)
         self.result.msg = "moving average calculated and saved to cache"
