@@ -6,7 +6,8 @@ from osa import factory, loader
 from osa.basictools import Identify, ClearRegisters, StandardEventStatusRegister
 from file_handler import get_data_tools_dict, get_visa_search_term, get_start_text
 from cache_handler import save_to_cache
-from result import Result, ResultType
+from result import Result, get_result_types_dict
+
 
 def main() -> None:
 
@@ -27,8 +28,8 @@ def main() -> None:
     # extracting the result_types
 
     result_types_str = [item.pop("result_type") for item in data["tools"]]
-    result_dict = {str(res_type): res_type for res_type in ResultType}
-    result_types = [result_dict[res_type] for res_type in result_types_str]
+    result_types_dict = get_result_types_dict()
+    result_types = [result_types_dict[res_type] for res_type in result_types_str]
 
     # create the plugins and toolbox
 

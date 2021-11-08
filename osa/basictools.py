@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-from typing import Tuple
 from result import BaseResult
 from osa.anritsu_wrapper import BaseAnritsu
 
@@ -10,12 +9,13 @@ class ClearRegisters:
     Clears all the common registers
     """
     command: str
-    anri: BaseAnritsu
     result: BaseResult
+    anri: BaseAnritsu
 
-    def do_work(self) -> str:
+    def do_work(self) -> BaseResult:
         self._clear_registers()
-        return "registers Cleared"
+        self.result.msg = "registers Cleared"
+        return self.result
 
     def _clear_registers(self) -> None:
         self.anri.write("*CLS")
@@ -29,13 +29,15 @@ class StandardEventStatusRegister:
     This value is the logical product of the 8 bits set by *ESE.
     """
     command: str
-    anri: BaseAnritsu
     result: BaseResult
+    anri: BaseAnritsu
 
-    def do_work(self) -> Tuple[str, str]:
+    def do_work(self) -> BaseResult:
         esr = self._get_standard_event_status_register()
         res = "Standard Event Status Register: ", esr
-        return res
+        self.result.msg = f"Standard Event Status Register: {esr}"
+        self.result.value = esr
+        return self.result
 
     def _get_standard_event_status_register(self):
         return self.anri.query("*ESR?")
@@ -45,12 +47,13 @@ class StandardEventStatusRegister:
 class Identify:
     """ Identifies the OSA and gives the response from an `*IDN?`query."""
     command: str
-    anri: BaseAnritsu
     result: BaseResult
+    anri: BaseAnritsu
 
-    def do_work(self) -> str:
+    def do_work(self) -> BaseResult:
         msg = self._identify()
-        return f"Connected to {msg}"
+        self.result.msg = f"Connected to {msg}"
+        return self.result
 
     def _identify(self):
         return self.anri.query('*IDN?')

@@ -28,7 +28,7 @@
       "name": "standard_event_status_register",
       "command": "ESR",
       "result": "",
-      "result_type": "ResultType.noneResult",
+      "result_type": "ResultType.valueResult",
       "anri": ""
     },
 

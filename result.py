@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Any, Protocol, Optional
+from typing import Any, Protocol, Optional, Dict
 from enum import Enum, auto
 
 
@@ -17,10 +17,10 @@ class BaseResult(Protocol):
     result_type: ResultType
 
     def __repr__(self):
-        """prints out the massage of the result"""
+        """returns out the massage of the result"""
 
     def __str__(self):
-        """prints out the massage of the result"""
+        """returns the massage of the result"""
 
 
 @dataclass
@@ -34,6 +34,10 @@ class Result:
 
     def __str__(self):
         return str(self.msg)
+
+
+def get_result_types_dict() -> Dict[str, ResultType]:
+    return {str(res_type): res_type for res_type in ResultType}
 
 
 if __name__ == '__main__':

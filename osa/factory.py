@@ -1,4 +1,5 @@
 from osa.tool import BasicTool
+
 from typing import Callable, Dict, Any
 
 tool_creation_funcs: Dict[str, Callable[..., BasicTool]] = {}
