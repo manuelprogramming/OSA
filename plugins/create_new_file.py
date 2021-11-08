@@ -1,11 +1,10 @@
 from dataclasses import dataclass
-from typing import Any
-from pathlib import Path
 from os import path
 from datetime import datetime
 
 from osa import factory
-from file_handler import get_settings_dict
+from file_handler import get_settings_dict, get_base_path
+from result import BaseResult
 
 
 @dataclass
@@ -15,18 +14,20 @@ class CreateNewFile:
     the file name format is also read out from the settings.json file
     """
     command: str
+    result: BaseResult
 
-    def do_work(self) -> Any:
+    def do_work(self) -> BaseResult:
         settings = get_settings_dict()
         saving_path = self._get_saving_path(settings)
+        print(saving_path)
         with open(saving_path, "w"):
             pass
-        return "new file created"
+        self.result.msg = f"new file created in {saving_path}"
+        return self.result
 
     def _get_saving_path(self, settings):
         folder_name = self._get_folder_name(settings)
-        path_of_file = Path(path.dirname(__file__))
-        base_path = path_of_file.parent.absolute()
+        base_path = get_base_path()
         return path.join(base_path, folder_name)
 
     def _get_folder_name(self, settings):

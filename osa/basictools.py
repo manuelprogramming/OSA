@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from typing import Tuple
-
+from result import BaseResult
 from osa.anritsu_wrapper import BaseAnritsu
 
 
@@ -11,6 +11,7 @@ class ClearRegisters:
     """
     command: str
     anri: BaseAnritsu
+    result: BaseResult
 
     def do_work(self) -> str:
         self._clear_registers()
@@ -29,6 +30,7 @@ class StandardEventStatusRegister:
     """
     command: str
     anri: BaseAnritsu
+    result: BaseResult
 
     def do_work(self) -> Tuple[str, str]:
         esr = self._get_standard_event_status_register()
@@ -44,6 +46,7 @@ class Identify:
     """ Identifies the OSA and gives the response from an `*IDN?`query."""
     command: str
     anri: BaseAnritsu
+    result: BaseResult
 
     def do_work(self) -> str:
         msg = self._identify()

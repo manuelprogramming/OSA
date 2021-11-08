@@ -5,6 +5,7 @@ import json
 
 from osa import factory
 from file_handler import get_settings_dict, get_settings_path
+from result import BaseResult
 
 
 @dataclass
@@ -14,21 +15,32 @@ class ChangeStopWavelength:
     wavelength (nm): 600.0 to 1750.0 Specify bigger value than Start wavelength
     """
     command: str
+    result: BaseResult
 
-    def do_work(self) -> Tuple[str, int]:
+    def do_work(self) -> BaseResult:
         settings = get_settings_dict()
         stop_wavelength = self.ask_start_wavelength()
-        return self._change_start_wavelength(stop_wavelength, settings)
+        self._change_start_wavelength(stop_wavelength, settings)
+        return self.result
 
-    def _change_start_wavelength(self, stop_wavelength, settings) -> Tuple[str, int]:
+    def _change_start_wavelength(self, stop_wavelength: float, settings: dict) -> None:
         start_wavelength = settings["start_wavelength"]
-        if self._wavelength_is_valid(stop_wavelength, start_wavelength):
+        if not self._wavelength_is_valid(stop_wavelength, start_wavelength):
+            self._fail_result(stop_wavelength)
+        else:
             settings["stop_wavelength"] = stop_wavelength
             with open(get_settings_path(), "w", encoding='utf-8') as file:
                 json.dump(settings, file, indent=4)
-            return "number for stop_wavelength changed to", stop_wavelength
-        else:
-            return "number for stop_wavelength  invalid", stop_wavelength
+            self._success_result(stop_wavelength)
+
+    def _success_result(self, stop_wavelength) -> None:
+        self.result.msg = f"number for stop_wavelength changed to '{stop_wavelength}'"
+        self.result.value = stop_wavelength
+
+    def _fail_result(self, stop_wavelength) -> None:
+        self.result.msg = f"number for stop_wavelength  invalid '{stop_wavelength}'"
+        self.result.value = stop_wavelength
+
 
     @staticmethod
     def _wavelength_is_valid(stop_wavelength: float, start_wavelength: float) -> bool:

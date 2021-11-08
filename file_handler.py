@@ -89,7 +89,4 @@ def get_valid_memory_slots() -> List[str]:
 
 
 if __name__ == '__main__':
-    my_data = [list(np.random.random(5)), list(np.random.random(5))]
-    print(my_data)
-    with open("bin/cache.json", "w") as f:
-        json.dump(list(my_data), f, indent=4)
+    print(get_base_path())

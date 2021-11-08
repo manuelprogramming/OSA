@@ -20,91 +20,131 @@
     {
       "name": "identify",
       "command": "IDN",
+      "result": "",
+      "result_type": "ResultType.noneResult",
       "anri": ""
     },
     {
       "name": "standard_event_status_register",
       "command": "ESR",
+      "result": "",
+      "result_type": "ResultType.noneResult",
       "anri": ""
     },
 
     {
       "name": "clear_registers",
       "command": "CLS",
+      "result": "",
+      "result_type": "ResultType.noneResult",
       "anri": ""
     },
     {
       "name": "single_sweep",
       "command": "SSI",
+      "result": "",
+      "result_type": "ResultType.noneResult",
       "anri": ""
     },
     {
       "name": "start_stop_wavelength",
       "command": "SSW",
+      "result": "",
+      "result_type": "ResultType.noneResult",
       "anri": ""
     },
     {
       "name": "get_data",
       "command": "GDA",
+      "result": "",
+      "result_type": "ResultType.arrayResult",
       "anri": ""
     },
     {
       "name": "set_sampling_points",
       "command": "MPT",
+      "result": "",
+      "result_type": "ResultType.noneResult",
       "anri": ""
     },
     {
       "name": "repeated_sweep_plot",
       "command": "RSP",
+      "result": "",
+      "result_type": "ResultType.noneResult",
       "anri": ""
     },
     {
       "name": "show_settings",
-      "command": "SET?"
+      "command": "SET?",
+      "result": "",
+      "result_type": "ResultType.dictResult"
     },
     {
       "name": "plot",
-      "command": "PLT"
+      "command": "PLT",
+      "result": "",
+      "result_type": "ResultType.noneResult"
     },
     {
       "name": "save_data",
-      "command": "SVD"
+      "command": "SVD",
+      "result": "",
+      "result_type": "ResultType.noneResult"
     },
     {
       "name": "dummy_data",
-      "command": "DDA"
+      "command": "DDA",
+      "result": "",
+      "result_type": "ResultType.arrayResult"
     },
     {
       "name": "create_new_file",
-      "command": "CNF"
+      "command": "CNF",
+      "result": "",
+      "result_type": "ResultType.noneResult"
     },
     {
       "name": "plot_from_file",
-      "command": "PFF"
+      "command": "PFF",
+      "result": "",
+      "result_type": "ResultType.noneResult"
     },
     {
       "name": "change_sampling_points",
-      "command": "CPT"
+      "command": "CPT",
+      "result": "",
+      "result_type": "ResultType.valueResult"
     },
     {
       "name": "change_start_wavelength",
-      "command": "CSTAW"
+      "command": "CSTAW",
+      "result": "",
+      "result_type": "ResultType.valueResult"
     },
     {
       "name": "change_stop_wavelength",
-      "command": "CSTOW"
+      "command": "CSTOW",
+      "result": "",
+      "result_type": "ResultType.valueResult"
     },
     {
       "name": "change_memory_slot",
-      "command": "CMS"
+      "command": "CMS",
+      "result": "",
+      "result_type": "ResultType.valueResult"
     },
     {
       "name": "filter_moving_average",
-      "command": "FMA"
+      "command": "FMA",
+      "result": "",
+      "result_type": "ResultType.arrayResult"
     },
     {
       "name": "filter_savgol",
-      "command": "FSG"
+      "command": "FSG",
+      "result": "",
+      "result_type": "ResultType.arrayResult"
     }
   ]
 }

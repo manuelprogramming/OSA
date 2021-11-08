@@ -5,8 +5,10 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 
 from osa.anritsu_wrapper import BaseAnritsu
+from result import BaseResult
 from osa import factory
 from file_handler import get_settings_dict
+
 
 
 @dataclass
@@ -15,16 +17,19 @@ class RepeatedSweepPlot:
     Performs a repeated sweep and plots the data read out in the memory_slot in realtime
     """
     command: str
+    result: BaseResult
     anri: BaseAnritsu
 
-    def do_work(self) -> Tuple[np.array, np.array]:
+    def do_work(self) -> BaseResult:
         plt.style.use("seaborn-whitegrid")
         ani = FuncAnimation(plt.gcf(), self._dummy_plot, interval=1000)
 
         plt.tight_layout()
         plt.show()
 
-        return "repeated Sweep Plot canceled"
+        self.result.msg = "repeated Sweep Plot canceled"
+
+        return self.result
 
         # memory_slot = settings["memory_slot"] + "?"
         # return self._get_data(memory_slot)

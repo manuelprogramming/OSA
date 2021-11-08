@@ -4,6 +4,7 @@ import pandas as pd
 from os import path
 
 from osa import factory
+from result import BaseResult
 from file_handler import get_latest_file_path
 
 
@@ -13,15 +14,19 @@ class PlotFromFile:
     Plots the Data from the last file created in the saved_data folder.
     """
     command: str
+    result: BaseResult
 
-    def do_work(self) -> str:
+    def do_work(self) -> BaseResult:
         file_path = get_latest_file_path()
         if not file_path:
-            return "no files in directory"
+            self.result.msg = "no files in directory"
+            return self.result
         if path.getsize(file_path) == 0:
-            return "file is empty no plotting possible"
+            self.result.msg = "file is empty no plotting possible"
+            return self.result
         self._plot_from_file(file_path)
-        return "bin from file plotted"
+        self.result.msg = "plotted from file successful"
+        return self.result
 
     @staticmethod
     def _plot_from_file(file_path) -> None:

@@ -4,6 +4,7 @@ import json
 
 
 from osa import factory
+from result import BaseResult
 from file_handler import get_valid_memory_slots, get_settings_dict, get_settings_path
 
 
@@ -13,21 +14,31 @@ class ChangeMemorySlot:
     Change the MemorySlot where the Data is read from by the GetData class
     """
     command: str
+    result: BaseResult
 
-    def do_work(self) -> Tuple[str, str]:
+    def do_work(self) -> BaseResult:
         settings = get_settings_dict()
         memory_slot = self.ask_memory_slot()
-        return self._change_memory_slot(memory_slot, settings)
+        self._change_memory_slot(memory_slot, settings)
+        return self.result
 
-    @staticmethod
-    def _change_memory_slot(memory_slot, settings) -> Tuple[str, str]:
-        if memory_slot in get_valid_memory_slots():
+    def _change_memory_slot(self, memory_slot, settings) -> None:
+        if memory_slot not in get_valid_memory_slots():
+            self._fail_result(memory_slot)
+        else:
             settings["memory_slot"] = memory_slot
             with open(get_settings_path(), "w", encoding='utf-8') as file:
                 json.dump(settings, file, indent=4)
-            return "memory_slot changed to", memory_slot
-        else:
-            return "memory slot not valid", memory_slot
+            self._success_result(memory_slot)
+
+    def _success_result(self, memory_slot:str) -> None:
+        self.result.msg = f"memory_slot changed to {memory_slot}"
+        self.result.value = memory_slot
+
+    def _fail_result(self, memory_slot: str) -> None:
+        self.result.msg = f"Memory slot not valid '{memory_slot}' \n" \
+                          f"Valid memory slots: {get_valid_memory_slots()}"
+        self.result.value = memory_slot
 
     @staticmethod
     def ask_memory_slot() -> int or str:

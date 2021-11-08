@@ -1,9 +1,10 @@
 import numpy as np
 from dataclasses import dataclass
 import matplotlib.pyplot as plt
+from typing import Tuple
 
 from osa import factory
-from typing import Tuple
+from result import BaseResult
 from cache_handler import load_only_array_results
 
 
@@ -13,15 +14,18 @@ class Plot:
     Plots the Data from the Cache Perform "get_data" before executing
     """
     command: str
+    result: BaseResult
 
-    def do_work(self) -> str:
-        arg: Tuple[np.array, np.array] = load_only_array_results()
-        if not arg:
-            return "retrieve Data before plotting"
+    def do_work(self) -> BaseResult:
+        array_result: Tuple[np.array, np.array] = load_only_array_results()
+        if not array_result:
+            self.result.msg = "retrieve Data before plotting"
+            return self.result
 
-        wavelength, intensity = arg
+        wavelength, intensity = array_result
         self._plot(wavelength, intensity)
-        return "bin plotted"
+        self.result.msg = "data plotted"
+        return self.result
 
     @staticmethod
     def _plot(wavelength: np.array, intensity: np.array) -> None:

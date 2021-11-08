@@ -3,6 +3,7 @@
 from dataclasses import dataclass
 from osa import factory
 from osa.anritsu_wrapper import BaseAnritsu
+from result import BaseResult
 
 from file_handler import get_settings_dict
 
@@ -14,14 +15,16 @@ class StartStopWavelength:
     the Settings can be changed with the change_settings tools
     """
     command: str
+    result: BaseResult
     anri: BaseAnritsu
 
-    def do_work(self) -> str:
+    def do_work(self) -> BaseResult:
         settings = get_settings_dict()
         start = settings["start_wavelength"]
         stop = settings["stop_wavelength"]
         self._set_start_stop_wavelength(start, stop)
-        return "Start Stop Wavelength set"
+        self.result.msg = f"Start Stop Wavelength set to {start}-{stop}"
+        return self.result
 
     def _set_start_stop_wavelength(self, start: float = 600, stop: float = 1800) -> None:
         self.anri.write(f"WSS {start},{stop}")

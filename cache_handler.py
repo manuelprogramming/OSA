@@ -1,22 +1,15 @@
 import json
 from typing import Any
 import numpy as np
-from enum import Enum, auto
 from typing import Tuple
-
-
-class ResultType(Enum):
-    strResult = auto()
-    arrayResult = auto()
-    strValueResult = auto()
-    dictResult = auto()
+from result import Result, ResultType, BaseResult
 
 
 result_dict = {str(res_type): res_type for res_type in ResultType}
 
 
-def save_to_cache(res: Any) -> None:
-    res_type = check_type(res)
+def save_to_cache(res: BaseResult) -> None:
+    res_type = res.result_type
     formated_res = format_result(res, res_type)
     cache_dict = {str(res_type): formated_res}
     with open("bin/cache.json", "w") as f:
@@ -24,26 +17,14 @@ def save_to_cache(res: Any) -> None:
 
 
 def format_result(res: Any, res_type: ResultType) -> Any:
-    if res_type == ResultType.strResult:
-        return res
+    if res_type == ResultType.noneResult:
+        return res.msg
     if res_type == ResultType.dictResult:
-        return res
-    if res_type == ResultType.arrayResult:
-        return list(res[0]), list(res[1])
-    if res_type == ResultType.strValueResult:
-        return res[0], res[1]
-
-
-def check_type(res: Any) -> ResultType:
-    myarr = np.array([])
-    if isinstance(res, str):
-        return ResultType.strResult
-    if isinstance(res, dict):
-        return ResultType.dictResult
-    if isinstance(res[0], type(myarr)) and isinstance(res[1], type(myarr)):
-        return ResultType.arrayResult
-    else:
-        return ResultType.strValueResult
+        return res.value
+    if res_type == ResultType.arrayResult and res.value:
+        return list(res.value[0]), list(res.value[1])
+    if res_type == ResultType.valueResult:
+        return res.value
 
 
 def load_from_cache() -> Any:
@@ -63,13 +44,13 @@ def get_cache_dict() -> dict:
 
 
 def reformat_result(res: Any, res_type: ResultType):
-    if res_type == ResultType.strResult:
+    if res_type == ResultType.noneResult:
         return res
     if res_type == ResultType.dictResult:
         return res
-    if res_type == ResultType.arrayResult:
+    if res_type == ResultType.arrayResult and res:
         return np.array(res[0]), np.array(res[1])
-    if res_type == ResultType.strValueResult:
+    if res_type == ResultType.valueResult:
         return res[0], res[1]
 
 

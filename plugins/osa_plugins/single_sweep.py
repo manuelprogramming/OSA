@@ -1,21 +1,22 @@
-"""Game extenxion that adds a bard character"""
+from time import sleep
 
 from dataclasses import dataclass
 from osa import factory
 from osa.anritsu_wrapper import BaseAnritsu
-
-from time import sleep
+from result import BaseResult
 
 
 @dataclass
 class SingleSweep:
-    """performs a single sweep and prints message on completion"""
+    """Performs a single sweep and prints message on completion"""
     command: str
+    result: BaseResult
     anri: BaseAnritsu
 
-    def do_work(self) -> str:
+    def do_work(self) -> BaseResult:
         self._do_single_sweep()
-        return "Sweep finished"
+        self.result.msg = "Sweep finished"
+        return self.result
 
     def _check_status(self) -> None:
         """
@@ -32,7 +33,6 @@ class SingleSweep:
     def _do_single_sweep(self) -> None:
         self.anri.write(":INIT")
         self._check_status()
-        print(f"Completed Sweap")
 
 
 def initialize() -> None:

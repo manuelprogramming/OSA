@@ -1,11 +1,13 @@
 """Represents a basic tool."""
 
-from typing import Protocol, Any
+from typing import Protocol
+from result import BaseResult
 
 
 class BasicTool(Protocol):
     """Basic representation of a Tool"""
     command: str
+    result: BaseResult
 
-    def do_work(self) -> Any:
+    def do_work(self) -> BaseResult:
         """Does Some work"""
