@@ -78,7 +78,7 @@
       "name": "show_settings",
       "command": "SET?",
       "result": "",
-      "result_type": "ResultType.dictResult"
+      "result_type": "ResultType.valueResult"
     },
     {
       "name": "plot",

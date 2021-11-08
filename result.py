@@ -7,7 +7,6 @@ class ResultType(Enum):
     noneResult = auto()
     arrayResult = auto()
     valueResult = auto()
-    dictResult = auto()
 
 
 class BaseResult(Protocol):

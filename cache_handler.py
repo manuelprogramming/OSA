@@ -1,11 +1,8 @@
 import json
 from typing import Any
 import numpy as np
-from typing import Tuple
-from result import Result, ResultType, BaseResult
-
-
-result_dict = {str(res_type): res_type for res_type in ResultType}
+from typing import Tuple, Dict
+from result import get_result_types_dict, ResultType, BaseResult
 
 
 def save_to_cache(res: BaseResult) -> None:
@@ -19,44 +16,38 @@ def save_to_cache(res: BaseResult) -> None:
 def format_result(res: Any, res_type: ResultType) -> Any:
     if res_type == ResultType.noneResult:
         return res.msg
-    if res_type == ResultType.dictResult:
+    if res_type == ResultType.valueResult:
         return res.value
     if res_type == ResultType.arrayResult and res.value:
         return list(res.value[0]), list(res.value[1])
-    if res_type == ResultType.valueResult:
-        return res.value
 
 
 def load_from_cache() -> Any:
     cache = get_cache_dict()
     res_type = check_loaded_res_type(cache)
-    res = cache[str(res_type)]
+    res = get_result_from_cache(res_type)
     return reformat_result(res, res_type)
+
+
+def get_cache_dict() -> Dict[str, Any]:
+    with open("bin/cache.json", "r") as f:
+        return json.load(f)
+
+
+def check_loaded_res_type(cache: dict) -> ResultType:
+    res_type = list(cache.keys())[0]
+    return get_result_types_dict()[res_type]
 
 
 def get_result_from_cache(cache: dict, res_type: ResultType) -> Any:
     return cache[str(res_type)]
 
 
-def get_cache_dict() -> dict:
-    with open("bin/cache.json", "r") as f:
-        return json.load(f)
-
-
 def reformat_result(res: Any, res_type: ResultType):
-    if res_type == ResultType.noneResult:
-        return res
-    if res_type == ResultType.dictResult:
-        return res
     if res_type == ResultType.arrayResult and res:
         return np.array(res[0]), np.array(res[1])
-    if res_type == ResultType.valueResult:
-        return res[0], res[1]
-
-
-def check_loaded_res_type(cache: dict) -> ResultType:
-    res_type = list(cache.keys())[0]
-    return result_dict[res_type]
+    else:
+        return res
 
 
 def load_only_array_results() -> Tuple[np.array, np.array]:
@@ -68,9 +59,4 @@ def load_only_array_results() -> Tuple[np.array, np.array]:
 
 
 if __name__ == '__main__':
-    myar1 = np.random.random(5)
-    myar2 = np.random.random(5)
-    mytuple = ("oand", 998)
-    save_to_cache("check this")
-
     print(load_from_cache())
