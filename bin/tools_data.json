@@ -1,9 +1,10 @@
 {
   "plugins": ["plugins.osa_plugins.single_sweep",
+    "plugins.osa_plugins.sweep_stop",
     "plugins.osa_plugins.start_stop_wavelength",
     "plugins.osa_plugins.get_data",
     "plugins.osa_plugins.set_sampling_points",
-    "plugins.osa_plugins.repeated_sweep_plot",
+    "plugins.osa_plugins.repeated_sweep",
     "plugins.show_settings",
     "plugins.plot",
     "plugins.save_data",
@@ -47,6 +48,13 @@
       "anri": null
     },
     {
+      "name": "sweep_stop",
+      "command": "SST",
+      "result": null,
+      "result_type": "ResultType.noneResult",
+      "anri": null
+    },
+    {
       "name": "start_stop_wavelength",
       "command": "SSW",
       "result": null,
@@ -68,8 +76,8 @@
       "anri": null
     },
     {
-      "name": "repeated_sweep_plot",
-      "command": "RSP",
+      "name": "repeated_sweep",
+      "command": "SRT",
       "result": null,
       "result_type": "ResultType.noneResult",
       "anri": null

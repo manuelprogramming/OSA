@@ -14,6 +14,8 @@ Frameworks: <br>
 -numpy 1.19.5, <br>
 -pandas 1.2.2, <br>
 -matplotlib 3.3.4 <br>
+-scipy 1.7.2
+
 
 
 ## Features
