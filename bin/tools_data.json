@@ -20,130 +20,130 @@
     {
       "name": "identify",
       "command": "IDN",
-      "result": "",
+      "result": null,
       "result_type": "ResultType.noneResult",
-      "anri": ""
+      "anri": null
     },
     {
       "name": "standard_event_status_register",
       "command": "ESR",
-      "result": "",
+      "result": null,
       "result_type": "ResultType.valueResult",
-      "anri": ""
+      "anri": null
     },
 
     {
       "name": "clear_registers",
       "command": "CLS",
-      "result": "",
+      "result": null,
       "result_type": "ResultType.noneResult",
-      "anri": ""
+      "anri": null
     },
     {
       "name": "single_sweep",
       "command": "SSI",
-      "result": "",
+      "result": null,
       "result_type": "ResultType.noneResult",
-      "anri": ""
+      "anri": null
     },
     {
       "name": "start_stop_wavelength",
       "command": "SSW",
-      "result": "",
+      "result": null,
       "result_type": "ResultType.noneResult",
-      "anri": ""
+      "anri": null
     },
     {
       "name": "get_data",
       "command": "GDA",
-      "result": "",
+      "result": null,
       "result_type": "ResultType.arrayResult",
-      "anri": ""
+      "anri": null
     },
     {
       "name": "set_sampling_points",
       "command": "MPT",
-      "result": "",
+      "result": null,
       "result_type": "ResultType.noneResult",
-      "anri": ""
+      "anri": null
     },
     {
       "name": "repeated_sweep_plot",
       "command": "RSP",
-      "result": "",
+      "result": null,
       "result_type": "ResultType.noneResult",
-      "anri": ""
+      "anri": null
     },
     {
       "name": "show_settings",
       "command": "SET?",
-      "result": "",
+      "result": null,
       "result_type": "ResultType.valueResult"
     },
     {
       "name": "plot",
       "command": "PLT",
-      "result": "",
+      "result": null,
       "result_type": "ResultType.noneResult"
     },
     {
       "name": "save_data",
       "command": "SVD",
-      "result": "",
+      "result": null,
       "result_type": "ResultType.noneResult"
     },
     {
       "name": "dummy_data",
       "command": "DDA",
-      "result": "",
+      "result": null,
       "result_type": "ResultType.arrayResult"
     },
     {
       "name": "create_new_file",
       "command": "CNF",
-      "result": "",
+      "result": null,
       "result_type": "ResultType.noneResult"
     },
     {
       "name": "plot_from_file",
       "command": "PFF",
-      "result": "",
+      "result": null,
       "result_type": "ResultType.noneResult"
     },
     {
       "name": "change_sampling_points",
       "command": "CPT",
-      "result": "",
+      "result": null,
       "result_type": "ResultType.valueResult"
     },
     {
       "name": "change_start_wavelength",
       "command": "CSTAW",
-      "result": "",
+      "result": null,
       "result_type": "ResultType.valueResult"
     },
     {
       "name": "change_stop_wavelength",
       "command": "CSTOW",
-      "result": "",
+      "result": null,
       "result_type": "ResultType.valueResult"
     },
     {
       "name": "change_memory_slot",
       "command": "CMS",
-      "result": "",
+      "result": null,
       "result_type": "ResultType.valueResult"
     },
     {
       "name": "filter_moving_average",
       "command": "FMA",
-      "result": "",
+      "result": null,
       "result_type": "ResultType.arrayResult"
     },
     {
       "name": "filter_savgol",
       "command": "FSG",
-      "result": "",
+      "result": null,
       "result_type": "ResultType.arrayResult"
     }
   ]
