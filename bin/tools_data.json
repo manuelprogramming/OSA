@@ -8,8 +8,6 @@
     "plugins.show_settings",
     "plugins.plot",
     "plugins.save_data",
-    "plugins.dummy_data",
-    "plugins.dummy_data_2",
     "plugins.create_new_file",
     "plugins.plot_from_file",
     "plugins.change_settings.sampling_points",
@@ -18,7 +16,11 @@
     "plugins.change_settings.memory_slot",
     "plugins.analyser.filter_moving_average",
     "plugins.analyser.filter_savgol",
-    "plugins.analyser.calc_maxima"],
+    "plugins.analyser.calc_maxima",
+    "plugins.dummy_data.dummy_data",
+    "plugins.dummy_data.dummy_data_2",
+    "plugins.dummy_data.dummy_data_3"
+  ],
   "tools": [
     {
       "name": "identify",
@@ -103,18 +105,6 @@
       "result_type": "ResultType.noneResult"
     },
     {
-      "name": "dummy_data",
-      "command": "DDA",
-      "result": null,
-      "result_type": "ResultType.arrayResult"
-    },
-    {
-      "name": "dummy_data_2",
-      "command": "DD2",
-      "result": null,
-      "result_type": "ResultType.arrayResult"
-    },
-    {
       "name": "create_new_file",
       "command": "CNF",
       "result": null,
@@ -165,6 +155,24 @@
     {
       "name": "calc_maxima",
       "command": "MAX",
+      "result": null,
+      "result_type": "ResultType.arrayResult"
+    },
+    {
+      "name": "dummy_data_1",
+      "command": "DD1",
+      "result": null,
+      "result_type": "ResultType.arrayResult"
+    },
+    {
+      "name": "dummy_data_2",
+      "command": "DD2",
+      "result": null,
+      "result_type": "ResultType.arrayResult"
+    },
+    {
+      "name": "dummy_data_3",
+      "command": "DD3",
       "result": null,
       "result_type": "ResultType.arrayResult"
     }

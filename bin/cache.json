@@ -1,3 +1,14 @@
 {
-    "ResultType.noneResult": "data plotted"
+    "ResultType.arrayResult": [
+        [
+            1437.022,
+            1467.116,
+            1493.448
+        ],
+        [
+            -72.33,
+            -72.11,
+            -72.29
+        ]
+    ]
 }

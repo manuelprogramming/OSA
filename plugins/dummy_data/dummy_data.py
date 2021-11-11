@@ -8,7 +8,7 @@ from file_handler import get_settings_dict
 
 
 @dataclass
-class DummyData:
+class DummyData1:
     """
     Creates some random dummy bin for testing purpose
     """
@@ -23,10 +23,10 @@ class DummyData:
         wave_length = np.linspace(start_wave, stop_wave, sampling_points)
         trace = np.random.random_sample(sampling_points)-50
 
-        self.result.msg = "dummy data created"
+        self.result.msg = "dummy data created and saved to cache"
         self.result.value = (wave_length, trace)
         return self.result
 
 
 def initialize() -> None:
-    factory.register("dummy_data", DummyData)
+    factory.register("dummy_data_1", DummyData1)
