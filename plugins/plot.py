@@ -19,21 +19,46 @@ class Plot:
     def do_work(self) -> BaseResult:
         array_result: Tuple[np.array, np.array] = load_only_array_results()
         if not array_result:
-            self.result.msg = "retrieve Data before plotting"
             return self.result
 
-        wavelength, intensity = array_result
-        self._plot(wavelength, intensity)
+        wavelength, trace = array_result
+        if not self._same_length(wavelength, trace):
+            self._fail_result_wrong_length(wavelength, trace)
+            return self.result
+
+        plot_format = self._get_plot_fmt(trace)
+        self._plot(wavelength, trace, plot_format)
+
         self.result.msg = "data plotted"
+        self.result.value = array_result
         return self.result
 
     @staticmethod
-    def _plot(wavelength: np.array, intensity: np.array) -> None:
+    def _plot(wavelength: np.array, trace: np.array, plot_format) -> None:
         plt.style.use("seaborn-whitegrid")
-        plt.plot(wavelength, intensity)
+        plt.plot(wavelength, trace, plot_format)
         plt.ylabel("Intensity [dBm]")
         plt.xlabel("Wavelength [nm]")
+        plt.tight_layout()
         plt.show()
+
+    @staticmethod
+    def _same_length(wavelength: np.array, trace: np.array) -> bool:
+        return len(trace) == len(wavelength)
+
+    @staticmethod
+    def _get_plot_fmt(trace: np.array) -> str:
+        if len(trace) <= 5:
+            return "o"
+        else:
+            return "-"
+
+    def _fail_result_no_data(self):
+        self.result.msg = "retrieve Data before plotting"
+
+    def _fail_result_wrong_length(self, wavelength, trace):
+        self.result.msg = f"the data loaded from the cache must have the same length here: " \
+                          f"{len(wavelength)}, {len(trace)}"
 
 
 def initialize() -> None:
