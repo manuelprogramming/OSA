@@ -3,7 +3,6 @@ from os import path, listdir
 import json
 from typing import Dict, Any, List
 from datetime import datetime
-import numpy as np
 
 
 def get_base_path() -> str:
@@ -87,6 +86,10 @@ def get_valid_sampling_points() -> List[int]:
 def get_valid_memory_slots() -> List[str]:
     return get_valid_settings_dict()["memory_slots"]
 
+
+def get_dummy_data_path() -> str:
+    base_path = get_base_path()
+    return path.join(base_path, "bin/dummy.csv")
 
 if __name__ == '__main__':
     print(get_base_path())

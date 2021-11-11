@@ -8,6 +8,7 @@
     "plugins.plot",
     "plugins.save_data",
     "plugins.dummy_data",
+    "plugins.dummy_data_2",
     "plugins.create_new_file",
     "plugins.plot_from_file",
     "plugins.change_settings.sampling_points",
@@ -15,7 +16,8 @@
     "plugins.change_settings.stop_wavelength",
     "plugins.change_settings.memory_slot",
     "plugins.analyser.filter_moving_average",
-    "plugins.analyser.filter_savgol"],
+    "plugins.analyser.filter_savgol",
+    "plugins.analyser.calc_maxima"],
   "tools": [
     {
       "name": "identify",
@@ -84,7 +86,7 @@
       "name": "plot",
       "command": "PLT",
       "result": null,
-      "result_type": "ResultType.noneResult"
+      "result_type": "ResultType.arrayResult"
     },
     {
       "name": "save_data",
@@ -95,6 +97,12 @@
     {
       "name": "dummy_data",
       "command": "DDA",
+      "result": null,
+      "result_type": "ResultType.arrayResult"
+    },
+    {
+      "name": "dummy_data_2",
+      "command": "DD2",
       "result": null,
       "result_type": "ResultType.arrayResult"
     },
@@ -143,6 +151,12 @@
     {
       "name": "filter_savgol",
       "command": "FSG",
+      "result": null,
+      "result_type": "ResultType.arrayResult"
+    },
+    {
+      "name": "calc_maxima",
+      "command": "MAX",
       "result": null,
       "result_type": "ResultType.arrayResult"
     }
