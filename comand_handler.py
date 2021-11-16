@@ -7,11 +7,7 @@ class CommandHandler:
 
     def __call__(self, command_str: str) -> List[str]:
         command_list = self.split_commands(command_str)
-        for command in command_list:
-            if command not in self.tool_commands:
-                command_list.remove(command)
-                return [""]
-        return command_list
+        return [command.strip() for command in command_list]
 
     def split_commands(self, command_str:str) -> List[str]:
         return command_str.split(";")

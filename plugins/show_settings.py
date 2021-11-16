@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-from typing import Dict, Any
 
 from osa import factory
 from result import BaseResult

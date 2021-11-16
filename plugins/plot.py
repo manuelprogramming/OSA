@@ -2,7 +2,6 @@ import numpy as np
 from dataclasses import dataclass
 import matplotlib.pyplot as plt
 from typing import Tuple
-import multiprocessing as mp
 
 from osa import factory
 from result import BaseResult

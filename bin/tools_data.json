@@ -17,6 +17,8 @@
     "plugins.analyser.filter_moving_average",
     "plugins.analyser.filter_savgol",
     "plugins.analyser.calc_maxima",
+    "plugins.analyser.save_as_ref",
+    "plugins.analyser.load_ref",
     "plugins.dummy_data.dummy_data",
     "plugins.dummy_data.dummy_data_2",
     "plugins.dummy_data.dummy_data_3"
@@ -155,6 +157,18 @@
     {
       "name": "calc_maxima",
       "command": "MAX",
+      "result": null,
+      "result_type": "ResultType.arrayResult"
+    },
+    {
+      "name": "save_as_ref",
+      "command": "REF",
+      "result": null,
+      "result_type": "ResultType.arrayResult"
+    },
+    {
+      "name": "load_ref",
+      "command": "REF?",
       "result": null,
       "result_type": "ResultType.arrayResult"
     },

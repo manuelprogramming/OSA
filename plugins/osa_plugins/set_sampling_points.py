@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-from typing import Tuple
 
 from osa import factory
 from osa.anritsu_wrapper import BaseAnritsu
