@@ -45,7 +45,8 @@ class PlotFromFile:
         df = pd.read_csv(file_path, index_col=0)
         return df.index.name == "bending_radius"
 
-    def _plot_points_data(self, file_path):
+    @staticmethod
+    def _plot_points_data(file_path):
         df = pd.read_csv(file_path, index_col=[0, 1])
         bending_radii = set([bending_radius for bending_radius in df.index.get_level_values('bending_radius')])
         for bending_radius in bending_radii:
@@ -54,7 +55,8 @@ class PlotFromFile:
             plt.plot(df_part.index.to_numpy(), y, "+", label=bending_radius)
         plt.xlabel("Wavelength [nm]")
 
-    def _plot_trace_data(self, file_path):
+    @staticmethod
+    def _plot_trace_data(file_path):
         df = pd.read_csv(file_path, index_col=0)
         df.plot()
 
