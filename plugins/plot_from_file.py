@@ -52,7 +52,7 @@ class PlotFromFile:
         for bending_radius in bending_radii:
             df_part = df.loc[bending_radius]
             y = df_part["trace [dBm]"].to_numpy()
-            plt.plot(df_part.index.to_numpy(), y, "+", label=bending_radius)
+            plt.plot(df_part.index.to_numpy(), y, "o", label=bending_radius)
         plt.xlabel("Wavelength [nm]")
 
     @staticmethod
