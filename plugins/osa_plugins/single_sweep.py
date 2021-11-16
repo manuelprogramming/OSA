@@ -2,8 +2,9 @@ from time import sleep
 
 from dataclasses import dataclass
 from osa import factory
-from osa.anritsu_wrapper import BaseAnritsu
+from osa.anritsu_wrapper import BaseAnritsu, test_anri_connection
 from result import BaseResult
+
 
 
 @dataclass
@@ -13,6 +14,7 @@ class SingleSweep:
     result: BaseResult
     anri: BaseAnritsu
 
+    @test_anri_connection
     def do_work(self) -> BaseResult:
         self._do_single_sweep()
         self.result.msg = "Sweep finished"

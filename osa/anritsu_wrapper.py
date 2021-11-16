@@ -45,4 +45,13 @@ class Anritsu:
         return self.query('*IDN?')
 
 
+def test_anri_connection(function):
+    def wrapper(*args):
+        mytool = args[0]
+        if not mytool.anri:
+            mytool.result.msg = "Not Connected to OSA"
+            return mytool.result
+        else:
+            return function(*args)
 
+    return wrapper

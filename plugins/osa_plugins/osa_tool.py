@@ -1,7 +1,7 @@
 """Represents a basic OSA plugin tool."""
 
 from typing import Protocol, Any
-from osa.anritsu_wrapper import BaseAnritsu
+from osa.anritsu_wrapper import BaseAnritsu, test_anri_connection
 from result import BaseResult
 
 
@@ -11,5 +11,6 @@ class BasicOSATool(Protocol):
     result: BaseResult
     anri: BaseAnritsu
 
+    @test_anri_connection
     def do_work(self) -> BaseResult:
         """Does Some work with a connection to the OSA"""

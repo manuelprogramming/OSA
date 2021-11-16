@@ -3,7 +3,7 @@ from dataclasses import dataclass
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 
-from osa.anritsu_wrapper import BaseAnritsu
+from osa.anritsu_wrapper import BaseAnritsu, test_anri_connection
 from result import BaseResult
 from osa import factory
 from file_handler import get_settings_dict
@@ -19,6 +19,7 @@ class RepeatedSweep:
     result: BaseResult
     anri: BaseAnritsu
 
+    @test_anri_connection
     def do_work(self) -> BaseResult:
         # TODO: Sometimes the program crashes after closing the plot window
         plt.style.use("seaborn-whitegrid")

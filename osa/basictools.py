@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from result import BaseResult
-from osa.anritsu_wrapper import BaseAnritsu
+from osa.anritsu_wrapper import BaseAnritsu, test_anri_connection
 
 
 @dataclass
@@ -12,6 +12,7 @@ class ClearRegisters:
     result: BaseResult
     anri: BaseAnritsu
 
+    @test_anri_connection
     def do_work(self) -> BaseResult:
         self._clear_registers()
         self.result.msg = "registers Cleared"
@@ -32,6 +33,7 @@ class StandardEventStatusRegister:
     result: BaseResult
     anri: BaseAnritsu
 
+    @test_anri_connection
     def do_work(self) -> BaseResult:
         esr = self._get_standard_event_status_register()
         res = "Standard Event Status Register: ", esr
@@ -50,6 +52,7 @@ class Identify:
     result: BaseResult
     anri: BaseAnritsu
 
+    @test_anri_connection
     def do_work(self) -> BaseResult:
         msg = self._identify()
         self.result.msg = f"Connected to {msg}"

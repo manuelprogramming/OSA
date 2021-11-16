@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 from osa import factory
-from osa.anritsu_wrapper import BaseAnritsu
+from osa.anritsu_wrapper import BaseAnritsu, test_anri_connection
 from result import BaseResult
 
 from file_handler import get_settings_dict
@@ -17,6 +17,7 @@ class SetSamplingPoints:
     result: BaseResult
     anri: BaseAnritsu
 
+    @test_anri_connection
     def do_work(self) -> BaseResult:
         settings = get_settings_dict()
         sampling_points = int(settings["sampling_points"])
