@@ -5,7 +5,7 @@ from os import path
 
 from osa import factory
 from result import BaseResult
-from file_handler import get_latest_file_path
+from file_handler import get_latest_file_path, get_settings_dict
 
 
 @dataclass
@@ -36,7 +36,6 @@ class PlotFromFile:
         plt.ylabel("Intensity [dBm]")
         plt.tight_layout()
         plt.show()
-
 
 
 def initialize() -> None:
