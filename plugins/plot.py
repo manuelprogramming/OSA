@@ -2,6 +2,7 @@ import numpy as np
 from dataclasses import dataclass
 import matplotlib.pyplot as plt
 from typing import Tuple
+import multiprocessing as mp
 
 from osa import factory
 from result import BaseResult
@@ -33,14 +34,16 @@ class Plot:
         self.result.value = array_result
         return self.result
 
+
     @staticmethod
-    def _plot(wavelength: np.array, trace: np.array, plot_format) -> None:
+    def _plot(wavelength: np.array, trace: np.array, plot_format: np.array) -> None:
         plt.style.use("seaborn-whitegrid")
         plt.plot(wavelength, trace, plot_format)
         plt.ylabel("Intensity [dBm]")
         plt.xlabel("Wavelength [nm]")
         plt.tight_layout()
         plt.show()
+
 
     @staticmethod
     def _same_length(wavelength: np.array, trace: np.array) -> bool:

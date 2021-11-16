@@ -7,8 +7,7 @@ from result import get_result_types_dict, ResultType, BaseResult
 
 def save_to_cache(res: BaseResult) -> None:
     res_type = res.result_type
-    formated_res = format_result(res, res_type)
-    cache_dict = {str(res_type): formated_res}
+    cache_dict = {str(res_type): format_result(res, res_type)}
     with open("bin/cache.json", "w") as f:
         json.dump(cache_dict, f, indent=4)
 
