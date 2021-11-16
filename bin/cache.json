@@ -1,14 +1,3 @@
 {
-    "ResultType.arrayResult": [
-        [
-            1439.279,
-            1469.122,
-            1495.204
-        ],
-        [
-            1439.279,
-            1469.122,
-            1495.204
-        ]
-    ]
+    "ResultType.noneResult": "plotted from file successful"
 }

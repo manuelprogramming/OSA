@@ -17,6 +17,7 @@
     "plugins.analyser.filter_moving_average",
     "plugins.analyser.filter_savgol",
     "plugins.analyser.calc_maxima",
+    "plugins.analyser.calc_shift",
     "plugins.analyser.save_as_ref",
     "plugins.analyser.load_ref",
     "plugins.dummy_data.dummy_data",
@@ -157,6 +158,12 @@
     {
       "name": "calc_maxima",
       "command": "MAX",
+      "result": null,
+      "result_type": "ResultType.arrayResult"
+    },
+    {
+      "name": "calc_shift",
+      "command": "SFT",
       "result": null,
       "result_type": "ResultType.arrayResult"
     },

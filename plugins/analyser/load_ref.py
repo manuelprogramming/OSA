@@ -19,10 +19,11 @@ class LoadRef:
         ref_dict = load_ref_data()
         if not ref_dict:
             self.result.msg = "retrieve data before saving it as reference"
+            return self.result
 
         ref_values = [value for value in ref_dict.values()]
         wavelength_ref = np.array(ref_values[0])
-        trace_ref = np.array(ref_values[0])
+        trace_ref = np.array(ref_values[1])
 
         self._success_result(wavelength_ref, trace_ref)
 
@@ -33,7 +34,6 @@ class LoadRef:
                           f"wavelength_ref:{wavelength_ref}\n" \
                           f"trace_ref: {trace_ref}\n"
         self.result.value = (wavelength_ref, trace_ref)
-
 
 
 def initialize() -> None:

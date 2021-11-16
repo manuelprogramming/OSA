@@ -24,7 +24,7 @@ def format_result(res: Any, res_type: ResultType) -> Any:
 def load_from_cache() -> Any:
     cache = get_cache_dict()
     res_type = check_loaded_res_type(cache)
-    res = get_result_from_cache(res_type)
+    res = get_result_from_cache(cache, res_type)
     return reformat_result(res, res_type)
 
 
@@ -42,7 +42,7 @@ def get_result_from_cache(cache: dict, res_type: ResultType) -> Any:
     return cache[str(res_type)]
 
 
-def reformat_result(res: Any, res_type: ResultType):
+def reformat_result(res: Any, res_type: ResultType) -> Tuple[np.array, np.array]:
     if res_type == ResultType.arrayResult and res:
         return np.array(res[0]), np.array(res[1])
     else:

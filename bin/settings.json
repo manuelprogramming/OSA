@@ -4,5 +4,6 @@
     "stop_wavelength": 1500.0,
     "memory_slot": "DMB",
     "saving_folder": "saved_data",
-    "file_name_format": "%Y-%b-%d,-,%H;%M;%S"
+    "file_name_format": "%Y-%b-%d,-,%H;%M;%S",
+    "max_length_ref_data": 5
 }
