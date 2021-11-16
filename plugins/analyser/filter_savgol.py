@@ -7,6 +7,7 @@ import numpy as np
 from osa import factory
 from cache_handler import load_only_array_results
 from result import BaseResult
+from file_handler import get_settings_dict
 
 
 @dataclass
@@ -27,17 +28,15 @@ class SavGol:
         self._success_result()
         return self.result
 
-    def _savgol_filter(self, arg: Tuple[np.array, np.array],
-                       window_size: int = 101,
-                       pol_order: int = 5) -> np.array:
-        """
+    def _savgol_filter(self, arg: Tuple[np.array, np.array]) -> np.array:
+        """The length of the filter window. window_length must be a positive odd integer.
+            The order of the polynomial used to fit the samples. polyorder must be less than window_length
         :param arg: the argument retrieved from the cache data
-        :param window_size: The length of the filter window. window_length must be a positive odd integer.
-        :param pol_order: The order of the polynomial used to fit the samples. polyorder must be less than window_length
-        :return filtered_reflection: as 1-dim numpy array
+        :return filtered_trace: as 1-dim numpy array
         """
         raw_trace = arg[1]
-        self.filtered_reflection = sgn.savgol_filter(raw_trace, window_size, pol_order)
+        savgol_settings = get_settings_dict()["savgol_settings"]
+        self.filtered_reflection = sgn.savgol_filter(raw_trace, savgol_settings["window_size"], savgol_settings["pol_order"])
         return raw_trace
 
     def _fail_result(self):
