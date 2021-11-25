@@ -1,4 +1,5 @@
 from time import sleep
+import sys
 
 from dataclasses import dataclass
 from osa import factory
@@ -27,10 +28,14 @@ class SingleSweep:
         """
         sweap_completed = 0
         self.anri.write("*CLS")
+        bar = 0
         while sweap_completed == 0:
             sweap_completed = int(self.anri.query(":STAT:EVEN:COND?"))
+            sys.stdout.write(f"\rSweeping: {'=' * bar}>")
+            sys.stdout.flush()
+            sleep(0.5)
+            bar += 1
             print(f"Sweaping... {sweap_completed}")
-            sleep(1)
 
     def _do_single_sweep(self) -> None:
         self.anri.write(":INIT")
