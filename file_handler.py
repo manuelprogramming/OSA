@@ -1,5 +1,5 @@
 """functions for Handling the files"""
-from os import path, listdir
+from os import path, listdir, mkdir
 import json
 from typing import Dict, Any, List
 from datetime import datetime
@@ -7,6 +7,14 @@ from datetime import datetime
 
 def get_base_path() -> str:
     return path.dirname(__file__)
+
+
+def create_new_folder(folder_name:str) -> bool:
+    try:
+        mkdir(path.join(get_base_path(), folder_name))
+        return True
+    except FileExistsError:
+        return False
 
 
 def get_start_text() -> str:
