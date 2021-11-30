@@ -2,13 +2,12 @@
     "sampling_points": 501,
     "start_wavelength": 1420.0,
     "stop_wavelength": 1500.0,
-    "memory_slot": "DMB",
+    "memory_slot": "DMA",
     "saving_folder": "saved_data",
     "file_name_format": "%Y-%b-%d,-,%H;%M;%S",
     "max_length_ref_data": 5,
-    "savgol_settings":
-    {
+    "savgol_settings": {
         "window_size": 101,
-        "pol_order":5
+        "pol_order": 5
     }
 }

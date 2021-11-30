@@ -35,7 +35,8 @@ class SingleSweep:
             sys.stdout.flush()
             sleep(0.5)
             bar += 1
-            print(f"Sweaping... {sweap_completed}")
+
+        print("")
 
     def _do_single_sweep(self) -> None:
         self.anri.write(":INIT")
