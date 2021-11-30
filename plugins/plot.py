@@ -6,6 +6,7 @@ from typing import Tuple
 from osa import factory
 from result import BaseResult
 from cache_handler import load_only_array_results
+from plotting import format_plot
 
 
 @dataclass
@@ -33,16 +34,10 @@ class Plot:
         self.result.value = array_result
         return self.result
 
-
     @staticmethod
+    @format_plot
     def _plot(wavelength: np.array, trace: np.array, plot_format: np.array) -> None:
-        plt.style.use("seaborn-whitegrid")
         plt.plot(wavelength, trace, plot_format)
-        plt.ylabel("Intensity [dBm]")
-        plt.xlabel("Wavelength [nm]")
-        plt.tight_layout()
-        plt.show()
-
 
     @staticmethod
     def _same_length(wavelength: np.array, trace: np.array) -> bool:

@@ -6,6 +6,7 @@ from os import path
 from osa import factory
 from result import BaseResult
 from file_handler import get_latest_file_path, get_settings_dict
+from plotting import format_plot
 
 
 @dataclass
@@ -29,16 +30,14 @@ class PlotFromFile:
         self.result.msg = "plotted from file successful"
         return self.result
 
+    @format_plot
     def _plot_from_file(self, file_path) -> None:
         if self._is_points_data(file_path):
             self._plot_points_data(file_path)
         else:
             self._plot_trace_data(file_path)
 
-        plt.ylabel("Intensity [dBm]")
-        plt.tight_layout()
         plt.legend()
-        plt.show()
 
     @staticmethod
     def _is_points_data(file_path) -> bool:
@@ -53,7 +52,6 @@ class PlotFromFile:
             df_part = df.loc[bending_radius]
             y = df_part["trace [dBm]"].to_numpy()
             plt.plot(df_part.index.to_numpy(), y, "o", label=bending_radius)
-        plt.xlabel("Wavelength [nm]")
 
     @staticmethod
     def _plot_trace_data(file_path):

@@ -1,8 +1,9 @@
 """
 This is a system to control the Optical Spectrum Analyzer MS9740B by Anritsu with a remote computer
 """
-from pyvisa.errors import VisaIOError
+import matplotlib.pyplot as plt
 
+from pyvisa.errors import VisaIOError
 from osa.anritsu_wrapper import Anritsu
 from osa import factory, loader
 from osa.basictools import Identify, ClearRegisters, StandardEventStatusRegister
@@ -13,6 +14,9 @@ from comand_handler import CommandHandler
 
 
 def main() -> None:
+    # config matplotlib
+    plt.style.use("seaborn-whitegrid")
+    plt.ion()
 
     # register a couple of BasicTools
     factory.register("identify", Identify)
