@@ -4,13 +4,13 @@ import json
 
 from osa import factory
 from result import BaseResult
-from file_handler import get_settings_dict, get_settings_path, get_base_path, create_new_folder
+from file_handler import get_settings_dict, get_settings_path, create_new_folder
 
 
 @dataclass
 class ChangeSavingFolder:
     """
-    Change the MemorySlot where the Data is read from by the GetData class
+    Change the Saving Folder where the data is stored
     """
     command: str
     result: BaseResult

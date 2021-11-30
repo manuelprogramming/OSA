@@ -9,7 +9,7 @@ def get_base_path() -> str:
     return path.dirname(__file__)
 
 
-def create_new_folder(folder_name:str) -> bool:
+def create_new_folder(folder_name: str) -> bool:
     try:
         mkdir(path.join(get_base_path(), folder_name))
         return True
@@ -98,6 +98,7 @@ def get_valid_memory_slots() -> List[str]:
 def get_dummy_data_path() -> str:
     base_path = get_base_path()
     return path.join(base_path, "bin/dummy.csv")
+
 
 if __name__ == '__main__':
     print(get_base_path())

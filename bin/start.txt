@@ -1,4 +1,4 @@
-#### Welcome to the OSA Remote Control System ORCS ####
+##### Welcome to the OSA Remote Control System ORCS ##########
              ___________
             ||         ||            _______
             ||  ORCS   ||           | _____ |
@@ -15,5 +15,5 @@
                        \_____/
 #### Control Optical Spectrum Analyzer MS9740B by Anritsu #####
 
-########### The Tools available are shown below ##############
+########### The Tools available are shown below ###############
 

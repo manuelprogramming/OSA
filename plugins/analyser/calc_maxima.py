@@ -56,7 +56,7 @@ class CalcMaxima:
         self.result.msg = "retrieve Data before calculating maxima"
 
     @staticmethod
-    def _cut_data(array, num_cut=10) -> np.array:
+    def _cut_data(array: np.array, num_cut: int = 10) -> np.array:
         """
         used to cut the data for the moving average filter
         :param array: 1-Dim numpy array what should be cutted
