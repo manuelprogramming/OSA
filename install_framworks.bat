@@ -4,6 +4,6 @@ pip install scipy
 pip install matplotlib
 pip install pandas
 
-git clone https://github.com/manuelprogramming/OSA
+git pull https://github.com/manuelprogramming/OSA
 
 cmd
