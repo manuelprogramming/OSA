@@ -7,13 +7,16 @@ from pyvisa.errors import VisaIOError
 from osa.anritsu_wrapper import Anritsu
 from osa import factory, loader
 from osa.basictools import Identify, ClearRegisters, StandardEventStatusRegister
-from file_handler import get_data_tools_dict, get_visa_search_term, get_start_text
+from file_handler import get_data_tools_dict, get_visa_search_term, get_start_text, reset_selected_file
 from cache_handler import save_to_cache
 from result import Result, get_result_types_dict
 from comand_handler import CommandHandler
 
 
 def main() -> None:
+    # setting the default file for plotting and saving
+    reset_selected_file()
+
     # config matplotlib
     plt.style.use("seaborn-whitegrid")
     plt.ion()
@@ -50,7 +53,6 @@ def main() -> None:
         print("!!!! Couldn't connect to OSA working in offline Mode!!!! \n\n")
 
     # show the tools available
-
     for idx, tool in enumerate(tools):
         if hasattr(tool, "anri"):
             tool.anri = anri            # apply the anritsu class to the plugins who need that
@@ -58,13 +60,10 @@ def main() -> None:
         print("####", tool, end="\t\n\n")
 
     # Create Command Handler Instants
-
     command_handler = CommandHandler(tool_commands)
 
     # main program loop
-
     running = True
-
     while running:
         print("\n\n#### Send Command:\n")
         command_list: list = command_handler(input())
@@ -77,6 +76,9 @@ def main() -> None:
                 res = toolbox[command].do_work()
                 save_to_cache(res)
                 print(res)
+
+    # resetting the selected file after closing the program
+    reset_selected_file()
 
 
 if __name__ == "__main__":

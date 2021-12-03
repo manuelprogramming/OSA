@@ -10,6 +10,7 @@
     "plugins.save_data",
     "plugins.create_new_file",
     "plugins.plot_from_file",
+    "plugins.select_file",
     "plugins.change_settings.sampling_points",
     "plugins.change_settings.start_wavelength",
     "plugins.change_settings.stop_wavelength",
@@ -119,6 +120,12 @@
       "command": "PFF",
       "result": null,
       "result_type": "ResultType.noneResult"
+    },
+    {
+      "name": "select_file",
+      "command": "SLF",
+      "result": null,
+      "result_type": "ResultType.valueResult"
     },
     {
       "name": "change_sampling_points",

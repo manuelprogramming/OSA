@@ -1,4 +1,5 @@
 """functions for Handling the files"""
+import os.path
 from os import path, listdir, mkdir
 import json
 from typing import Dict, Any, List
@@ -56,14 +57,38 @@ def find_all_timestampStrs() -> List[str]:
 def find_latest_file() -> str:
     saving_path = get_saving_path()
     if listdir(saving_path):
-        return [f for f in listdir(saving_path) if f.endswith(".csv")][-1]
+        all_files = [_convert_str_to_datetime(f.strip(".csv")) for f in listdir(saving_path) if f.endswith(".csv")]
+        all_files.sort()
+        return _convert_datetime_to_str(all_files[-1]) + ".csv"
 
 
-def get_latest_file_path() -> str:
+def get_selected_file_name() -> str:
+    return get_settings_dict()["selected_file"]
+
+
+def change_selected_file(file_path: str) -> None:
+    settings = get_settings_dict()
+    settings["selected_file"] = file_path
+    with open(get_settings_path(), "w", encoding='utf-8') as file:
+        json.dump(settings, file, indent=4)
+
+
+def reset_selected_file() -> None:
+    change_selected_file("")
+
+
+def get_selected_file_path() -> str:
     saving_path = get_saving_path()
+    selected_file_name = get_selected_file_name()
+    if _selected_file(selected_file_name):
+        return selected_file_name
     latest_file = find_latest_file()
     if latest_file:
         return path.join(saving_path, latest_file)
+
+
+def _selected_file(selected_file_name: str) -> bool:
+    return len(selected_file_name) != 0
 
 
 def get_file_name_format() -> str:
@@ -80,6 +105,16 @@ def get_data_tools_dict() -> json:
 def _convert_str_to_datetime(timestampStr: str) -> datetime:
     dt_format = get_file_name_format()
     return datetime.strptime(timestampStr, dt_format)
+
+
+def _convert_datetime_to_str(dateTimeObj: datetime) -> str:
+    return dateTimeObj.strftime(get_file_name_format())
+
+
+def get_current_date_time_str():
+    dateTimeObj = datetime.now()
+    timestampStr = _convert_datetime_to_str(dateTimeObj)
+    return timestampStr
 
 
 def get_valid_settings_dict() -> dict:
@@ -101,4 +136,4 @@ def get_dummy_data_path() -> str:
 
 
 if __name__ == '__main__':
-    print(get_base_path())
+    print(get_selected_file_path())

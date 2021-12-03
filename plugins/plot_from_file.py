@@ -5,7 +5,7 @@ from os import path
 
 from osa import factory
 from result import BaseResult
-from file_handler import get_latest_file_path, get_settings_dict
+from file_handler import get_selected_file_path, get_settings_dict
 from plotting import format_plot
 
 
@@ -19,13 +19,14 @@ class PlotFromFile:
 
     def do_work(self) -> BaseResult:
         plt.style.use("seaborn-whitegrid")
-        file_path = get_latest_file_path()
+        file_path = get_selected_file_path()
         if not file_path:
             self.result.msg = "no files in directory"
             return self.result
         if path.getsize(file_path) == 0:
             self.result.msg = "file is empty no plotting possible"
             return self.result
+        print(file_path)
         self._plot_from_file(file_path)
         self.result.msg = "plotted from file successful"
         return self.result
@@ -44,6 +45,7 @@ class PlotFromFile:
         df = pd.read_csv(file_path, index_col=0)
         return df.index.name == "bending_radius"
 
+
     @staticmethod
     def _plot_points_data(file_path):
         df = pd.read_csv(file_path, index_col=[0, 1])
@@ -57,6 +59,7 @@ class PlotFromFile:
     def _plot_trace_data(file_path):
         df = pd.read_csv(file_path, index_col=0)
         df.plot()
+        # ax.set_ylabel("Intensity [dBm]")
 
 def initialize() -> None:
     factory.register("plot_from_file", PlotFromFile)

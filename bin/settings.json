@@ -4,6 +4,7 @@
     "stop_wavelength": 1500.0,
     "memory_slot": "DMA",
     "saving_folder": "saved_data",
+    "selected_file": "",
     "file_name_format": "%Y-%b-%d,-,%H;%M;%S",
     "max_length_ref_data": 5,
     "savgol_settings": {

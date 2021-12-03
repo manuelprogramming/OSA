@@ -3,7 +3,7 @@ from os import path
 from datetime import datetime
 
 from osa import factory
-from file_handler import get_settings_dict, get_base_path
+from file_handler import get_settings_dict, get_base_path, change_selected_file, get_current_date_time_str
 from result import BaseResult
 
 
@@ -19,10 +19,10 @@ class CreateNewFile:
     def do_work(self) -> BaseResult:
         settings = get_settings_dict()
         saving_path = self._get_saving_path(settings)
-        print(saving_path)
+        change_selected_file(saving_path)
         with open(saving_path, "w"):
             pass
-        self.result.msg = f"new file created in {saving_path}"
+        self.result.msg = f"new file created and selected in {saving_path}"
         return self.result
 
     def _get_saving_path(self, settings):
@@ -32,15 +32,9 @@ class CreateNewFile:
 
     def _get_folder_name(self, settings):
         saving_folder = settings["saving_folder"]
-        cur_time = self._get_date_time(settings)
+        cur_time = get_current_date_time_str()
         return saving_folder + "\\" + cur_time + ".csv"
 
-    @staticmethod
-    def _get_date_time(settings):
-        file_name_format = settings["file_name_format"]
-        dateTimeObj = datetime.now()
-        timestampStr = dateTimeObj.strftime(file_name_format)
-        return timestampStr
 
 
 def initialize() -> None:
