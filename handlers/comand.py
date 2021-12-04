@@ -9,14 +9,10 @@ class CommandHandler:
         command_list = self.split_commands(command_str)
         return [command.strip() for command in command_list]
 
-    def split_commands(self, command_str:str) -> List[str]:
+    @staticmethod
+    def split_commands(command_str: str) -> List[str]:
         return command_str.split(";")
 
 
-
 if __name__ == '__main__':
-    valid_commands =["RST", "PLT", "SSI", "CSTAW"]
-    command_str = "RST;BLA;PLT"
-    command_handler = CommandHandler(valid_commands)
-    print(command_handler(command_str))
-
+    pass

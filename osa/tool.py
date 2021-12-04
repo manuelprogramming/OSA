@@ -1,7 +1,7 @@
 """Represents a basic tool."""
 
 from typing import Protocol
-from result import BaseResult
+from handlers.result import BaseResult
 
 
 class BasicTool(Protocol):

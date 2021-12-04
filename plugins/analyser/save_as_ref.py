@@ -4,10 +4,10 @@ from typing import Dict, List
 import numpy as np
 
 from osa import factory
-from result import BaseResult
-from cache_handler import load_only_array_results
-from ref_handler import save_as_ref_data
-from file_handler import get_settings_dict
+from handlers.result import BaseResult
+from handlers.cache import load_only_array_results
+from handlers.ref import save_as_ref_data
+from handlers.file import get_max_length_ref_data
 
 
 @dataclass
@@ -34,7 +34,7 @@ class SaveAsRef:
         return self.result
 
     def _create_ref_dict(self, wavelength: np.array, trace: np.array) -> Dict[str, List[float]]:
-        if len(wavelength) < get_settings_dict()["max_length_ref_data"]:
+        if len(wavelength) < get_max_length_ref_data():
             return {"wavelength_max": list(wavelength),
                     "trace_max": list(trace)}
         else:

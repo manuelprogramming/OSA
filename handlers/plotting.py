@@ -10,9 +10,17 @@ def format_plot(func):
         plt.tight_layout()
         plt.show()
         return func
+
     return func_wrapper
+
+
+def config_matplotlib(debug_mode: bool = None) -> None:
+    if not debug_mode:
+        debug_mode = False
+    plt.style.use("seaborn-whitegrid")
+    if not debug_mode:
+        plt.ion()
 
 
 if __name__ == '__main__':
     x = np.random.random(15)
-    # myfunc(x)

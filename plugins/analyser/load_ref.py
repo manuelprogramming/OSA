@@ -3,8 +3,8 @@ from dataclasses import dataclass
 import numpy as np
 
 from osa import factory
-from result import BaseResult
-from ref_handler import load_ref_data
+from handlers.result import BaseResult
+from handlers.ref import load_ref_data
 
 
 @dataclass

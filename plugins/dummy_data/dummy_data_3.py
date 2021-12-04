@@ -3,8 +3,8 @@ import numpy as np
 import pandas as pd
 
 from osa import factory
-from result import BaseResult
-from file_handler import get_dummy_data_path
+from handlers.result import BaseResult
+from handlers.file import get_dummy_data_path
 
 
 @dataclass

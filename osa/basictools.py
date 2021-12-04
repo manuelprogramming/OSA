@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from result import BaseResult
+from handlers.result import BaseResult
 from osa.anritsu_wrapper import BaseAnritsu, test_anri_connection
 
 

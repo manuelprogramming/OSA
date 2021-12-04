@@ -4,9 +4,9 @@ import pandas as pd
 from os import path
 
 from osa import factory
-from result import BaseResult
-from file_handler import get_selected_file_path, get_settings_dict
-from plotting import format_plot
+from handlers.result import BaseResult
+from handlers.file import get_selected_file_path
+from handlers.plotting import format_plot
 
 
 @dataclass
@@ -59,7 +59,6 @@ class PlotFromFile:
     def _plot_trace_data(file_path):
         df = pd.read_csv(file_path, index_col=0)
         df.plot()
-        # ax.set_ylabel("Intensity [dBm]")
 
 def initialize() -> None:
     factory.register("plot_from_file", PlotFromFile)

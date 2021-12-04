@@ -1,8 +1,8 @@
 """Represents a basic OSA plugin tool."""
 
-from typing import Protocol, Any
+from typing import Protocol
 from osa.anritsu_wrapper import BaseAnritsu, test_anri_connection
-from result import BaseResult
+from handlers.result import BaseResult
 
 
 class BasicOSATool(Protocol):

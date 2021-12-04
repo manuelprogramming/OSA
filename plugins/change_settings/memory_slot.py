@@ -3,8 +3,8 @@ import json
 
 
 from osa import factory
-from result import BaseResult
-from file_handler import get_valid_memory_slots, get_settings_dict, get_settings_path
+from handlers.result import BaseResult
+from handlers.file import get_valid_memory_slots, get_settings_path, get_settings_dict
 
 
 @dataclass

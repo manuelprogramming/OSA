@@ -5,8 +5,8 @@ import numpy as np
 from scipy import signal as sgn
 
 from osa import factory
-from cache_handler import load_only_array_results
-from result import BaseResult
+from handlers.cache import load_only_array_results
+from handlers.result import BaseResult
 
 
 @dataclass

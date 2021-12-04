@@ -5,9 +5,9 @@ import scipy.signal as sgn
 import numpy as np
 
 from osa import factory
-from cache_handler import load_only_array_results
-from result import BaseResult
-from file_handler import get_settings_dict
+from handlers.cache import load_only_array_results
+from handlers.result import BaseResult
+from handlers.file import get_savgol_settings
 
 
 @dataclass
@@ -35,7 +35,7 @@ class SavGol:
         :return filtered_trace: as 1-dim numpy array
         """
         raw_trace = arg[1]
-        savgol_settings = get_settings_dict()["savgol_settings"]
+        savgol_settings = get_savgol_settings()
         self.filtered_reflection = sgn.savgol_filter(raw_trace, savgol_settings["window_size"], savgol_settings["pol_order"])
         return raw_trace
 

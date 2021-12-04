@@ -2,12 +2,11 @@ import numpy as np
 from dataclasses import dataclass
 import matplotlib.pyplot as plt
 from typing import Tuple
-import sys
 
 from osa import factory
-from result import BaseResult
-from cache_handler import load_only_array_results
-from plotting import format_plot
+from handlers.result import BaseResult
+from handlers.cache import load_only_array_results
+from handlers.plotting import format_plot
 
 
 @dataclass

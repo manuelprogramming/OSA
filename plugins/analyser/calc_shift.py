@@ -4,9 +4,9 @@ from typing import Tuple, Dict, List
 import numpy as np
 
 from osa import factory
-from result import BaseResult
-from ref_handler import load_only_max_ref
-from cache_handler import load_only_array_results
+from handlers.result import BaseResult
+from handlers.ref import load_only_max_ref
+from handlers.cache import load_only_array_results
 
 
 @dataclass

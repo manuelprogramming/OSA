@@ -3,9 +3,9 @@
 from dataclasses import dataclass
 from osa import factory
 from osa.anritsu_wrapper import BaseAnritsu, test_anri_connection
-from result import BaseResult
+from handlers.result import BaseResult
 
-from file_handler import get_settings_dict
+from handlers.file import get_start_wavelenght, get_stop_wavelength
 
 
 
@@ -21,9 +21,8 @@ class StartStopWavelength:
 
     @test_anri_connection
     def do_work(self) -> BaseResult:
-        settings = get_settings_dict()
-        start = settings["start_wavelength"]
-        stop = settings["stop_wavelength"]
+        start = get_start_wavelenght()
+        stop = get_stop_wavelength()
         self._set_start_stop_wavelength(start, stop)
         self.result.msg = f"Start Stop Wavelength set to {start}-{stop}"
         return self.result

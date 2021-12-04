@@ -3,8 +3,8 @@ from tkinter.filedialog import askopenfilename
 from tkinter import Tk
 
 from osa import factory
-from result import BaseResult
-from file_handler import get_saving_path, change_selected_file
+from handlers.result import BaseResult
+from handlers.file import get_saving_path, change_selected_file
 
 
 @dataclass

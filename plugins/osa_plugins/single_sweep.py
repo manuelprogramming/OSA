@@ -4,7 +4,7 @@ import sys
 from dataclasses import dataclass
 from osa import factory
 from osa.anritsu_wrapper import BaseAnritsu, test_anri_connection
-from result import BaseResult
+from handlers.result import BaseResult
 
 
 

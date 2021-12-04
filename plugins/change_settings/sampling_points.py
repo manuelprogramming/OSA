@@ -3,8 +3,8 @@ import json
 
 
 from osa import factory
-from file_handler import get_settings_dict, get_settings_path, get_valid_sampling_points
-from result import BaseResult
+from handlers.file import get_settings_path, get_valid_sampling_points, get_settings_dict
+from handlers.result import BaseResult
 
 
 @dataclass

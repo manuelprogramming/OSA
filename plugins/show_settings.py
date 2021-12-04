@@ -1,8 +1,9 @@
 from dataclasses import dataclass
+from json import dumps
 
 from osa import factory
-from result import BaseResult
-from file_handler import get_settings_dict
+from handlers.result import BaseResult
+from handlers.file import get_settings_dict
 
 
 @dataclass
@@ -14,10 +15,15 @@ class ShowSettings:
     result: BaseResult
 
     def do_work(self) -> BaseResult:
-        self.result.msg = "Current Settings:\n" + str(get_settings_dict())
+        settings_str = str(dumps(get_settings_dict(), indent=4))
+        self.result.msg = "Current Settings:\n" + settings_str
         self.result.value = get_settings_dict()
         return self.result
 
 
 def initialize() -> None:
     factory.register("show_settings", ShowSettings)
+
+
+if __name__ == '__main__':
+    pass

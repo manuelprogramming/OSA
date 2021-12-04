@@ -5,9 +5,9 @@ import pandas as pd
 from os import path
 
 from osa import factory
-from result import BaseResult
-from file_handler import get_selected_file_path, get_settings_dict
-from cache_handler import load_only_array_results
+from handlers.result import BaseResult
+from handlers.file import get_selected_file_path, get_max_length_ref_data
+from handlers.cache import load_only_array_results
 
 
 @dataclass
@@ -89,7 +89,7 @@ class SaveData:
 
     @staticmethod
     def _is_points_data(array: np.array) -> bool:
-        return len(array) < get_settings_dict()["max_length_ref_data"]
+        return len(array) < get_max_length_ref_data()
 
     @staticmethod
     def _selected_file_is_points_data(file_path: str) -> bool:
