@@ -14,9 +14,7 @@ def format_plot(func):
     return func_wrapper
 
 
-def config_matplotlib(debug_mode: bool = None) -> None:
-    if not debug_mode:
-        debug_mode = False
+def config_matplotlib(debug_mode: bool) -> None:
     plt.style.use("seaborn-whitegrid")
     if not debug_mode:
         plt.ion()

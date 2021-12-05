@@ -5,7 +5,40 @@ from typing import Dict, Any, List
 from datetime import datetime
 
 
+# Path Getters
+
+
+def get_base_path() -> str:
+    return path.dirname(path.dirname(__file__))
+
+
+def get_saving_path() -> str:
+    return path.join(get_base_path(), get_setting("saving_folder"))
+
+
+def get_selected_file_path() -> str:
+    """
+    returns the selected file path if no filepath is selected returns latest file created in the saving folder
+    """
+    selected_file_name = get_setting("selected_file")
+    if _selected_file_exists(selected_file_name):
+        return selected_file_name
+    latest_file = _find_latest_file_name()
+    if latest_file:
+        return path.join(get_saving_path(), latest_file)
+
+
+def _selected_file_exists(selected_file_name: str) -> bool:
+    return len(selected_file_name) != 0
+
+
+def get_bin_path(file_name: str):
+    full_file_name = "bin/" + file_name
+    return path.join(get_base_path(), full_file_name)
+
+
 # valid settings getters
+
 
 def get_valid_settings_dict() -> dict:
     with open(path.join(get_base_path(), "bin/valid_settings.json"), "r") as f:
@@ -45,37 +78,6 @@ def reset_selected_file() -> None:
     set_setting("selected_file", "")
 
 
-# Path Getters
-
-def get_base_path() -> str:
-    return path.dirname(path.dirname(__file__))
-
-
-def get_saving_path() -> str:
-    return path.join(get_base_path(), get_setting("saving_folder"))
-
-
-def get_selected_file_path() -> str:
-    """
-    returns the selected file path if no filepath is selected returns latest file created in the saving folder
-    """
-    selected_file_name = get_setting("selected_file")
-    if _selected_file_exists(selected_file_name):
-        return selected_file_name
-    latest_file = _find_latest_file_name()
-    if latest_file:
-        return path.join(get_saving_path(), latest_file)
-
-
-def _selected_file_exists(selected_file_name: str) -> bool:
-    return len(selected_file_name) != 0
-
-
-def get_bin_path(file_name: str):
-    full_file_name = "bin/" + file_name
-    return path.join(get_base_path(), full_file_name)
-
-
 # Datetime Functions
 
 def _convert_str_to_datetime(timestampStr: str) -> datetime:
@@ -96,7 +98,7 @@ def get_current_date_time_str() -> str:
 # Some more getters used in the main function
 
 def get_start_text() -> str:
-    with open(path.join(get_base_path(), "bin/start.txt"), "r") as t:
+    with open(get_bin_path("start.txt"), "r") as t:
         return t.read()
 
 
@@ -127,13 +129,6 @@ def _find_latest_file_name() -> str:
         all_files = [_convert_str_to_datetime(f.strip(".csv")) for f in files_in_saving_path if f.endswith(".csv")]
         all_files.sort()
         return _convert_datetime_to_str(all_files[-1]) + ".csv"
-
-
-
-
-
-
-
 
 
 if __name__ == '__main__':

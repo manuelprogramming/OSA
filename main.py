@@ -49,7 +49,7 @@ def main() -> None:
         anri = Anritsu(get_visa_search_term())
     except VisaIOError:
         anri = None  # used for offline mode
-        print("!!!! Couldn't connect to OSA working in offline Mode!!!! \n\n")
+        print("!!!! Couldn't connect to OSA working in offline mode!!!! \n\n")
 
     # show the tools available
     for idx, tool in enumerate(tools):

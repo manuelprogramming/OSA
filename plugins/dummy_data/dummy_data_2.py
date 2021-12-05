@@ -4,7 +4,7 @@ import pandas as pd
 
 from osa import factory
 from handlers.result import BaseResult
-from handlers.file import get_dummy_data_path, get_bin_path
+from handlers.file import get_bin_path
 
 
 @dataclass
