@@ -16,6 +16,11 @@ def get_saving_path() -> str:
     return path.join(get_base_path(), get_setting("saving_folder"))
 
 
+def get_bin_files_path(file_name: str) -> str:
+    full_file_name = "bin/" + file_name
+    return path.join(get_base_path(), full_file_name)
+
+
 def get_selected_file_path() -> str:
     """
     returns the selected file path if no filepath is selected returns latest file created in the saving folder
@@ -32,9 +37,6 @@ def _selected_file_exists(selected_file_name: str) -> bool:
     return len(selected_file_name) != 0
 
 
-def get_bin_path(file_name: str):
-    full_file_name = "bin/" + file_name
-    return path.join(get_base_path(), full_file_name)
 
 
 # valid settings getters
@@ -52,7 +54,7 @@ def get_valid_setting(valid_setting_key: str) -> List[int]:
 # Settings getters
 
 def get_settings_dict() -> Dict[str, Any]:
-    settings_path = get_bin_path("settings.json")
+    settings_path = get_bin_files_path("settings.json")
     with open(settings_path) as file:
         return json.load(file)
 
@@ -64,7 +66,7 @@ def get_setting(setting_key: str) -> Any:
 # Settings setters
 
 def dump_settings_dict(settings: Dict[str, Any]) -> None:
-    with open(get_bin_path("settings.json"), "w", encoding='utf-8') as file:
+    with open(get_bin_files_path("settings.json"), "w", encoding='utf-8') as file:
         json.dump(settings, file, indent=4)
 
 
@@ -98,17 +100,17 @@ def get_current_date_time_str() -> str:
 # Some more getters used in the main function
 
 def get_start_text() -> str:
-    with open(get_bin_path("start.txt"), "r") as t:
+    with open(get_bin_files_path("start.txt"), "r") as t:
         return t.read()
 
 
 def get_visa_search_term() -> str:
-    with open(get_bin_path("visa_search_term.json")) as visa_json:
+    with open(get_bin_files_path("visa_search_term.json")) as visa_json:
         return json.load(visa_json)["visa_search_term"]
 
 
 def get_tools_data_dict() -> dict:
-    with open(get_bin_path("tools_data.json")) as file:
+    with open(get_bin_files_path("tools_data.json")) as file:
         data = json.load(file)
     return data
 

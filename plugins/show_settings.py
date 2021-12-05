@@ -23,7 +23,3 @@ class ShowSettings:
 
 def initialize() -> None:
     factory.register("show_settings", ShowSettings)
-
-
-if __name__ == '__main__':
-    pass

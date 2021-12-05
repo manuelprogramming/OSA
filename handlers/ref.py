@@ -1,15 +1,15 @@
 import json
 from typing import Dict, List
-from handlers.file import get_bin_path
+from handlers.file import get_bin_files_path
 
 
 def save_as_ref_data(ref_dict: Dict[str, List[float]]):
-    with open(get_bin_path("ref.json"), "w") as f:
+    with open(get_bin_files_path("ref.json"), "w") as f:
         json.dump(ref_dict, f, indent=4)
 
 
 def load_ref_data() -> dict:
-    with open(get_bin_path("ref.json"), "r") as f:
+    with open(get_bin_files_path("ref.json"), "r") as f:
         ref_dict = json.load(f)
     return ref_dict
 
