@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from os import path
 
 from osa import factory
-from handlers.file import change_selected_file, get_current_date_time_str, get_saving_path
+from handlers.file import get_current_date_time_str, get_saving_path, set_setting
 from handlers.result import BaseResult
 
 
@@ -17,7 +17,7 @@ class CreateNewFile:
 
     def do_work(self) -> BaseResult:
         saving_path = self._get_saving_path()
-        change_selected_file(saving_path)
+        set_setting("selected_file", saving_path)
         with open(saving_path, "w"):
             pass
         self.result.msg = f"new file created and selected in {saving_path}"

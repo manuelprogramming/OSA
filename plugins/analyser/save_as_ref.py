@@ -7,7 +7,7 @@ from osa import factory
 from handlers.result import BaseResult
 from handlers.cache import load_only_array_results
 from handlers.ref import save_as_ref_data
-from handlers.file import get_max_length_ref_data
+from handlers.file import get_setting
 
 
 @dataclass
@@ -30,17 +30,19 @@ class SaveAsRef:
         ref_dict = self._create_ref_dict(wavelength, trace)
         save_as_ref_data(ref_dict)
 
-        self.result.msg = "saved solution to ref data "
+        self.result.msg = "saved data as ref data "
         self.result.value = (wavelength, trace)
         return self.result
 
-    def _create_ref_dict(self, wavelength: np.array, trace: np.array) -> Dict[str, List[float]]:
-        if len(wavelength) < get_max_length_ref_data():
+    @staticmethod
+    def _create_ref_dict(wavelength: np.array, trace: np.array) -> Dict[str, List[float]]:
+        if len(wavelength) < get_setting("max_length_ref_data"):
             return {"wavelength_max": list(wavelength),
                     "trace_max": list(trace)}
         else:
             return {"wavelength": list(wavelength),
                     "trace": list(trace)}
+
 
 def initialize() -> None:
     factory.register("save_as_ref", SaveAsRef)

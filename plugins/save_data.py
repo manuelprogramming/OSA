@@ -7,7 +7,7 @@ from typing import Tuple
 
 from osa import factory
 from handlers.result import BaseResult
-from handlers.file import get_selected_file_path, get_max_length_ref_data
+from handlers.file import get_setting
 from handlers.cache import load_only_array_results
 
 
@@ -93,7 +93,7 @@ class SaveData:
 
     @staticmethod
     def _is_points_data(array: np.array) -> bool:
-        return len(array) < get_max_length_ref_data()
+        return len(array) < get_setting("max_length_ref_data")
 
     @staticmethod
     def _selected_file_is_points_data(file_path: str) -> bool:

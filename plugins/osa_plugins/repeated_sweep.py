@@ -6,7 +6,7 @@ from matplotlib.animation import FuncAnimation
 from osa.anritsu_wrapper import BaseAnritsu, test_anri_connection
 from handlers.result import BaseResult
 from osa import factory
-from handlers.file import get_memory_slot
+from handlers.file import get_setting
 
 
 @dataclass
@@ -41,7 +41,7 @@ class RepeatedSweep:
         return wavelength
 
     def _get_data(self, i, wavelength) -> None:
-        memory_slot = get_memory_slot() + "?"
+        memory_slot = get_setting("memory_slot") + "?"
 
         trace = self.anri.query(memory_slot)  # getting trace Data
         trace = np.array([float(x) for x in trace.split()])

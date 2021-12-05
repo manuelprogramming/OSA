@@ -6,7 +6,7 @@ from pyvisa.errors import VisaIOError
 from osa.anritsu_wrapper import Anritsu
 from osa import factory, loader
 from osa.basictools import Identify, ClearRegisters, StandardEventStatusRegister
-from handlers.file import get_data_tools_dict, get_visa_search_term, get_start_text, reset_selected_file
+from handlers.file import get_tools_data_dict, get_visa_search_term, get_start_text, reset_selected_file
 from handlers.cache import save_to_cache
 from handlers.result import Result, get_result_types_dict
 from handlers.comand import CommandHandler
@@ -26,7 +26,7 @@ def main() -> None:
     factory.register("standard_event_status_register", StandardEventStatusRegister)
 
     # read bin from a tools_data.json file
-    data = get_data_tools_dict()
+    data = get_tools_data_dict()
 
     # load plugins
     loader.load_plugins(data["plugins"])

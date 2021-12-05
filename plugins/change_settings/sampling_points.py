@@ -1,9 +1,7 @@
 from dataclasses import dataclass
-import json
-
 
 from osa import factory
-from handlers.file import get_settings_path, get_valid_sampling_points, get_settings_dict
+from handlers.file import get_valid_setting, set_setting
 from handlers.result import BaseResult
 
 
@@ -16,18 +14,15 @@ class ChangeSamplingPoints:
     result: BaseResult
 
     def do_work(self) -> BaseResult:
-        settings = get_settings_dict()
         sampling_points = self._ask_sampling_points()
-        self._change_sampling_points(sampling_points, settings)
+        self._change_sampling_points(sampling_points)
         return self.result
 
-    def _change_sampling_points(self, sampling_points: int, settings: dict) -> None:
-        if sampling_points not in get_valid_sampling_points():
+    def _change_sampling_points(self, sampling_points: int) -> None:
+        if sampling_points not in get_valid_setting("sampling_points"):
             self._fail_result(sampling_points)
         else:
-            settings["sampling_points"] = sampling_points
-            with open(get_settings_path(), "w", encoding='utf-8') as file:
-                json.dump(settings, file, indent=4)
+            set_setting("sampling_points", sampling_points)
             self._success_result(sampling_points)
 
     def _success_result(self, sampling_points) -> None:
@@ -38,11 +33,9 @@ class ChangeSamplingPoints:
         self.result.msg = f"number of sampling points invalid '{sampling_points}'"
         self.result.value = sampling_points
 
-
     @staticmethod
     def _ask_sampling_points() -> int or str:
-        print("#### How many sampling points? {51|101|251|501|1001|2001|5001|10001|20001|50001}")
-        ans = input()
+        ans = input("#### How many sampling points? {51|101|251|501|1001|2001|5001|10001|20001|50001}\n")
         try:
             return int(ans)
         except ValueError:

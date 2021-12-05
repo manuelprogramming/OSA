@@ -4,7 +4,7 @@ from tkinter import Tk
 
 from osa import factory
 from handlers.result import BaseResult
-from handlers.file import get_saving_path, change_selected_file
+from handlers.file import get_saving_path, set_setting
 
 
 @dataclass
@@ -30,7 +30,7 @@ class SelectFile:
         saving_path = get_saving_path()
         filename = askopenfilename(filetypes=file_type_filter, initialdir=saving_path)
 
-        change_selected_file(filename)
+        set_setting("selected_file", filename)
         root.destroy()
 
         self.result.value = filename

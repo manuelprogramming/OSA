@@ -3,13 +3,13 @@ import numpy as np
 from typing import Tuple, Dict, Any
 
 from handlers.result import get_result_types_dict, ResultType, BaseResult
-from handlers.file import get_cache_path
+from handlers.file import get_bin_path
 
 
 def save_to_cache(res: BaseResult) -> None:
     res_type = res.result_type
     cache_dict = {str(res_type): format_result(res, res_type)}
-    with open(get_cache_path(), "w") as f:
+    with open(get_bin_path("cache.json"), "w") as f:
         json.dump(cache_dict, f, indent=4)
 
 
@@ -30,7 +30,7 @@ def load_from_cache() -> Any:
 
 
 def get_cache_dict() -> Dict[str, Any]:
-    with open(get_cache_path(), "r") as f:
+    with open(get_bin_path("cache.json"), "r") as f:
         return json.load(f)
 
 

@@ -1,10 +1,8 @@
 from dataclasses import dataclass
-import json
-
 
 from osa import factory
 from handlers.result import BaseResult
-from handlers.file import get_valid_memory_slots, get_settings_path, get_settings_dict
+from handlers.file import set_setting, get_valid_setting
 
 
 @dataclass
@@ -16,18 +14,15 @@ class ChangeMemorySlot:
     result: BaseResult
 
     def do_work(self) -> BaseResult:
-        settings = get_settings_dict()
         memory_slot = self.ask_memory_slot()
-        self._change_memory_slot(memory_slot, settings)
+        self._change_memory_slot(memory_slot)
         return self.result
 
-    def _change_memory_slot(self, memory_slot, settings) -> None:
-        if memory_slot not in get_valid_memory_slots():
+    def _change_memory_slot(self, memory_slot) -> None:
+        if memory_slot not in get_valid_setting("memory_slots"):
             self._fail_result(memory_slot)
         else:
-            settings["memory_slot"] = memory_slot
-            with open(get_settings_path(), "w", encoding='utf-8') as file:
-                json.dump(settings, file, indent=4)
+            set_setting("memory_slot", memory_slot)
             self._success_result(memory_slot)
 
     def _success_result(self, memory_slot:str) -> None:
@@ -36,13 +31,12 @@ class ChangeMemorySlot:
 
     def _fail_result(self, memory_slot: str) -> None:
         self.result.msg = f"Memory slot not valid '{memory_slot}' \n" \
-                          f"Valid memory slots: {get_valid_memory_slots()}"
+                          f"Valid memory slots: {get_valid_setting('memory_slots')}"
         self.result.value = memory_slot
 
     @staticmethod
     def ask_memory_slot() -> int or str:
-        print("#### Specify The Memory Slot. Valid Slots are", get_valid_memory_slots())
-        return input()
+        return input(f"#### Specify The Memory Slot. Valid Slots are {get_valid_setting('memory_slots')}\n")
 
 
 def initialize() -> None:

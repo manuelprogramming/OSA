@@ -1,15 +1,15 @@
 import json
 from typing import Dict, List
-from handlers.file import get_ref_path
+from handlers.file import get_bin_path
 
 
 def save_as_ref_data(ref_dict: Dict[str, List[float]]):
-    with open(get_ref_path(), "w") as f:
+    with open(get_bin_path("ref.json"), "w") as f:
         json.dump(ref_dict, f, indent=4)
 
 
 def load_ref_data() -> dict:
-    with open(get_ref_path(), "r") as f:
+    with open(get_bin_path("ref.json"), "r") as f:
         ref_dict = json.load(f)
     return ref_dict
 
@@ -21,5 +21,5 @@ def load_only_max_ref() -> dict:
 
 
 if __name__ == '__main__':
-    ref_dict = load_ref_data()
-    print([value for value in ref_dict.values()])
+    ref_dict1 = load_ref_data()
+    print([value for value in ref_dict1.values()])

@@ -5,134 +5,44 @@ from typing import Dict, Any, List
 from datetime import datetime
 
 
-def create_new_folder(folder_name: str) -> bool:
-    try:
-        mkdir(path.join(get_base_path(), folder_name))
-        return True
-    except FileExistsError:
-        return False
-
-
-def get_start_text() -> str:
-    with open(path.join(get_base_path(), "bin/start.txt"), "r") as t:
-        return t.read()
-
-
-def get_visa_search_term() -> str:
-    base_path = get_base_path()
-    visa_path = path.join(base_path, "bin/visa_search_term.json")
-    with open(visa_path) as visa_json:
-        return json.load(visa_json)["visa_search_term"]
-
-
-def find_all_timestampStrs() -> List[str]:
-    saving_path = get_saving_path()
-    timestampStrs = [f[:-4] for f in listdir(saving_path) if f.endswith(".csv")]
-    return timestampStrs
-
-
-def find_latest_file_name() -> str:
-    files_in_saving_path = listdir(get_saving_path())
-    if files_in_saving_path:
-        all_files = [_convert_str_to_datetime(f.strip(".csv")) for f in files_in_saving_path if f.endswith(".csv")]
-        all_files.sort()
-        return _convert_datetime_to_str(all_files[-1]) + ".csv"
-
-
-def change_selected_file(file_path: str) -> None:
-    settings = get_settings_dict()
-    settings["selected_file"] = file_path
-    with open(get_settings_path(), "w", encoding='utf-8') as file:
-        json.dump(settings, file, indent=4)
-
-
-def reset_selected_file() -> None:
-    change_selected_file("")
-
-
-def _selected_file_exists(selected_file_name: str) -> bool:
-    return len(selected_file_name) != 0
-
-
-def get_data_tools_dict() -> dict:
-    data_path = path.join(get_base_path(), "bin/tools_data.json")
-    with open(data_path) as file:
-        data = json.load(file)
-    return data
-
-
-def _convert_str_to_datetime(timestampStr: str) -> datetime:
-    dt_format = get_file_name_format()
-    return datetime.strptime(timestampStr, dt_format)
-
-
-def _convert_datetime_to_str(dateTimeObj: datetime) -> str:
-    return dateTimeObj.strftime(get_file_name_format())
-
-
-def get_current_date_time_str() ->str:
-    dateTimeObj = datetime.now()
-    timestampStr = _convert_datetime_to_str(dateTimeObj)
-    return timestampStr
-
-
-# valid Settings Getter
+# valid settings getters
 
 def get_valid_settings_dict() -> dict:
     with open(path.join(get_base_path(), "bin/valid_settings.json"), "r") as f:
         return json.load(f)
 
 
-def get_valid_sampling_points() -> List[int]:
-    return get_valid_settings_dict()["sampling_points"]
+def get_valid_setting(valid_setting_key: str) -> List[int]:
+    return get_valid_settings_dict()[valid_setting_key]
 
 
-def get_valid_memory_slots() -> List[str]:
-    return get_valid_settings_dict()["memory_slots"]
-
-
-# Settings Getters
+# Settings getters
 
 def get_settings_dict() -> Dict[str, Any]:
-    settings_path = get_settings_path()
+    settings_path = get_bin_path("settings.json")
     with open(settings_path) as file:
         return json.load(file)
 
 
-def get_sampling_points() -> int:
-    return get_settings_dict()["sampling_points"]
+def get_setting(setting_key: str) -> Any:
+    return get_settings_dict()[setting_key]
 
 
-def get_start_wavelength() -> float:
-    return get_settings_dict()["start_wavelength"]
+# Settings setters
+
+def dump_settings_dict(settings: Dict[str, Any]) -> None:
+    with open(get_bin_path("settings.json"), "w", encoding='utf-8') as file:
+        json.dump(settings, file, indent=4)
 
 
-def get_stop_wavelength() -> float:
-    return get_settings_dict()["stop_wavelength"]
+def set_setting(setting_key: str, setting_value: Any) -> None:
+    settings = get_settings_dict()
+    settings[setting_key] = setting_value
+    dump_settings_dict(settings)
 
 
-def get_memory_slot() -> str:
-    return get_settings_dict()["memory_slot"]
-
-
-def get_selected_file() -> str:
-    return get_settings_dict()["selected_file"]
-
-
-def get_file_name_format() -> str:
-    return get_settings_dict()["file_name_format"]
-
-
-def get_saving_folder() -> str:
-    return get_settings_dict()["saving_folder"]
-
-
-def get_max_length_ref_data() -> int:
-    return get_settings_dict()["max_length_ref_data"]
-
-
-def get_savgol_settings() -> Dict[str, int]:
-    return get_settings_dict()["savgol_settings"]
+def reset_selected_file() -> None:
+    set_setting("selected_file", "")
 
 
 # Path Getters
@@ -142,44 +52,89 @@ def get_base_path() -> str:
 
 
 def get_saving_path() -> str:
-    base_path = get_base_path()
-    saving_folder = get_saving_folder()
-    saving_path = path.join(base_path, saving_folder)
-    return saving_path
+    return path.join(get_base_path(), get_setting("saving_folder"))
 
 
 def get_selected_file_path() -> str:
-    """ returns the selected file path if no filepath is selected returns latest file
     """
-    selected_file_name = get_selected_file()
+    returns the selected file path if no filepath is selected returns latest file created in the saving folder
+    """
+    selected_file_name = get_setting("selected_file")
     if _selected_file_exists(selected_file_name):
         return selected_file_name
-    latest_file = find_latest_file_name()
+    latest_file = _find_latest_file_name()
     if latest_file:
         return path.join(get_saving_path(), latest_file)
 
 
-def get_settings_path() -> str:
-    base_path = get_base_path()
-    return path.join(base_path, "bin/settings.json")
+def _selected_file_exists(selected_file_name: str) -> bool:
+    return len(selected_file_name) != 0
 
 
-def get_dummy_data_path() -> str:
-    base_path = get_base_path()
-    return path.join(base_path, "bin/dummy.csv")
+def get_bin_path(file_name: str):
+    full_file_name = "bin/" + file_name
+    return path.join(get_base_path(), full_file_name)
 
 
-def get_cache_path() -> str:
-    base_path = get_base_path()
-    return path.join(base_path, "bin/cache.json")
+# Datetime Functions
+
+def _convert_str_to_datetime(timestampStr: str) -> datetime:
+    dt_format = get_setting("file_name_format")
+    return datetime.strptime(timestampStr, dt_format)
 
 
-def get_ref_path() -> str:
-    base_path = get_base_path()
-    return path.join(base_path, "bin/ref.json")
+def _convert_datetime_to_str(dateTimeObj: datetime) -> str:
+    return dateTimeObj.strftime(get_setting("file_name_format"))
+
+
+def get_current_date_time_str() -> str:
+    dateTimeObj = datetime.now()
+    timestampStr = _convert_datetime_to_str(dateTimeObj)
+    return timestampStr
+
+
+# Some more getters used in the main function
+
+def get_start_text() -> str:
+    with open(path.join(get_base_path(), "bin/start.txt"), "r") as t:
+        return t.read()
+
+
+def get_visa_search_term() -> str:
+    with open(get_bin_path("visa_search_term.json")) as visa_json:
+        return json.load(visa_json)["visa_search_term"]
+
+
+def get_tools_data_dict() -> dict:
+    with open(get_bin_path("tools_data.json")) as file:
+        data = json.load(file)
+    return data
+
+
+# Other
+
+def create_new_folder(folder_name: str) -> bool:
+    try:
+        mkdir(path.join(get_base_path(), folder_name))
+        return True
+    except FileExistsError:
+        return False
+
+
+def _find_latest_file_name() -> str:
+    files_in_saving_path = listdir(get_saving_path())
+    if files_in_saving_path:
+        all_files = [_convert_str_to_datetime(f.strip(".csv")) for f in files_in_saving_path if f.endswith(".csv")]
+        all_files.sort()
+        return _convert_datetime_to_str(all_files[-1]) + ".csv"
+
+
+
+
+
 
 
 
 
 if __name__ == '__main__':
-    print(find_latest_file_name())
+    print(get_visa_search_term())

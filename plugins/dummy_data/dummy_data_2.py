@@ -4,7 +4,7 @@ import pandas as pd
 
 from osa import factory
 from handlers.result import BaseResult
-from handlers.file import get_dummy_data_path
+from handlers.file import get_dummy_data_path, get_bin_path
 
 
 @dataclass
@@ -16,7 +16,7 @@ class DummyData2:
     result: BaseResult
 
     def do_work(self) -> BaseResult:
-        data = pd.read_csv(get_dummy_data_path(), index_col=0)
+        data = pd.read_csv(get_bin_path("dummy.csv"), index_col=0)
         wavelength = np.array(data.index)
         trace = np.array(data.iloc[:, 0])
 

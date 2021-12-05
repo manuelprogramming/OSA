@@ -5,7 +5,7 @@ from typing import Tuple
 from osa.anritsu_wrapper import BaseAnritsu, test_anri_connection
 from handlers.result import BaseResult
 from osa import factory
-from handlers.file import get_memory_slot
+from handlers.file import get_setting
 
 
 @dataclass
@@ -19,7 +19,7 @@ class GetData:
 
     @test_anri_connection
     def do_work(self) -> BaseResult:
-        memory_slot = get_memory_slot() + "?"
+        memory_slot = get_setting("memory_slot") + "?"
         self._get_data(memory_slot)
         return self.result
 
