@@ -7,6 +7,7 @@ from osa import factory
 from handlers.result import BaseResult
 from handlers.cache import load_only_array_results
 from handlers.plotting import format_plot
+from handlers.file import get_setting
 
 
 @dataclass
@@ -45,7 +46,7 @@ class Plot:
 
     @staticmethod
     def _get_plot_fmt(trace: np.array) -> str:
-        if len(trace) <= 5:
+        if len(trace) <= get_setting("max_length_ref_data"):
             return "o"
         else:
             return "-"

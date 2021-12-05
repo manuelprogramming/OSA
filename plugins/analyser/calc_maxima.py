@@ -45,8 +45,7 @@ class CalcMaxima:
         max_list_bool = sum(
             [np.where(trace == max_reflection, 1, 0) for max_reflection in
              max_reflections])
-        max_list_bool = np.where(max_list_bool == 1, True, False)
-        return max_list_bool
+        return np.where(max_list_bool == 1, True, False)
 
     def _success_result(self) -> None:
         self.result.msg = f"maxima calculated and saved to cache\n" \
@@ -54,18 +53,6 @@ class CalcMaxima:
 
     def _fail_result(self):
         self.result.msg = "retrieve Data before calculating maxima"
-
-    @staticmethod
-    def _cut_data(array: np.array, num_cut: int = 10) -> np.array:
-        """
-        used to cut the data for the moving average filter
-        :param array: 1-Dim numpy array what should be cutted
-        :param num_cut: the number of datapoints to cut off
-        :return: the cutted array
-        """
-        c = num_cut // 2
-        array = array[c:-c]
-        return array
 
 
 def initialize():
