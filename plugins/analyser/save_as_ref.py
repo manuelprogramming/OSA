@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Dict, List
+from typing import Dict, List, Tuple
 
 import numpy as np
 
@@ -21,9 +21,10 @@ class SaveAsRef:
     result: BaseResult
 
     def do_work(self) -> BaseResult:
-        array_result = load_only_array_results()
+        array_result: Tuple[np.array, np.array] = load_only_array_results()
         if not array_result:
             self.result.msg = "retrieve data before saving it as reference"
+            return self.result
 
         wavelength, trace = array_result
         ref_dict = self._create_ref_dict(wavelength, trace)

@@ -5,7 +5,7 @@ from osa import factory
 from osa.anritsu_wrapper import BaseAnritsu, test_anri_connection
 from handlers.result import BaseResult
 
-from handlers.file import get_start_wavelenght, get_stop_wavelength
+from handlers.file import get_start_wavelength, get_stop_wavelength
 
 
 
@@ -21,7 +21,7 @@ class StartStopWavelength:
 
     @test_anri_connection
     def do_work(self) -> BaseResult:
-        start = get_start_wavelenght()
+        start = get_start_wavelength()
         stop = get_stop_wavelength()
         self._set_start_stop_wavelength(start, stop)
         self.result.msg = f"Start Stop Wavelength set to {start}-{stop}"

@@ -32,9 +32,9 @@ def find_all_timestampStrs() -> List[str]:
 
 
 def find_latest_file_name() -> str:
-    saving_path = get_saving_path()
-    if listdir(saving_path):
-        all_files = [_convert_str_to_datetime(f.strip(".csv")) for f in listdir(saving_path) if f.endswith(".csv")]
+    files_in_saving_path = listdir(get_saving_path())
+    if files_in_saving_path:
+        all_files = [_convert_str_to_datetime(f.strip(".csv")) for f in files_in_saving_path if f.endswith(".csv")]
         all_files.sort()
         return _convert_datetime_to_str(all_files[-1]) + ".csv"
 
@@ -50,11 +50,11 @@ def reset_selected_file() -> None:
     change_selected_file("")
 
 
-def _selected_file(selected_file_name: str) -> bool:
+def _selected_file_exists(selected_file_name: str) -> bool:
     return len(selected_file_name) != 0
 
 
-def get_data_tools_dict() -> json:
+def get_data_tools_dict() -> dict:
     data_path = path.join(get_base_path(), "bin/tools_data.json")
     with open(data_path) as file:
         data = json.load(file)
@@ -70,11 +70,13 @@ def _convert_datetime_to_str(dateTimeObj: datetime) -> str:
     return dateTimeObj.strftime(get_file_name_format())
 
 
-def get_current_date_time_str():
+def get_current_date_time_str() ->str:
     dateTimeObj = datetime.now()
     timestampStr = _convert_datetime_to_str(dateTimeObj)
     return timestampStr
 
+
+# valid Settings Getter
 
 def get_valid_settings_dict() -> dict:
     with open(path.join(get_base_path(), "bin/valid_settings.json"), "r") as f:
@@ -101,7 +103,7 @@ def get_sampling_points() -> int:
     return get_settings_dict()["sampling_points"]
 
 
-def get_start_wavelenght() -> float:
+def get_start_wavelength() -> float:
     return get_settings_dict()["start_wavelength"]
 
 
@@ -132,8 +134,8 @@ def get_max_length_ref_data() -> int:
 def get_savgol_settings() -> Dict[str, int]:
     return get_settings_dict()["savgol_settings"]
 
-# Path functions
 
+# Path Getters
 
 def get_base_path() -> str:
     return path.dirname(path.dirname(__file__))
@@ -149,13 +151,12 @@ def get_saving_path() -> str:
 def get_selected_file_path() -> str:
     """ returns the selected file path if no filepath is selected returns latest file
     """
-    saving_path = get_saving_path()
     selected_file_name = get_selected_file()
-    if _selected_file(selected_file_name):
+    if _selected_file_exists(selected_file_name):
         return selected_file_name
     latest_file = find_latest_file_name()
     if latest_file:
-        return path.join(saving_path, latest_file)
+        return path.join(get_saving_path(), latest_file)
 
 
 def get_settings_path() -> str:
@@ -181,4 +182,4 @@ def get_ref_path() -> str:
 
 
 if __name__ == '__main__':
-    print(get_saving_path())
+    print(find_latest_file_name())

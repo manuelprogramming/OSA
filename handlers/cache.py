@@ -1,7 +1,7 @@
 import json
-from typing import Any
 import numpy as np
-from typing import Tuple, Dict
+from typing import Tuple, Dict, Any
+
 from handlers.result import get_result_types_dict, ResultType, BaseResult
 from handlers.file import get_cache_path
 

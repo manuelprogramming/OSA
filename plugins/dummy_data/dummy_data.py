@@ -4,7 +4,7 @@ import numpy as np
 
 from osa import factory
 from handlers.result import BaseResult
-from handlers.file import get_sampling_points, get_start_wavelenght, get_stop_wavelength
+from handlers.file import get_sampling_points, get_start_wavelength, get_stop_wavelength
 
 
 @dataclass
@@ -17,7 +17,7 @@ class DummyData1:
 
     def do_work(self) -> BaseResult:
         sampling_points = get_sampling_points()
-        start_wave = get_start_wavelenght()
+        start_wave = get_start_wavelength()
         stop_wave = get_stop_wavelength()
         wave_length = np.linspace(start_wave, stop_wave, sampling_points)
         trace = np.random.random_sample(sampling_points)-50

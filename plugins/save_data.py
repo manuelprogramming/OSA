@@ -3,6 +3,7 @@ from dataclasses import dataclass
 import numpy as np
 import pandas as pd
 from os import path
+from typing import Tuple
 
 from osa import factory
 from handlers.result import BaseResult
@@ -19,28 +20,26 @@ class SaveData:
     result: BaseResult
 
     def do_work(self) -> BaseResult:
-        array_results = load_only_array_results()
+        array_results: Tuple[np.array, np.array] = load_only_array_results()
         if not array_results:
             self._fail_result_no_data()
             return self.result
         file_path = get_selected_file_path()
         if not file_path:
             self._fail_result_no_file()
-        elif path.getsize(file_path) == 0:
+        elif self._file_is_empty(file_path):
             self._save_data(file_path, array_results)
+            self._success_result()
         else:
             self._append_and_save_data(file_path, array_results)
         return self.result
 
     def _save_data(self, file_path: str, array_results: tuple) -> None:
         wavelength, trace = array_results
-
         if self._is_points_data(wavelength):
             self._save_as_points_data(file_path, wavelength, trace)
         else:
             self._save_as_trace_data(file_path, wavelength, trace)
-
-        self._success_result()
 
     def _append_and_save_data(self, file_path: str, array_result: tuple) -> None:
         wavelength, trace = array_result
@@ -84,7 +83,12 @@ class SaveData:
         df.index.names = ["bending_radius", "wavelength [nm]"]
         return df
 
-    def _length_matches(self, df: pd.DataFrame, trace:np.array) -> bool:
+    @staticmethod
+    def _file_is_empty(file_path: str) -> bool:
+        return path.getsize(file_path) == 0
+
+    @staticmethod
+    def _length_matches(df: pd.DataFrame, trace:np.array) -> bool:
         return len(df) == len(trace)
 
     @staticmethod
@@ -112,8 +116,7 @@ class SaveData:
 
     @staticmethod
     def _ask_column_name() -> str:
-        print("#### Column Name? (eg. bending radius: '6.25_up')")
-        return input()
+        return input("#### Column Name? (eg. bending radius: '6.25_up')\n")
 
 
 def initialize() -> None:

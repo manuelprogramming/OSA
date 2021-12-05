@@ -18,8 +18,7 @@ def main() -> None:
     reset_selected_file()
 
     # config matplotlib
-    debug_mode = True
-    config_matplotlib(debug_mode)
+    config_matplotlib(debug_mode=False)
 
     # register a couple of BasicTools
     factory.register("identify", Identify)
@@ -65,8 +64,8 @@ def main() -> None:
     # main program loop
     running = True
     while running:
-        print("\n\n#### Send Command:\n")
-        command_list: list = command_handler(input())
+        ans = input("\n\n#### Send Command:\n\n")
+        command_list: list = command_handler(ans)
         for command in command_list:
             if command == "exit":
                 running = False

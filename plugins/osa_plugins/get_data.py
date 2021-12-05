@@ -8,7 +8,6 @@ from osa import factory
 from handlers.file import get_memory_slot
 
 
-
 @dataclass
 class GetData:
     """
@@ -24,7 +23,7 @@ class GetData:
         self._get_data(memory_slot)
         return self.result
 
-    def _get_data(self, memory_slot: str = "DMB?") -> None:
+    def _get_data(self, memory_slot: str) -> None:
         """
         gets the trace data from current memory_slot and wavelength of current measurement
         Returns: wavelength and trace bin from given Memory

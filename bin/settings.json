@@ -1,5 +1,5 @@
 {
-    "sampling_points": 251,
+    "sampling_points": 501,
     "start_wavelength": 1420.0,
     "stop_wavelength": 1500.0,
     "memory_slot": "DMA",
