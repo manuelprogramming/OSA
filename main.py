@@ -54,8 +54,8 @@ def main() -> None:
     # show the tools available
     for idx, tool in enumerate(tools):
         if hasattr(tool, "anri"):
-            tool.anri = anri            # apply the anritsu class to the plugins who need that
-        tool.result = Result(result_type=result_types[idx])
+            tool.anri = anri            # assign the anritsu class to the plugins who need that
+        tool.result = Result(result_type=result_types[idx])  # assign the result types
         print("####", tool, end="\t\n\n")
 
     # Create Command Handler Instants
