@@ -5,7 +5,6 @@
     "plugins.osa_plugins.get_data",
     "plugins.osa_plugins.set_sampling_points",
     "plugins.osa_plugins.repeated_sweep",
-    "plugins.close_app",
     "plugins.show_settings",
     "plugins.plot",
     "plugins.save_data",
@@ -51,6 +50,12 @@
       "anri": null
     },
     {
+      "name": "close_app",
+      "command": "EXIT",
+      "result": null,
+      "result_type": "ResultType.noneResult"
+    },
+    {
       "name": "single_sweep",
       "command": "SSI",
       "result": null,
@@ -91,12 +96,6 @@
       "result": null,
       "result_type": "ResultType.noneResult",
       "anri": null
-    },
-    {
-      "name": "close_app",
-      "command": "EXIT",
-      "result": null,
-      "result_type": "ResultType.noneResult"
     },
     {
       "name": "show_settings",

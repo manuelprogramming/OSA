@@ -1,6 +1,8 @@
 from dataclasses import dataclass
 from handlers.result import BaseResult
 from osa.anritsu_wrapper import BaseAnritsu, test_anri_connection
+import sys
+from handlers.file import reset_selected_file
 
 
 @dataclass
@@ -60,3 +62,18 @@ class Identify:
 
     def _identify(self):
         return self.anri.query('*IDN?')
+
+
+@dataclass
+class CloseApp:
+    """
+    Closes the Application
+    """
+    command: str
+    result: BaseResult
+
+
+    def do_work(self) -> BaseResult or None:
+        reset_selected_file()
+        print("Shutting down...")
+        sys.exit(0)
