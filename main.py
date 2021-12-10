@@ -18,7 +18,7 @@ def main() -> None:
     reset_selected_file()
 
     # config matplotlib
-    config_matplotlib(debug_mode=True)
+    config_matplotlib(debug_mode=False)
 
     # register a couple of BasicTools
     factory.register("identify", Identify)
