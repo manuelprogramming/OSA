@@ -6,6 +6,7 @@ This is a work related student Project at HOT – Hannoversches Zentrum für Opt
 
 
 ## Tech/framework used
+This System was developed for Windows 10. For Linux and Mac OS some adjustements may be made.
 Tech:<br>
 -python 3.9, <br> 
 -pip 21.1.2, <br>
