@@ -37,8 +37,6 @@ def _selected_file_exists(selected_file_name: str) -> bool:
     return len(selected_file_name) != 0
 
 
-
-
 # valid settings getters
 
 
@@ -130,7 +128,8 @@ def _find_latest_file_name() -> str:
     if files_in_saving_path:
         all_files = [_convert_str_to_datetime(f.strip(".csv")) for f in files_in_saving_path if f.endswith(".csv")]
         all_files.sort()
-        return _convert_datetime_to_str(all_files[-1]) + ".csv"
+        if all_files:
+            return _convert_datetime_to_str(all_files[-1]) + ".csv"
 
 
 if __name__ == '__main__':

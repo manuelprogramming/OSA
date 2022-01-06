@@ -1,6 +1,9 @@
 from dataclasses import dataclass
+
+
 from tkinter.filedialog import askopenfilename
 from tkinter import Tk
+
 
 from osa import factory
 from handlers.result import BaseResult

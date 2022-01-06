@@ -7,7 +7,7 @@ from typing import Tuple
 
 from osa import factory
 from handlers.result import BaseResult
-from handlers.file import get_setting
+from handlers.file import get_setting, get_selected_file_path
 from handlers.cache import load_only_array_results
 
 
@@ -112,7 +112,7 @@ class SaveData:
                           f"selected file:{len_df}, data sample points appended: {len_trace}"
 
     def _fail_result_no_file(self) -> None:
-        self.result.msg = "no file in directory use CreateNewFile ('CNF') command to create a new file"
+        self.result.msg = "no csv-file in directory use CreateNewFile ('CNF') command to create a new file"
 
     @staticmethod
     def _ask_column_name() -> str:
