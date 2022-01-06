@@ -1,5 +1,6 @@
+git reset --hard
 git pull https://github.com/manuelprogramming/OSA
 
-install_frameworks.bat
+pip install requirements.txt
 
 cmd
