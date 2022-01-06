@@ -9,7 +9,7 @@ from osa.basictools import Identify, ClearRegisters, StandardEventStatusRegister
 from handlers.file import get_tools_data_dict, get_visa_search_term, get_start_text, reset_selected_file
 from handlers.cache import save_to_cache
 from handlers.result import Result, get_result_types_dict
-from handlers.comand import CommandHandler
+from handlers.command import CommandHandler
 from handlers.plotting import config_matplotlib
 
 
@@ -60,13 +60,13 @@ def main() -> None:
         print("####", tool, end="\t\n\n")
 
     # Create Command Handler Instants
-    command_handler = CommandHandler(tool_commands)
+    command_handler = CommandHandler(toolbox)
 
     # main program loop
     running = True
     while running:
-        ans = input("\n\n#### Send Command:\n\n")
-        command_list: list = command_handler(ans)
+        ans: str = input("\n\n#### Send Command:\n\n")
+        command_list: list = command_handler.split(ans)
         for command in command_list:
             if command == "exit":
                 running = False

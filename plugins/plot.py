@@ -28,7 +28,7 @@ class Plot:
             self._fail_result_wrong_length(wavelength, trace)
             return self.result
 
-        plot_format = self._get_plot_fmt(trace)
+        plot_format: str = self._get_plot_fmt(trace)
         self._plot(wavelength, trace, plot_format)
 
         self.result.msg = "data plotted"
@@ -37,7 +37,7 @@ class Plot:
 
     @staticmethod
     @format_plot
-    def _plot(wavelength: np.array, trace: np.array, plot_format: np.array) -> None:
+    def _plot(wavelength: np.array, trace: np.array, plot_format: str) -> None:
         plt.plot(wavelength, trace, plot_format)
 
     @staticmethod
