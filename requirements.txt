@@ -1,0 +1,6 @@
+pyvisa
+numpy
+scipy
+matplotlib
+pandas
+tk
