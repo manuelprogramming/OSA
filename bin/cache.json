@@ -1,14 +1,3 @@
 {
-    "ResultType.arrayResult": [
-        [
-            1437.774,
-            1467.618,
-            1493.95
-        ],
-        [
-            -72.43100000000001,
-            -72.19200000000001,
-            -72.36200000000001
-        ]
-    ]
+    "ResultType.noneResult": "data saved successfully"
 }

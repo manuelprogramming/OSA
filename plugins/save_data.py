@@ -24,7 +24,11 @@ class SaveData:
         if not array_results:
             self._fail_result_no_data()
             return self.result
-        file_path = get_selected_file_path()
+        try:
+            file_path = get_selected_file_path()
+        except FileNotFoundError:
+            self._fail_result_no_dir()
+            return self.result
         if not file_path:
             self._fail_result_no_file()
         elif self._file_is_empty(file_path):
@@ -105,6 +109,9 @@ class SaveData:
 
     def _fail_result_no_data(self) -> None:
         self.result.msg = "retrieve Data before plotting"
+
+    def _fail_result_no_dir(self):
+        self.result.msg = f"The system coudn't find the saving_folder: {get_setting('saving_folder')}"
 
     def _fail_result_no_match(self, len_df: int, len_trace: int) -> None:
         self.result.msg = "for appending data to a selected file they both must be points or trace data\n" \

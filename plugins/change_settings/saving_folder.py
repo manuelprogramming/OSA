@@ -16,7 +16,8 @@ class ChangeSavingFolder:
 
     def do_work(self) -> BaseResult:
         folder_name = self.ask_saving_folder_name()
-        if get_setting("saving_folder") == folder_name:
+        saving_folder = get_setting("saving_folder")
+        if saving_folder == folder_name and create_new_folder(saving_folder):
             self._fail_result(folder_name)
         else:
             set_setting("saving_folder", folder_name)
@@ -30,14 +31,15 @@ class ChangeSavingFolder:
         else:
             self._success_result(folder_name)
 
-    def _success_result(self, folder_name:str) -> None:
+    def _success_result(self, folder_name: str) -> None:
         self.result.msg = f"New Saving Folder created '{folder_name}' and saved as saving folder"
 
     def _success_result_folder_exists(self, folder_name:str) -> None:
         self.result.msg = f"Folder '{folder_name}' already exist. '{folder_name}' selected as saving folder"
 
     def _fail_result(self, folder_name: str) -> None:
-        self.result.msg = f"Folder '{folder_name}' already selected as saving folder \n"
+        self.result.msg = f"Folder '{folder_name}' already selected as saving folder \n" \
+                          f"Folder '{folder_name}' was created if it didn't already existed"
 
     @staticmethod
     def ask_saving_folder_name() -> int or str:

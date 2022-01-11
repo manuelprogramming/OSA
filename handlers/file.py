@@ -124,6 +124,7 @@ def create_new_folder(folder_name: str) -> bool:
 
 
 def _find_latest_file_name() -> str:
+
     files_in_saving_path = listdir(get_saving_path())
     if files_in_saving_path:
         all_files = [_convert_str_to_datetime(f.strip(".csv")) for f in files_in_saving_path if f.endswith(".csv")]
