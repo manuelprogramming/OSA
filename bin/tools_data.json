@@ -17,6 +17,7 @@
     "plugins.change_settings.stop_wavelength",
     "plugins.change_settings.memory_slot",
     "plugins.change_settings.saving_folder",
+    "plugins.change_settings.video_band_width",
     "plugins.analyser.filter_moving_average",
     "plugins.analyser.filter_savgol",
     "plugins.analyser.calc_maxima",
@@ -168,6 +169,12 @@
     {
       "name": "change_saving_folder",
       "command": "CSF",
+      "result": null,
+      "result_type": "ResultType.valueResult"
+    },
+    {
+      "name": "change_video_band_width",
+      "command": "CVBW",
       "result": null,
       "result_type": "ResultType.valueResult"
     },

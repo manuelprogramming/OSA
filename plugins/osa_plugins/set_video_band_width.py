@@ -20,7 +20,7 @@ class SetVideoBandWidth:
 
     @test_anri_connection
     def do_work(self) -> BaseResult:
-        video_band_width = get_setting("video_bandwidth")
+        video_band_width = get_setting("video_band_width")
         self._set_video_bandwidth(video_band_width)
         return self._success_result(video_band_width)
 
