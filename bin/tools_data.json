@@ -4,6 +4,7 @@
     "plugins.osa_plugins.start_stop_wavelength",
     "plugins.osa_plugins.get_data",
     "plugins.osa_plugins.set_sampling_points",
+    "plugins.osa_plugins.set_video_band_width",
     "plugins.osa_plugins.repeated_sweep",
     "plugins.show_settings",
     "plugins.plot",
@@ -86,6 +87,13 @@
     {
       "name": "set_sampling_points",
       "command": "MPT",
+      "result": null,
+      "result_type": "ResultType.noneResult",
+      "anri": null
+    },
+    {
+      "name": "set_video_band_width",
+      "command": "VBW",
       "result": null,
       "result_type": "ResultType.noneResult",
       "anri": null
