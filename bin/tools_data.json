@@ -13,6 +13,7 @@
     "plugins.plot_from_file",
     "plugins.select_file",
     "plugins.open_operation_manuel",
+    "plugins.open_documentation",
     "plugins.change_settings.sampling_points",
     "plugins.change_settings.start_wavelength",
     "plugins.change_settings.stop_wavelength",
@@ -146,6 +147,12 @@
     {
       "name": "open_operation_manuel",
       "command": "OOM",
+      "result": null,
+      "result_type": "ResultType.noneResult"
+    },
+    {
+      "name": "open_documentation",
+      "command": "HLP",
       "result": null,
       "result_type": "ResultType.noneResult"
     },

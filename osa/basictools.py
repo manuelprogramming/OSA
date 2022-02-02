@@ -72,7 +72,6 @@ class CloseApp:
     command: str
     result: BaseResult
 
-
     def do_work(self) -> BaseResult or None:
         reset_selected_file()
         print("Shutting down...")
