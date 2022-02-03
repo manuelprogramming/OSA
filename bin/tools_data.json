@@ -1,5 +1,10 @@
 {
-  "plugins": ["plugins.osa_plugins.single_sweep",
+  "plugins": [
+    "plugins.show_settings",
+    "plugins.plot",
+    "plugins.open_operation_manuel",
+    "plugins.open_documentation",
+    "plugins.osa_plugins.single_sweep",
     "plugins.osa_plugins.sweep_stop",
     "plugins.osa_plugins.start_stop_wavelength",
     "plugins.osa_plugins.get_data",
@@ -8,14 +13,10 @@
     "plugins.osa_plugins.repeated_sweep",
     "plugins.osa_plugins.light_output",
     "plugins.osa_plugins.trace_select",
-    "plugins.show_settings",
-    "plugins.plot",
-    "plugins.save_data",
-    "plugins.create_new_file",
-    "plugins.plot_from_file",
-    "plugins.select_file",
-    "plugins.open_operation_manuel",
-    "plugins.open_documentation",
+    "plugins.file.save_data",
+    "plugins.file.create_new_file",
+    "plugins.file.plot_from_file",
+    "plugins.file.select_file",
     "plugins.change_settings.sampling_points",
     "plugins.change_settings.start_wavelength",
     "plugins.change_settings.stop_wavelength",
@@ -33,6 +34,30 @@
     "plugins.dummy_data.dummy_data_3"
   ],
   "tools": [
+    {
+      "name": "show_settings",
+      "command": "SET?",
+      "result": null,
+      "result_type": "ResultType.valueResult"
+    },
+    {
+      "name": "plot",
+      "command": "PLT",
+      "result": null,
+      "result_type": "ResultType.arrayResult"
+    },
+    {
+      "name": "open_operation_manuel",
+      "command": "OOM",
+      "result": null,
+      "result_type": "ResultType.noneResult"
+    },
+    {
+      "name": "open_documentation",
+      "command": "HLP",
+      "result": null,
+      "result_type": "ResultType.noneResult"
+    },
     {
       "name": "identify",
       "command": "IDN",
@@ -125,18 +150,6 @@
       "anri": null
     },
     {
-      "name": "show_settings",
-      "command": "SET?",
-      "result": null,
-      "result_type": "ResultType.valueResult"
-    },
-    {
-      "name": "plot",
-      "command": "PLT",
-      "result": null,
-      "result_type": "ResultType.arrayResult"
-    },
-    {
       "name": "save_data",
       "command": "SVD",
       "result": null,
@@ -160,18 +173,7 @@
       "result": null,
       "result_type": "ResultType.valueResult"
     },
-    {
-      "name": "open_operation_manuel",
-      "command": "OOM",
-      "result": null,
-      "result_type": "ResultType.noneResult"
-    },
-    {
-      "name": "open_documentation",
-      "command": "HLP",
-      "result": null,
-      "result_type": "ResultType.noneResult"
-    },
+
     {
       "name": "change_sampling_points",
       "command": "CPT",

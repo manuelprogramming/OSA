@@ -6,7 +6,7 @@ from handlers.result import BaseResult
 
 @dataclass
 class LightOutput:
-    """Queries the light output. And turns it ON or OFF accordingly"""
+    """Queries the light output. Andturns it ON or OFF accordingly"""
     command: str
     result: BaseResult
     anri: BaseAnritsu
