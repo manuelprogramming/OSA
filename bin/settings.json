@@ -3,7 +3,7 @@
     "start_wavelength": 1400.0,
     "stop_wavelength": 1450.0,
     "memory_slot": "DMB",
-    "video_band_width": "200HZFAST",
+    "video_band_width": "10HZ",
     "saving_folder": "saved_data",
     "selected_file": "",
     "file_name_format": "%Y-%b-%d,-,%H;%M;%S",

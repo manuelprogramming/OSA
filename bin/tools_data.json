@@ -7,6 +7,7 @@
     "plugins.osa_plugins.set_video_band_width",
     "plugins.osa_plugins.repeated_sweep",
     "plugins.osa_plugins.light_output",
+    "plugins.osa_plugins.trace_select",
     "plugins.show_settings",
     "plugins.plot",
     "plugins.save_data",
@@ -114,6 +115,13 @@
       "command": "OPT",
       "result": null,
       "result_type": "ResultType.noneResult",
+      "anri": null
+    },
+    {
+      "name": "trace_select",
+      "command": "TSL",
+      "result": null,
+      "result_type": "ResultType.valueResult",
       "anri": null
     },
     {
