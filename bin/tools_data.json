@@ -6,6 +6,7 @@
     "plugins.osa_plugins.set_sampling_points",
     "plugins.osa_plugins.set_video_band_width",
     "plugins.osa_plugins.repeated_sweep",
+    "plugins.osa_plugins.light_output",
     "plugins.show_settings",
     "plugins.plot",
     "plugins.save_data",
@@ -104,6 +105,13 @@
     {
       "name": "repeated_sweep",
       "command": "SRT",
+      "result": null,
+      "result_type": "ResultType.noneResult",
+      "anri": null
+    },
+    {
+      "name": "light_output",
+      "command": "OPT",
       "result": null,
       "result_type": "ResultType.noneResult",
       "anri": null
