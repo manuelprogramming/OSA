@@ -20,7 +20,7 @@ class OpenDocumentation:
         full = path.join(get_base_path(), manuel_path)
         subprocess.Popen([full], shell=True)
 
-        self.result.msg = "Documentation opened..."
+        self.result.msg = "Documentation opening..."
         return self.result
 
 

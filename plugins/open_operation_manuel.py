@@ -20,7 +20,7 @@ class OpenOperationManuel:
         full = path.join(get_base_path(), manuel_path)
         subprocess.Popen([full], shell=True)
 
-        self.result.msg = "Operation Manuel Opened"
+        self.result.msg = "Operation Manuel opening..."
         return self.result
 
 
