@@ -17,7 +17,7 @@
     "plugins.file.create_new_file",
     "plugins.file.plot_from_file",
     "plugins.file.select_file",
-    "plugins.file.delete_column",
+    "plugins.file.delete_from_file",
     "plugins.change_settings.sampling_points",
     "plugins.change_settings.start_wavelength",
     "plugins.change_settings.stop_wavelength",
