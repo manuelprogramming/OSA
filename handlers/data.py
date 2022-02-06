@@ -1,6 +1,7 @@
 from typing import Tuple
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 class DataReader:
@@ -67,7 +68,30 @@ class DataGetter(DataReader):
         if not self.user_input_is_valid(user_input):
             return np.array(False), np.array(False)
         if self.points_data:
-            return self.df.loc[user_input].index.to_numpy(), self.df.loc[user_input].to_numpy().flatten(GFF)
+            return self.df.loc[user_input].index.to_numpy(), self.df.loc[user_input].to_numpy().flatten()
         else:
             return self.df.index.to_numpy(), self.df[user_input].to_numpy()
 
+
+class DataPlotter(DataReader):
+    def __init__(self, file_path):
+        super().__init__(file_path)
+
+    def plot_data(self):
+        if self.points_data:
+            self._plot_points_data()
+        else:
+            self._plot_trace_data()
+        plt.legend()
+
+    def _plot_points_data(self):
+        df = pd.read_csv(self.path, index_col=[0, 1])
+        bending_radii = set([bending_radius for bending_radius in df.index.get_level_values('bending_radius')])
+        for bending_radius in bending_radii:
+            df_part = df.loc[bending_radius]
+            y = df_part["trace [dBm]"].to_numpy()
+            plt.plot(df_part.index.to_numpy(), y, "o", label=bending_radius)
+
+    def _plot_trace_data(self):
+        df = pd.read_csv(self.path, index_col=0)
+        df.plot()

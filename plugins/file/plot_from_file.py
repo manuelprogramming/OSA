@@ -5,8 +5,9 @@ from os import path
 
 from osa import factory
 from handlers.result import BaseResult
-from handlers.file import get_selected_file_path, selected_file_is_empty, check_file
+from handlers.file import get_selected_file_path, check_file
 from handlers.plotting import format_plot
+from handlers.data import DataPlotter
 
 
 @dataclass
@@ -29,31 +30,8 @@ class PlotFromFile:
 
     @format_plot
     def _plot_from_file(self, file_path) -> None:
-        if self._is_points_data(file_path):
-            self._plot_points_data(file_path)
-        else:
-            self._plot_trace_data(file_path)
-
-        plt.legend()
-
-    @staticmethod
-    def _is_points_data(file_path) -> bool:
-        df = pd.read_csv(file_path, index_col=0)
-        return df.index.name == "bending_radius"
-
-    @staticmethod
-    def _plot_points_data(file_path):
-        df = pd.read_csv(file_path, index_col=[0, 1])
-        bending_radii = set([bending_radius for bending_radius in df.index.get_level_values('bending_radius')])
-        for bending_radius in bending_radii:
-            df_part = df.loc[bending_radius]
-            y = df_part["trace [dBm]"].to_numpy()
-            plt.plot(df_part.index.to_numpy(), y, "o", label=bending_radius)
-
-    @staticmethod
-    def _plot_trace_data(file_path):
-        df = pd.read_csv(file_path, index_col=0)
-        df.plot()
+        plotter: DataPlotter = DataPlotter(file_path)
+        plotter.plot_data()
 
 
 def initialize() -> None:

@@ -7,7 +7,7 @@ from osa import factory
 from handlers.result import BaseResult
 from handlers.cache import load_only_array_results
 from handlers.plotting import format_plot
-from handlers.file import get_setting
+from handlers.file import get_setting, check_file
 
 
 @dataclass
@@ -22,7 +22,6 @@ class Plot:
         array_result: Tuple[np.array, np.array] = load_only_array_results()
         if not array_result:
             return self.result
-
         wavelength, trace = array_result
         if not self._same_length(wavelength, trace):
             self._fail_result_wrong_length(wavelength, trace)

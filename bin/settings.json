@@ -9,7 +9,7 @@
     "file_name_format": "%Y-%b-%d,-,%H;%M;%S",
     "max_length_ref_data": 5,
     "savgol_settings": {
-        "window_size": 101,
-        "pol_order": 5
+        "window_length": 101,
+        "poly_order": 35
     }
 }
