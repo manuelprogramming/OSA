@@ -17,6 +17,7 @@
     "plugins.file.create_new_file",
     "plugins.file.plot_from_file",
     "plugins.file.select_file",
+    "plugins.file.delete_column",
     "plugins.change_settings.sampling_points",
     "plugins.change_settings.start_wavelength",
     "plugins.change_settings.stop_wavelength",
@@ -173,7 +174,12 @@
       "result": null,
       "result_type": "ResultType.valueResult"
     },
-
+    {
+      "name": "delete_from_file",
+      "command": "DFF",
+      "result": null,
+      "result_type": "ResultType.arrayResult"
+    },
     {
       "name": "change_sampling_points",
       "command": "CPT",

@@ -37,6 +37,10 @@ def _selected_file_exists(selected_file_name: str) -> bool:
     return len(selected_file_name) != 0
 
 
+def selected_file_is_empty() -> bool:
+    return path.getsize(get_selected_file_path()) == 0
+
+
 # valid settings getters
 
 
@@ -82,7 +86,10 @@ def reset_selected_file() -> None:
 
 def _convert_str_to_datetime(timestampStr: str) -> datetime:
     dt_format = get_setting("file_name_format")
-    return datetime.strptime(timestampStr, dt_format)
+    try:
+        return datetime.strptime(timestampStr, dt_format)
+    except ValueError:
+        pass
 
 
 def _convert_datetime_to_str(dateTimeObj: datetime) -> str:
@@ -124,12 +131,11 @@ def create_new_folder(folder_name: str) -> bool:
 
 
 def _find_latest_file_name() -> str:
-
     files_in_saving_path = listdir(get_saving_path())
     if files_in_saving_path:
         all_files = [_convert_str_to_datetime(f.strip(".csv")) for f in files_in_saving_path if f.endswith(".csv")]
-        all_files.sort()
         if all_files:
+            all_files.sort()
             return _convert_datetime_to_str(all_files[-1]) + ".csv"
 
 

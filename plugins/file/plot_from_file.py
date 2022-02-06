@@ -5,7 +5,7 @@ from os import path
 
 from osa import factory
 from handlers.result import BaseResult
-from handlers.file import get_selected_file_path
+from handlers.file import get_selected_file_path, selected_file_is_empty
 from handlers.plotting import format_plot
 
 
@@ -23,7 +23,7 @@ class PlotFromFile:
         if not file_path:
             self.result.msg = "no files in directory"
             return self.result
-        if path.getsize(file_path) == 0:
+        if selected_file_is_empty():
             self.result.msg = "file is empty no plotting possible"
             return self.result
         print(file_path)
