@@ -1,7 +1,7 @@
 """functions for Handling the files"""
 from os import path, listdir, mkdir
 import json
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Tuple
 from datetime import datetime
 
 
@@ -137,6 +137,16 @@ def _find_latest_file_name() -> str:
         if all_files:
             all_files.sort()
             return _convert_datetime_to_str(all_files[-1]) + ".csv"
+
+
+def check_file() -> Tuple[bool, str]:
+    file_path = get_selected_file_path()
+    if not file_path:
+        return False, "No file in the given directory"
+    if selected_file_is_empty():
+        return False, f"Selected File {file_path} is empty"
+    else:
+        return True, "file is valid"
 
 
 if __name__ == '__main__':
