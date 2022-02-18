@@ -58,5 +58,6 @@ class SavGol:
     def _success_result(self):
         self.result.msg = "Savatzki-Golay-Filter calculated and saved to cache"
 
+
 def initialize():
     factory.register("filter_savgol", SavGol)

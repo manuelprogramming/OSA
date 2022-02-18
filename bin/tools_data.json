@@ -13,6 +13,7 @@
     "plugins.osa_plugins.repeated_sweep",
     "plugins.osa_plugins.light_output",
     "plugins.osa_plugins.trace_select",
+    "plugins.osa_plugins.repeated_sweep_save",
     "plugins.file.save_data",
     "plugins.file.create_new_file",
     "plugins.file.plot_from_file",
@@ -150,6 +151,13 @@
       "command": "TSL",
       "result": null,
       "result_type": "ResultType.valueResult",
+      "anri": null
+    },
+    {
+      "name": "repeated_sweep_save",
+      "command": "RSS",
+      "result": null,
+      "result_type": "ResultType.noneResult",
       "anri": null
     },
     {

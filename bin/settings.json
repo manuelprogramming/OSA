@@ -5,7 +5,7 @@
     "memory_slot": "DMB",
     "video_band_width": "10HZ",
     "saving_folder": "saved_data",
-    "selected_file": "C:/Users/profm/PycharmProjects/OSA/saved_data/2022-Feb-03,-,10;09;44.csv",
+    "selected_file": "",
     "file_name_format": "%Y-%b-%d,-,%H;%M;%S",
     "max_length_ref_data": 5,
     "savgol_settings": {
