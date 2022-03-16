@@ -1,12 +1,14 @@
 from pynput import keyboard
 from time import sleep
 
+
 from threading import Thread
 from multiprocessing import Process, Queue
 import numpy as np
 import pandas as pd
 
-from handlers.file import get_setting, get_selected_file_path, get_visa_search_term
+
+from handlers.file import get_setting, get_selected_file_path, get_visa_search_term, get_current_date_time_str
 from osa.anritsu_wrapper import Anritsu
 
 # The key combinations to look for
@@ -82,11 +84,11 @@ def repeated_sweep_save(q):
     memory_slot: str = get_setting("memory_slot") + "?"
     wavelength: np.array = rss.get_wavelength()
     file_path: str = get_selected_file_path()
-    sweep_num = 0
+    sweep_num = 1
     while q.empty():
         rss.do_single_sweep()
         trace: np.array = rss.get_data(memory_slot)
-        if sweep_num == 0:
+        if sweep_num == 1:
             rss.save_as_trace_data(file_path, wavelength, trace)
         else:
             rss.append_and_save_as_trace_data(file_path, trace, sweep_num)
@@ -133,19 +135,22 @@ class RepeatedSweepSaver:
 
     @staticmethod
     def save_as_trace_data(file_path: str, wavelength: np.array, trace: np.array) -> None:
-        column_name = f"sweep_0"
+        column_name = f"S#{1} @{get_current_date_time_str()}"
         df = pd.DataFrame(data=trace, index=wavelength, columns=[column_name])
         df.index.name = "wavelength [nm]"
         df.to_csv(file_path)
 
     def append_and_save_as_trace_data(self, file_path: str, trace: np.array, column_number: int) -> None:
         df = pd.read_csv(file_path, index_col="wavelength [nm]")
-        column_name = f"sweep_{column_number}"
+        column_name = f"S#{column_number} @{get_current_date_time_str(time_format='%H:%M:%S')}"
         df[column_name] = trace
         df.to_csv(file_path)
 
 
 if __name__ == '__main__':
+    column_name = f"S#{1} @{get_current_date_time_str()}"
+    print(column_name)
+    print(get_current_date_time_str())
     my_queue = Queue()
     p = Process(target=run_thread_engine, args=(do_looping, my_queue))
     p.start()

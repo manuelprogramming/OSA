@@ -92,13 +92,13 @@ def _convert_str_to_datetime(timestampStr: str) -> datetime:
         pass
 
 
-def _convert_datetime_to_str(dateTimeObj: datetime) -> str:
-    return dateTimeObj.strftime(get_setting("file_name_format"))
+def _convert_datetime_to_str(dateTimeObj: datetime, time_format: str = get_setting("file_name_format")) -> str:
+    return dateTimeObj.strftime(time_format)
 
 
-def get_current_date_time_str() -> str:
+def get_current_date_time_str(time_format: str = get_setting("file_name_format")) -> str:
     dateTimeObj = datetime.now()
-    timestampStr = _convert_datetime_to_str(dateTimeObj)
+    timestampStr = _convert_datetime_to_str(dateTimeObj, time_format)
     return timestampStr
 
 
